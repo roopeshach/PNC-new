@@ -9,6 +9,7 @@ class Event(models.Model):
     title = models.CharField(max_length=254)
     content = HTMLField()
     date = models.DateTimeField()
+    feature_image = models.ImageField( upload_to="events/", height_field=None, width_field=None, max_length=None)
     slug = models.SlugField(blank=True)
 
     def save(self, *args, **kwargs):
@@ -25,6 +26,8 @@ class News(models.Model):
     date = models.DateTimeField()
     department = models.ForeignKey(Department, on_delete=models.CASCADE, blank=True, default=0, null=True)
     program = models.ForeignKey(Program, on_delete=models.CASCADE, null=True, default=0, blank=True)
+    feature_image = models.ImageField( upload_to="news/", height_field=None, width_field=None, max_length=None)
+
     file = models.FileField(upload_to="news_file/", blank=True, null=True)
 
     slug = models.SlugField(null=True, blank=True)
@@ -43,6 +46,8 @@ class Notice(models.Model):
     date = models.DateTimeField()
     department = models.ForeignKey(Department, on_delete=models.CASCADE, blank=True, default=0, null=True)
     program = models.ForeignKey(Program, on_delete=models.CASCADE, null=True, default=0, blank=True)
+    feature_image = models.ImageField( upload_to="notice/", height_field=None, width_field=None, max_length=None)
+
     file = models.FileField(upload_to="notice_file/", blank=True, null=True)
 
     slug = models.SlugField(blank=True)
