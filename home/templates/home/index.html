@@ -68,9 +68,8 @@
 						<div class="col-lg-8 col-12">
 							<!-- Contact -->
 							<ul class="content">
-								<li><i class="fa fa-phone"></i>123-456-789</li>
-								<li><a href="mailto:info@yourdomain.com"><i class="fa fa-envelope-o"></i>contact@yourdomain.com</a></li>
-								<li><i class="fa fa-clock-o"></i>Opening: 10:00am - 5:00pm</li>
+								<li><i class="fa fa-phone"></i>{{content.phone}}</li>
+								<li><a href="mailto:info@yourdomain.com"><i class="fa fa-envelope-o"></i>{{content.email}}</a></li>
 							</ul>
 							<!-- End Contact -->
 						</div>
@@ -106,15 +105,15 @@
 							<div class="header-widget">
 								<div class="single-widget">
 									<i class="fa fa-phone"></i>
-									<h4>Call Now<span>(+121) 1800 567 980</span></h4>
+									<h4>Call Now<span>{{content.phone}}</span></h4>
 								</div>
 								<div class="single-widget">
 									<i class="fa fa-envelope-o"></i>
-									<h4>Send Message<a href="mailto:mailus@mail.com"><span>support@education.com</span></a></h4>
+									<h4>Send Message<a href="{{content.email}}"><span>{{content.email}}</span></a></h4>
 								</div>
 								<div class="single-widget">
 									<i class="fa fa-map-marker"></i>
-									<h4>Our Location<span>211 Ronad, California, Us</span></h4>
+									<h4>Our Location<span>Pokhara-01, Bagar </span></h4>
 								</div>
 							</div>
 							<!--/ End Header Widget -->
@@ -197,13 +196,14 @@
 		<section class="home-slider">
 			<div class="slider-active">
 				<!-- Single Slider -->
-				<div class="single-slider overlay" style="background-image:url('images/slider/slider-bg1.jpg')">
+				{% for slide in slides %}
+				<div class="single-slider overlay" style="background-image:url({{slide.photo.url}})">
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-8 col-md-8 col-12">
 								<div class="slider-text">
-									<h1>Perfect Template for <span>Education</span> & Courses Website</h1>
-									<p>Our mission is to empower clients, colleagues, and communities to achieve aspirations while building lasting, caring relationships.</p>
+									<h1>{{slide.head}}</h1>
+									<p>{{slide.content}}</p>
 									<div class="button">
 										<a href="courses.html" class="btn primary">Our Courses</a>
 										<a href="about.html" class="btn">About Learnedu</a>
@@ -213,43 +213,9 @@
 						</div>
 					</div>
 				</div>
+				{% endfor %}
 				<!--/ End Single Slider -->
-				<!-- Single Slider -->
-				<div class="single-slider overlay" style="background-image:url('images/slider/slider-bg2.jpg')">
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-12">
-								<div class="slider-text text-center">
-									<h1>Creative Template for <span>Education</span> & Courses Website</h1>
-									<p>Our mission is to empower clients, colleagues, and communities to achieve aspirations while building lasting, caring relationships.</p>
-									<div class="button">
-										<a href="courses.html" class="btn primary">Our Courses</a>
-										<a href="about.html" class="btn">About Learnedu</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--/ End Single Slider -->
-				<!-- Single Slider -->
-				<div class="single-slider overlay" style="background-image:url('images/slider/slider-bg3.jpg')">
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-8 offset-lg-4 col-md-8 offset-md-4 col-12">
-								<div class="slider-text text-right">
-									<h1>Responsive Template for <span>Education</span> & Courses Website</h1>
-									<p>Our mission is to empower clients, colleagues, and communities to achieve aspirations while building lasting, caring relationships.</p>
-									<div class="button">
-										<a href="courses.html" class="btn primary">Our Courses</a>
-										<a href="about.html" class="btn">About Learnedu</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--/ End Single Slider -->
+				
 			</div>
 		</section>
 		<!--/ End Slider Area -->
@@ -260,8 +226,8 @@
 				<div class="row">
 					<div class="col-12 wow zoomIn">
 						<div class="section-title">
-							<h2>We Provide <span>Educational</span> Solutions</h2>
-							<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie nec hendrerit hendreri </p>
+							<h2>{{desc.header}}</h2>
+							<p>{{desc.content}}</p>
 						</div>
 					</div>
 				</div>
@@ -270,7 +236,7 @@
 						<!-- Single Feature -->
 						<div class="single-feature">
 							<div class="feature-head">
-								<img src="images/feature1.jpg" alt="#">
+								<img src="{% static 'images/feature1.jpg' %}" alt="#">
 							</div>
 							<h2>Online Courses Facilities</h2>
 							<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim</p>	
@@ -281,7 +247,7 @@
 						<!-- Single Feature -->
 						<div class="single-feature">
 							<div class="feature-head">
-								<img src="images/feature2.jpg" alt="#">
+								<img src="{% static 'images/feature2.jpg' %}" alt="#">
 							</div>
 							<h2>Student Admin Panel</h2>
 							<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim</p>	
@@ -292,7 +258,7 @@
 						<!-- Single Feature -->
 						<div class="single-feature">
 							<div class="feature-head">
-								<img src="images/feature3.jpg" alt="#">
+								<img src="{% static 'images/feature3.jpg' %}" alt="#">
 							</div>
 							<h2>Perfect Guidelines</h2>
 							<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim</p>	
@@ -305,7 +271,7 @@
 		<!-- End Features -->
 		
 		<!-- Enroll -->
-		<section class="enroll overlay section" data-stellar-background-ratio="0.5">
+		{% comment %} <section class="enroll overlay section" data-stellar-background-ratio="0.5">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-10 offset-lg-1">
@@ -388,7 +354,7 @@
 				</div>
 			</div>
 		</section>
-		<!--/ End Enroll -->
+		<!--/ End Enroll --> {% endcomment %}
 
 		<!-- Courses -->
 		<section class="courses section-bg section">
@@ -407,7 +373,7 @@
 							<!-- Single Course -->
 							<div class="single-course">
 								<div class="course-head overlay">
-									<img src="images/course/course1.jpg" alt="#">
+									<img src="{% static 'images/course/course1.jpg' %}" alt="#">
 									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
@@ -426,7 +392,7 @@
 							<!-- Single Course -->
 							<div class="single-course">
 								<div class="course-head overlay">
-									<img src="images/course/course2.jpg" alt="#">
+									<img src="{% static 'images/course/course2.jpg' %}" alt="#">
 									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
@@ -445,7 +411,7 @@
 							<!-- Single Course -->
 							<div class="single-course">
 								<div class="course-head overlay">
-									<img src="images/course/course3.jpg" alt="#">
+									<img src="{% static 'images/course/course3.jpg' %}" alt="#">
 									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
@@ -464,7 +430,7 @@
 							<!-- Single Course -->
 							<div class="single-course">
 								<div class="course-head overlay">
-									<img src="images/course/course1.jpg" alt="#">
+									<img src="{% static 'images/course/course1.jpg' %}" alt="#">
 									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
@@ -483,7 +449,7 @@
 							<!-- Single Course -->
 							<div class="single-course">
 								<div class="course-head overlay">
-									<img src="images/course/course2.jpg" alt="#">
+									<img src="{% static 'images/course/course2.jpg' %}" alt="#">
 									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
@@ -502,7 +468,7 @@
 							<!-- Single Course -->
 							<div class="single-course">
 								<div class="course-head overlay">
-									<img src="images/course/course3.jpg" alt="#">
+									<img src="{% static 'images/course/course3.jpg' %}" alt="#">
 									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
@@ -560,7 +526,7 @@
 					<div class="col-lg-3 col-md-6 col-12 wow fadeIn" data-wow-delay="0.4s">
 						<!-- Single Team -->
 						<div class="single-team">
-							<img src="images/team/team1.jpg" alt="#">
+							<img src="{% static 'images/team/team1.jpg' %}" alt="#">
 							<div class="team-hover">
 								<h4>Rohan Jonson<span>Associate Professor</span></h4>
 								<p>cumque nihil impedit quo minusid quod maxime placeat facere possimus</p>
@@ -577,7 +543,7 @@
 					<div class="col-lg-3 col-md-6 col-12 wow fadeIn" data-wow-delay="0.6s">
 						<!-- Single Team -->
 						<div class="single-team active">
-							<img src="images/team/team2.jpg" alt="#">
+							<img src="{% static 'images/team/team2.jpg' %}" alt="#">
 							<div class="team-hover">
 								<h4 class="name">Ian Harvey<span class="work">Web Programmer</span></h4>
 								<p>cumque nihil impedit quo minusid quod maxime placeat facere possimus</p>
@@ -594,7 +560,7 @@
 					<div class="col-lg-3 col-md-6 col-12 wow fadeIn" data-wow-delay="0.8s">
 						<!-- Single Team -->
 						<div class="single-team">
-							<img src="images/team/team3.jpg" alt="#">
+							<img src="{% static 'images/team/team3.jpg' %}" alt="#">
 							<div class="team-hover">
 								<h4 class="name">Lusfat Roman<span class="work">Software Engineer</span></h4>
 								<p>cumque nihil impedit quo minusid quod maxime placeat facere possimus</p>
@@ -611,7 +577,7 @@
 					<div class="col-lg-3 col-md-6 col-12 wow fadeIn" data-wow-delay="1s">
 						<!-- Single Team -->
 						<div class="single-team">
-							<img src="images/team/team4.jpg" alt="#">
+							<img src="{% static 'images/team/team4.jpg' %}" alt="#">
 							<div class="team-hover">
 								<h4 class="name">Nalpamb Bold<span class="work">JS Developer</span></h4>
 								<p>cumque nihil impedit quo minusid quod maxime placeat facere possimus</p>
@@ -637,41 +603,17 @@
 					<div class="col-12">
 						<div class="testimonial-slider">
 							<!-- Single Testimonial -->
+							{% for message in messages %}
 							<div class="single-testimonial">
-								<img src="images/testimonial1.jpg" alt="#">
+								<img src="{{message.image.url}}" alt="#">
 								<div class="main-content">
-									<h4 class="name">Sanavce Faglane</h4>
-									<p>Nulla cursus a metus vel placerat. Fusce malesuada volutpat pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus velit libero, viverra quis euismod vel pellentesque at tortor. Donec</p>
+									<h4 class="name">{{message.chief_name}}</h4>
+									<p>{{message.message}}</p>
 								</div>
 							</div>
+							{% endfor %}
 							<!--/ End Single Testimonial -->
-							<!-- Single Testimonial -->
-							<div class="single-testimonial">
-								<img src="images/testimonial2.jpg" alt="#">
-								<div class="main-content">
-									<h4 class="name">Jansan Kate</h4>
-									<p>Nulla cursus a metus vel placerat. Fusce malesuada volutpat pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus velit libero, viverra quis euismod vel pellentesque at tortor. Donec</p>
-								</div>
-							</div>
-							<!--/ End Single Testimonial -->
-							<!-- Single Testimonial -->
-							<div class="single-testimonial">
-								<img src="images/testimonial3.jpg" alt="#">
-								<div class="main-content">
-									<h4 class="name">Sanavce Faglane</h4>
-									<p>Nulla cursus a metus vel placerat. Fusce malesuada volutpat pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus velit libero, viverra quis euismod vel pellentesque at tortor. Donec</p>
-								</div>
-							</div>
-							<!--/ End Single Testimonial -->
-							<!-- Single Testimonial -->
-							<div class="single-testimonial">
-								<img src="images/testimonial4.jpg" alt="#">
-								<div class="main-content">
-									<h4 class="name">Jansan Kate</h4>
-									<p>Nulla cursus a metus vel placerat. Fusce malesuada volutpat pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus velit libero, viverra quis euismod vel pellentesque at tortor. Donec</p>
-								</div>
-							</div>
-							<!--/ End Single Testimonial -->
+							
 						</div>
 					</div>
 				</div>
@@ -694,64 +636,28 @@
 					<div class="col-12">
 						<div class="event-slider">
 							<!-- Single Event -->
+							{% for event in events %}
 							<div class="single-event">
-								<div class="head overlay">
-									<img src="images/events/event1.jpg" alt="#">
-									<a href="images/events/event1.jpg" data-fancybox="photo" class="btn"><i class="fa fa-search"></i></a>
-								</div>
+								
 								<div class="event-content">
 									<div class="meta"> 
-										<span><i class="fa fa-calendar"></i>05 June 2018</span>
-										<span><i class="fa fa-clock-o"></i>12.00-5.00PM</span>
+										<span><i class="fa fa-calendar"></i>{{event.date}}</span>
+										
 									</div>
-									<h4><a href="event-single.html">Freshers Day Reception 2018</a></h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt</p>
+									<h4><a href="event-single.html">{{event.title}}</a></h4>
+									<p>
+									{% autoescape on %}
+									{{event.content |safe}}
+									{% endautoescape %}
+									</p>
 									<div class="button">
 										<a href="event-single.html" class="btn">Join Event</a>
 									</div>
 								</div>
 							</div>
+							{% endfor %}
 							<!--/ End Single Event -->
-							<!-- Single Event -->
-							<div class="single-event">
-								<div class="head overlay">
-									<img src="images/events/event2.jpg" alt="#">
-									<a href="images/events/event2.jpg" data-fancybox="photo" class="btn"><i class="fa fa-search"></i></a>
-								</div>
-								<div class="event-content">
-									<div class="meta">
-										<span><i class="fa fa-calendar"></i>03 July 2018</span>
-										<span><i class="fa fa-clock-o"></i>03.20-5.20PM</span>
-									</div>
-									<h4><a href="event-single.html">Best Student Award 2018</a></h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt</p>
-									<div class="button">
-										<a href="event-single.html" class="btn">Join Event</a>
-									</div>
-								</div>
-							</div>
-							<!--/ End Single Event -->
-							<!-- Single Event -->
-							<div class="single-event">
-								<div class="head overlay">
-									<img src="images/events/event3.jpg" alt="#">
-									<a href="images/events/event3.jpg" data-fancybox="photo" class="btn"><i class="fa fa-search"></i></a>
-								</div>
-								<div class="event-content">
-									<div class="meta">
-										<span><i class="fa fa-calendar"></i>15 Dec 2018</span>
-										<span><i class="fa fa-clock-o"></i>12.30-5.30PM</span>
-									</div>
-									<div class="title">
-										<h4><a href="event-single.html">Student Workshop</a></h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt</p>
-									</div>
-									<div class="button">
-										<a href="event-single.html" class="btn">Join Event</a>
-									</div>
-								</div>
-							</div>
-							<!--/ End Single Event -->
+							
 						</div>
 					</div>
 				</div>
@@ -819,159 +725,36 @@
 					<div class="col-12">
 						<div class="blog-slider">
 							<!-- Single Blog -->
+							{% for n in news  %}
 							<div class="single-blog">
 								<div class="blog-head overlay">
 									<div class="date">
-										<h4>10<span>May</span></h4>
+										<h4><span>{{n.date| date:"M d , Y"}}</span></h4>
 									</div>
-									<img src="images/blog/blog1.jpg" alt="#">
+									<img src="{% static 'images/blog/blog1.jpg' %}" alt="#">
 								</div>
 								<div class="blog-content">
-									<h4 class="blog-title"><a href="blog-single.html">Our Student Have sit amet egestas</a></h4>
+									<h4 class="blog-title"><a href="blog-single.html">{{n.title}}</a></h4>
 									<div class="blog-info">
-										<a href="#"><i class="fa fa-user"></i>By: Admin</a>
+										<a href="#"><i class="fa fa-user"></i>By:
+										{% if n.department %}{{n.department}}{% else %}{{n.program}}{% endif %}
+										</a>
 										<a href="#"><i class="fa fa-list"></i>Learning</a>
-										<a href="#"><i class="fa fa-heart-o"></i>53K</a>
+										
 									</div>
-									<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Et harum quidem rerum facilis est et expedita distinctio</p>
+									<p>
+									{% autoescape on %}
+									{{n.content|safe}}
+									{% endautoescape %}
+									</p>
 									<div class="button">
 										<a href="blog-single.html" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
 									</div>
 								</div>
 							</div>
+							{% endfor %}
 							<!-- End Single Blog -->
-							<!-- Single Blog -->
-							<div class="single-blog">
-								<div class="blog-head overlay">
-									<div class="date">
-										<h4>05<span>May</span></h4>
-									</div>
-									<img src="images/blog/blog2.jpg" alt="#">
-								</div>
-								<div class="blog-content">
-									<h4 class="blog-title"><a href="blog-single.html">Our teachers egestas erat dignissim</a></h4>
-									<div class="blog-info">
-										<a href="#"><i class="fa fa-user"></i>By: Admin</a>
-										<a href="#"><i class="fa fa-list"></i>Academic</a>
-										<a href="#"><i class="fa fa-heart-o"></i>33K</a>
-									</div>
-									<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Et harum quidem rerum facilis est et expedita distinctio</p>
-									<div class="button">
-										<a href="blog-single.html" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
-									</div>
-								</div>
-							</div>
-							<!-- End Single Blog -->
-							<!-- Single Blog -->
-							<div class="single-blog">
-								<div class="blog-head overlay">
-									<div class="date">
-										<h4>15<span>Mar</span></h4>
-									</div>
-									<img src="images/blog/blog3.jpg" alt="#">
-								</div>
-								<div class="blog-content">
-									<h4 class="blog-title"><a href="blog-single.html">We are Proffesional Have velit Landon</a></h4>
-									<div class="blog-info">
-										<a href="#"><i class="fa fa-user"></i>By: Admin</a>
-										<a href="#"><i class="fa fa-list"></i>Knowledge</a>
-										<a href="#"><i class="fa fa-heart-o"></i>11K</a>
-									</div>
-									<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Et harum quidem rerum facilis est et expedita distinctio</p>
-									<div class="button">
-										<a href="blog-single.html" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
-									</div>
-								</div>
-							</div>
-							<!-- End Single Blog -->
-							<!-- Single Blog -->
-							<div class="single-blog">
-								<div class="blog-head overlay">
-									<div class="date">
-										<h4>10<span>Mar</span></h4>
-									</div>
-									<img src="images/blog/blog4.jpg" alt="#">
-								</div>
-								<div class="blog-content">
-									<h4 class="blog-title"><a href="blog-single.html">Our Student Have sit amet egestas</a></h4>
-									<div class="blog-info">
-										<a href="#"><i class="fa fa-user"></i>By: Admin</a>
-										<a href="#"><i class="fa fa-list"></i>Learning</a>
-										<a href="#"><i class="fa fa-heart-o"></i>53K</a>
-									</div>
-									<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Et harum quidem rerum facilis est et expedita distinctio</p>
-									<div class="button">
-										<a href="blog-single.html" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
-									</div>
-								</div>
-							</div>
-							<!-- End Single Blog -->
-							<!-- Single Blog -->
-							<div class="single-blog">
-								<div class="blog-head overlay">
-									<div class="date">
-										<h4>25<span>Feb</span></h4>
-									</div>
-									<img src="images/blog/blog2.jpg" alt="#">
-								</div>
-								<div class="blog-content">
-									<h4 class="blog-title"><a href="blog-single.html">Our teachers egestas erat dignissim</a></h4>
-									<div class="blog-info">
-										<a href="#"><i class="fa fa-user"></i>By: Admin</a>
-										<a href="#"><i class="fa fa-list"></i>Academic</a>
-										<a href="#"><i class="fa fa-heart-o"></i>33K</a>
-									</div>
-									<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Et harum quidem rerum facilis est et expedita distinctio</p>
-									<div class="button">
-										<a href="blog-single.html" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
-									</div>
-								</div>
-							</div>
-							<!-- End Single Blog -->
-							<!-- Single Blog -->
-							<div class="single-blog">
-								<div class="blog-head overlay">
-									<div class="date">
-										<h4>28<span>Feb</span></h4>
-									</div>
-									<img src="images/blog/blog3.jpg" alt="#">
-								</div>
-								<div class="blog-content">
-									<h4 class="blog-title"><a href="blog-single.html">We are Proffesional Have velit Landon</a></h4>
-									<div class="blog-info">
-										<a href="#"><i class="fa fa-user"></i>By: Admin</a>
-										<a href="#"><i class="fa fa-list"></i>Knowledge</a>
-										<a href="#"><i class="fa fa-heart-o"></i>11K</a>
-									</div>
-									<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Et harum quidem rerum facilis est et expedita distinctio</p>
-									<div class="button">
-										<a href="blog-single.html" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
-									</div>
-								</div>
-							</div>
-							<!-- End Single Blog -->
-							<!-- Single Blog -->
-							<div class="single-blog">
-								<div class="blog-head overlay">
-									<div class="date">
-										<h4>03<span>Jan</span></h4>
-									</div>
-									<img src="images/blog/blog4.jpg" alt="#">
-								</div>
-								<div class="blog-content">
-									<h4 class="blog-title"><a href="blog-single.html">Our Student Have sit amet egestas</a></h4>
-									<div class="blog-info">
-										<a href="#"><i class="fa fa-user"></i>By: Admin</a>
-										<a href="#"><i class="fa fa-list"></i>Learning</a>
-										<a href="#"><i class="fa fa-heart-o"></i>53K</a>
-									</div>
-									<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Et harum quidem rerum facilis est et expedita distinctio</p>
-									<div class="button">
-										<a href="blog-single.html" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
-									</div>
-								</div>
-							</div>
-							<!-- End Single Blog -->
+							
 						</div>
 					</div>
 				</div>
@@ -988,12 +771,12 @@
 						<div class="col-lg-3 col-md-6 col-12">
 							<!-- About -->
 							<div class="single-widget about">
-								<div class="logo"><a href="#"><img src="images/logo2.png" alt="#"></a></div>
+								<div class="logo"><a href="#"><img src="{% static 'images/logo.png' %}" alt="#"></a></div>
 								<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Lorem ipsum dolor sit amet, consectetur</p>
 								<ul class="list">
-									<li><i class="fa fa-phone"></i>Phone: +123 456-7890 </li>
-									<li><i class="fa fa-envelope"></i>Email: <a href="mailto:info@youremail.com">Info@youremail.com</a></li>
-									<li><i class="fa fa-map-o"></i>Address: 211 Ronad, California, Us</li>
+									<li><i class="fa fa-phone"></i>Phone: {{content.phone}} </li>
+									<li><i class="fa fa-envelope"></i>Email: <a href="mailto:{{content.email}}">{{content.email}}</a></li>
+									<li><i class="fa fa-map-o"></i>Address: {{content.address}}</li>
 								</ul>
 							</div>
 							<!--/ End About -->

@@ -12,7 +12,7 @@ programs = Program.objects.all().filter(is_active="T")
 news = News.objects.all()[:3]
 notices = Notice.objects.all()[:3]
 events = Event.objects.all()[:3]
-messages = Message_From_Chief.objects.all().first()
+messages = Message_From_Chief.objects.all()
 pages = Custom_Page.objects.all()
 
 context = {
