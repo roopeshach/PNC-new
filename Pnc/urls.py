@@ -27,4 +27,13 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('', include('news.urls')),
 
-]
+] 
+
+ 
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+admin.site.site_header = "PNC Admin"
+admin.site.site_title = "PNC Admin"
+admin.site.index_title = "Administrator Page PNC"
