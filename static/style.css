@@ -292,7 +292,7 @@ Version:	1.0
 	border: none;
 }
 .home-slider .single-slider:before{
-	opacity:0.7;
+	opacity:0.4;
 }
 .home-slider .single-slider .slider-text {
 	margin: 171px 0 0;

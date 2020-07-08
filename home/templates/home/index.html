@@ -1,4 +1,8 @@
 {% extends 'home/base.html' %}
+{% load static %}
+{% block title %}
+PN campus
+{% endblock title %}
 
 {% block content %}
     <body>
@@ -55,6 +59,7 @@
 						<div class="col-lg-3 col-md-3 col-12">
 							<div class="logo">
 								<a href="index.html"><img src="{% static 'images/logo.png' %}" alt="#"></a>
+								<h6 style="color:#252525"><span>{{content.header_text}}</span></h6>
 							</div>
 							<div class="mobile-menu"></div>
 						</div>
@@ -112,9 +117,21 @@
 										</li>
 										<li><a href="#">Courses<i class="fa fa-angle-down"></i></a> 
 											<ul class="dropdown">
-												<li><a href="courses.html">Courses</a></li>
-												<li><a href="course-single.html">Course Single</a></li>
-												<li><a href="course-single-video.html">Course Single Video</a></li>
+												
+												<li><a href="#">Programs<i class="fa fa-angle-right"></i></a>
+													<ul class="dropdown submenu">
+														{% for program in programs %}
+														<li><a href="teacher.html">{{program.name}}</a></li>
+														{% endfor %}
+													</ul>
+												</li>
+												<li><a href="#">Departments<i class="fa fa-angle-right"></i></a>
+													<ul class="dropdown submenu">
+														{% for department in departments %}
+														<li><a href="teacher.html">{{department.name}}</a></li>
+														{% endfor %}
+													</ul>
+												</li>
 											</ul>
 										</li>
 										<li><a href="#">Events<i class="fa fa-angle-down"></i></a> 
@@ -329,14 +346,19 @@
 					<div class="col-12">
 						<div class="course-slider">
 							<!-- Single Course -->
+							{% for department in departments %}
 							<div class="single-course">
 								<div class="course-head overlay">
-									<img src="{% static 'images/course/course1.jpg' %}" alt="#">
+									<img src="{{department.feature_image.url}}" alt="#">
 									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
-									<h4><a href="course-single.html"><span>Commerce</span>Business Management</a></h4>
-									<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean </p>
+									<h4><a href="course-single.html"><span>Department</span>{{department.name}}</a></h4>
+									<p>
+									{% autoescape on %}
+									{{department.content|safe|truncatewords:"10"}}
+									{% endautoescape %}
+									</p>
 								</div>
 								<div class="course-meta">
 									<div class="meta-left">
@@ -346,54 +368,21 @@
 									<span class="price">$350</span>
 								</div>
 							</div>
-							<!--/ End Single Course -->
-							<!-- Single Course -->
+							{% endfor %}
+
+							{% for program in programs %}
 							<div class="single-course">
 								<div class="course-head overlay">
-									<img src="{% static 'images/course/course2.jpg' %}" alt="#">
+									<img src="{{program.feature_image.url}}" alt="#">
 									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
-									<h4><a href="course-single.html"><span>Science</span>Software Engineer</a></h4>
-									<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean </p>
-								</div>
-								<div class="course-meta">
-									<div class="meta-left">
-										<span><i class="fa fa-users"></i>20 Seat</span>
-										<span><i class="fa fa-clock-o"></i>1 Years</span>
-									</div>
-									<span class="price">$590</span>
-								</div>
-							</div>
-							<!--/ End Single Course -->
-							<!-- Single Course -->
-							<div class="single-course">
-								<div class="course-head overlay">
-									<img src="{% static 'images/course/course3.jpg' %}" alt="#">
-									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
-								</div>
-								<div class="single-content">
-									<h4><a href="course-single.html"><span>Science</span>Electrical Management</a></h4>
-									<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean </p>
-								</div>
-								<div class="course-meta">
-									<div class="meta-left">
-										<span><i class="fa fa-users"></i>49 Seat</span>
-										<span><i class="fa fa-clock-o"></i>2 Years</span>
-									</div>
-									<span class="price">$140</span>
-								</div>
-							</div>
-							<!--/ End Single Course -->
-							<!-- Single Course -->
-							<div class="single-course">
-								<div class="course-head overlay">
-									<img src="{% static 'images/course/course1.jpg' %}" alt="#">
-									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
-								</div>
-								<div class="single-content">
-									<h4><a href="course-single.html"><span>Commerce</span>Business Management</a></h4>
-									<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean </p>
+									<h4><a href="course-single.html"><span>program</span>{{program.name}}</a></h4>
+									<p>
+									{% autoescape on %}
+									{{program.content|safe|truncatewords:"10"}}
+									{% endautoescape %}
+									</p>
 								</div>
 								<div class="course-meta">
 									<div class="meta-left">
@@ -403,45 +392,9 @@
 									<span class="price">$350</span>
 								</div>
 							</div>
+							{% endfor %}
 							<!--/ End Single Course -->
-							<!-- Single Course -->
-							<div class="single-course">
-								<div class="course-head overlay">
-									<img src="{% static 'images/course/course2.jpg' %}" alt="#">
-									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
-								</div>
-								<div class="single-content">
-									<h4><a href="course-single.html"><span>Science</span>Software Engineer</a></h4>
-									<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean </p>
-								</div>
-								<div class="course-meta">
-									<div class="meta-left">
-										<span><i class="fa fa-users"></i>20 Seat</span>
-										<span><i class="fa fa-clock-o"></i>1 Years</span>
-									</div>
-									<span class="price">$590</span>
-								</div>
-							</div>
-							<!--/ End Single Course -->
-							<!-- Single Course -->
-							<div class="single-course">
-								<div class="course-head overlay">
-									<img src="{% static 'images/course/course3.jpg' %}" alt="#">
-									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
-								</div>
-								<div class="single-content">
-									<h4><a href="course-single.html"><span>Science</span>Electrical Management</a></h4>
-									<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean </p>
-								</div>
-								<div class="course-meta">
-									<div class="meta-left">
-										<span><i class="fa fa-users"></i>49 Seat</span>
-										<span><i class="fa fa-clock-o"></i>2 Years</span>
-									</div>
-									<span class="price">$140</span>
-								</div>
-							</div>
-							<!--/ End Single Course -->
+							
 						</div>
 					</div>
 				</div>
@@ -689,7 +642,7 @@
 									<div class="date">
 										<h4><span>{{n.date| date:"M d , Y"}}</span></h4>
 									</div>
-									<img src="{% static 'images/blog/blog1.jpg' %}" alt="#">
+									<img src="{{n.feature_image.url}}" alt="#">
 								</div>
 								<div class="blog-content">
 									<h4 class="blog-title"><a href="blog-single.html">{{n.title}}</a></h4>
@@ -760,7 +713,7 @@
 								<h2>Latest Posts</h2>
 								<div class="news-inner">
 									<div class="single-news">
-										<img src="images/blog/blog1.jpg" alt="#">
+										<img src="{% static 'images/blog/blog1.jpg' %}" alt="#">
 										<h4><a href="blog-single.html">Our Teacher the best Link to Savc</a></h4>
 										<p>Nunc purus orci, blandit condimentum rhoncus vels</p>
 									</div>
