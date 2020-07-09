@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-All News
+All Events
 {% endblock title %}
 
 
@@ -115,9 +115,9 @@ All News
 											</ul>
 										</li>
 										<li><a href="/courses/">Courses</a></li>
-										<li class="active"><a href="/news/">News</a></li>
-										<li><a href="/notice/">Notices</a></li>
-										<li><a href="/events">Events</a></li>
+										<li><a href="/news">News</a></li>
+										<li><a href="/notice">Notices</a></li>
+										<li class="active"><a href="/events">Events</a></li>
 										<li><a href="">About Us</a></li>
 										<li><a href="">Contact</a></li>
 									</ul>
@@ -135,10 +135,10 @@ All News
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<h2>All News Pages</h2>
+						<h2>Events Pages</h2>
 						<ul class="bread-list">
 							<li><a href="/">Home<i class="fa fa-angle-right"></i></a></li>
-							<li class="active"><a href="/news/">All News</a></li>
+							<li class="active"><a href="/events/">Events</a></li>
 						</ul>
 					</div>
 				</div>
@@ -146,70 +146,66 @@ All News
 		</section>
 		<!--/ End Breadcrumbs -->
 
-		<!-- Blogs -->
-		<section class="blog b-archives section">
+		<!-- Events -->
+		<section class="events archives section">
 			<div class="container">
-				<div class="row masonry">
-                    {% for n in news %}
-					<div class="col-lg-4 col-12 grid-item">
-						<!-- Single Blog -->
-						<div class="single-blog">
-							<div class="blog-head overlay">
-								<div class="date">
-									<h4>{{n.date| date:"d"}}<span>{{n.date| date:"M"}}</span></h4>
-								</div>
-								<img src="{{n.feature_image.url}}" alt="{{n.title}}" style="height:300px;width:100%">
+				<div class="row">
+					<div class="col-12">
+						<div class="section-title">
+							<h2>Upcoming <span>Events</span></h2>
+							<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie nec hendrerit hendreri </p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					{% for event in event %}
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Single Event -->
+						<div class="single-event">
+							<div class="head overlay">
+								<img src="{{event.feature_image.url}}" alt="#">
+								<a href="events/{{event.slug}}" class="btn"><i class="fa fa-search"></i></a>
 							</div>
-							<div class="blog-content">
-								<h4 class="blog-title"><a href="">{{n.title |truncatewords:"4"}}</a></h4>
-								<div class="blog-info">
-									<a href="#"><i class="fa fa-user"></i>By:
-										{% if n.department %}{{n.department}}{% else %}{{n.program}}{% endif %}</a>
+							<div class="event-content">
+								<div class="meta">
+									<span><i class="fa fa-calendar"></i>{{event.date| date:"d M Y"}}</span>
+									<span><i class="fa fa-clock-o"></i>{{event.date| date:"H:i"}}</span>
 								</div>
-								<p>
-									{% autoescape on %}
-									{{n.content |safe|truncatewords:"10"}}
+								<div class="title">
+									<h4><a href="events/{{event.slug}}">{{event.title}}</a></h4>
+									<p>
+										{% autoescape on %}
+									{{event.content |safe|truncatewords:"20"}}
 									{% endautoescape %}
 									</p>
-                                <div class="button">
-									<a href="/news/{{n.slug}}" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
+								</div>
+								<div class="button">
+									<a href="/events/{{event.slug}}" class="btn">View Details</a>
 								</div>
 							</div>
 						</div>
-						<!-- End Single Blog -->
+						<!--/ End Single Event -->
 					</div>
 					{% endfor %}
 				</div>
 				<div class="row">
 					<div class="col-12">
 						<!-- Start Pagination -->
-                            {% if news.has_other_pages %}
-                              <ul class="pagination justify-content-center">
-                                {% if news.has_previous %}
-                                  <li class="page-item"><a class="page-link" href="?page={{ news.previous_page_number }}" tabindex="-1">Previous</a></li>
-                                {% else %}
-                                  <li class="page-item page-link disabled"><span>Previous</span></li>
-                                {% endif %}
-                                {% for i in news.paginator.page_range %}
-                                  {% if news.number == i %}
-                                    <li class="page-link active-pg"><span>{{ i }} <span class="sr-only active">(current)</span></span></li>
-                                  {% else %}
-                                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-                                  {% endif %}
-                                {% endfor %}
-                                {% if news.has_next %}
-                                  <li class="page-item"><a class="page-link" href="?page={{ news.next_page_number }}">Next</a></li>
-                                {% else %}
-                                  <li class="page-item page-link disabled"><span>Next</span></li>
-                                {% endif %}
-                              </ul>
-                            {% endif %}
+						<div class="pagination-main">
+							<ul class="pagination">
+								<li class="prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+								<li><a href="#">1</a></li>
+								<li class="active"><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li class="next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+							</ul>
+						</div>
 						<!--/ End Pagination -->
 					</div>
 				</div>
 			</div>
 		</section>
-		<!--/ End Blogs -->
+		<!--/ End Events -->
 
         <!-- Footer -->
 		<footer class="footer overlay section wow fadeIn">
@@ -248,7 +244,7 @@ All News
 							<!--/ End Useful Links -->
 						</div>
 						<div class="col-lg-2 col-md-6 col-12">
-							<!-- Latest News -->
+							<!-- costume pages -->
 							<div class="single-widget useful-links">
 								<h2>Costume Pages</h2>
 								<ul>

@@ -36,3 +36,20 @@ context = {
 
 def index(request):
     return render(request , 'home/index.html', context)
+
+
+def courses(request):
+    search_query = request.GET.get("search_courses", "")
+    s_department = Department.objects.all().filter(name__icontains=search_query)
+    s_program = Program.objects.all().filter(name__icontains=search_query)
+    context_courses ={
+    'content' : content,
+    'departments' : departments, 
+    'programs':programs,
+    'pages':pages,
+    'faculties':faculties,
+    'institutes' :institutes,
+        's_department':s_department,
+        's_program':s_program
+    }
+    return render(request, 'home/courses.html', context_courses)

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-All News
+    {{event.title}}
 {% endblock title %}
 
 
@@ -115,9 +115,9 @@ All News
 											</ul>
 										</li>
 										<li><a href="/courses/">Courses</a></li>
-										<li class="active"><a href="/news/">News</a></li>
-										<li><a href="/notice/">Notices</a></li>
-										<li><a href="/events">Events</a></li>
+										<li><a href="/news/">News</a></li>
+										<li><a href="notice/">Notices</a></li>
+										<li class="active"><a href="/events/">Events</a></li>
 										<li><a href="">About Us</a></li>
 										<li><a href="">Contact</a></li>
 									</ul>
@@ -135,10 +135,10 @@ All News
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<h2>All News Pages</h2>
+						<h2>{{event.title}}</h2>
 						<ul class="bread-list">
 							<li><a href="/">Home<i class="fa fa-angle-right"></i></a></li>
-							<li class="active"><a href="/news/">All News</a></li>
+							<li class="active"><a href="/events/{{event.slug}}">Events</a></li>
 						</ul>
 					</div>
 				</div>
@@ -146,72 +146,128 @@ All News
 		</section>
 		<!--/ End Breadcrumbs -->
 
-		<!-- Blogs -->
-		<section class="blog b-archives section">
+        <section class="events single section">
 			<div class="container">
-				<div class="row masonry">
-                    {% for n in news %}
-					<div class="col-lg-4 col-12 grid-item">
-						<!-- Single Blog -->
-						<div class="single-blog">
-							<div class="blog-head overlay">
-								<div class="date">
-									<h4>{{n.date| date:"d"}}<span>{{n.date| date:"M"}}</span></h4>
+				<div class="row">
+					<div class="col-lg-8 col-12">
+						<div class="single-event">
+							<div class="event-gallery">
+                                {% for image in images %}
+								<div class="single-gallery">
+									<img src="{{image.image.url}}" alt="#">
 								</div>
-								<img src="{{n.feature_image.url}}" alt="{{n.title}}" style="height:300px;width:100%">
+								{% endfor %}
 							</div>
-							<div class="blog-content">
-								<h4 class="blog-title"><a href="">{{n.title |truncatewords:"4"}}</a></h4>
-								<div class="blog-info">
-									<a href="#"><i class="fa fa-user"></i>By:
-										{% if n.department %}{{n.department}}{% else %}{{n.program}}{% endif %}</a>
+							<div class="event-content">
+								<div class="meta">
+									<span><i class="fa fa-calendar"></i>05 June 2018</span>
+									<span><i class="fa fa-clock-o"></i>12.00-5.00PM</span>
 								</div>
-								<p>
-									{% autoescape on %}
-									{{n.content |safe|truncatewords:"10"}}
+								<h2>{{event.title}}</h2>
+                                <p>
+                                    {% autoescape on %}
+									{{event.content |safe}}
 									{% endautoescape %}
-									</p>
-                                <div class="button">
-									<a href="/news/{{n.slug}}" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
+                                </p>
+                                <div class="book-now">
+									<div class="button">
+										<a href="#" class="btn">Register For Event</a>
+									</div>
+									<ul class="social">
+										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#"><i class="fa fa-google-plus "></i></a></li>
+										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+									</ul>
 								</div>
 							</div>
 						</div>
-						<!-- End Single Blog -->
 					</div>
-					{% endfor %}
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<!-- Start Pagination -->
-                            {% if news.has_other_pages %}
-                              <ul class="pagination justify-content-center">
-                                {% if news.has_previous %}
-                                  <li class="page-item"><a class="page-link" href="?page={{ news.previous_page_number }}" tabindex="-1">Previous</a></li>
-                                {% else %}
-                                  <li class="page-item page-link disabled"><span>Previous</span></li>
-                                {% endif %}
-                                {% for i in news.paginator.page_range %}
-                                  {% if news.number == i %}
-                                    <li class="page-link active-pg"><span>{{ i }} <span class="sr-only active">(current)</span></span></li>
-                                  {% else %}
-                                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-                                  {% endif %}
-                                {% endfor %}
-                                {% if news.has_next %}
-                                  <li class="page-item"><a class="page-link" href="?page={{ news.next_page_number }}">Next</a></li>
-                                {% else %}
-                                  <li class="page-item page-link disabled"><span>Next</span></li>
-                                {% endif %}
-                              </ul>
-                            {% endif %}
-						<!--/ End Pagination -->
+					<div class="col-lg-4 col-12">
+						<div class="learnedu-sidebar">
+							<div class="search">
+								<div class="form">
+									<input type="email" placeholder="Search ...">
+									<button class="button" href="#"><i class="fa fa-search"></i></button>
+								</div>
+							</div>
+							<!-- Categories -->
+							<div class="single-widget categories">
+                                <h3 class="title">Categories</h3>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i>Education Tips<span>16</span></a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i>General Knowledge<span>30</span></a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i>Tips for success<span>80</span></a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i>Student Life<span>23</span></a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i>Courses<span>28</span></a></li>
+                                </ul>
+                            </div>
+							<!--/ End Categories -->
+							<div class="single-widget course">
+								<h3>Popular <span>Courses</span></h3>
+								<!-- Single Course -->
+								<div class="single-course">
+									<img src="images/course/course1.jpg" alt="#">
+									<div class="course-content">
+										<h4><a href="#">Web Design Course</a></h4>
+										<div class="meta">$900.00, <span><i class="fa fa-clock-o"></i>3 Years</span></div>
+									</div>
+								</div>
+								<!-- Single Course -->
+								<!-- Single Course -->
+								<div class="single-course">
+									<img src="images/course/course2.jpg" alt="#">
+									<div class="course-content">
+										<h4><a href="#">Business Management Course</a></h4>
+										<div class="meta">$150.00, <span><i class="fa fa-clock-o"></i>1 Year</span></div>
+									</div>
+								</div>
+								<!-- Single Course -->
+								<!-- Single Course -->
+								<div class="single-course">
+									<img src="images/course/course3.jpg" alt="#">
+									<div class="course-content">
+										<h4><a href="#">Software Engineer Course</a></h4>
+										<div class="meta">$500.00, <span><i class="fa fa-clock-o"></i>6 Month</span></div>
+									</div>
+								</div>
+								<!-- Single Course -->
+								<!-- Single Course -->
+								<div class="single-course">
+									<img src="images/course/course4.jpg" alt="#">
+									<div class="course-content">
+										<h4><a href="#">Master in website Development Course</a></h4>
+										<div class="meta">$200.00, <span><i class="fa fa-clock-o"></i>1 Year</span></div>
+									</div>
+								</div>
+								<!-- Single Course -->
+								<!-- Single Course -->
+								<div class="single-course">
+									<img src="images/course/course5.jpg" alt="#">
+									<div class="course-content">
+										<h4><a href="#">Zero to Hero Cources</a></h4>
+										<div class="meta">$300.00, <span><i class="fa fa-clock-o"></i>2 Years</span></div>
+									</div>
+								</div>
+								<!-- Single Course -->
+							</div>
+							<div class="single-widget tags">
+								<h3>Recent <span>Tags</span></h3>
+								<ul>
+									<li><a href="#">Course</a></li>
+									<li><a href="#">University</a></li>
+									<li><a href="#">Scholarship</a></li>
+									<li><a href="#">Free</a></li>
+									<li><a href="#">Standard</a></li>
+									<li><a href="#">Standard</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<!--/ End Blogs -->
-
-        <!-- Footer -->
+         <!-- Footer -->
 		<footer class="footer overlay section wow fadeIn">
 			<!-- Footer Top -->
 			<div class="footer-top">

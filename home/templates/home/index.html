@@ -4,14 +4,14 @@
     <body>
 	
 		<!-- Book Preloader -->
-        {% comment %}
+       
 		<div class="book_preload">
             <div class="book">
                 <div class="book__page"></div>
                 <div class="book__page"></div>
                 <div class="book__page"></div>
             </div>
-        </div> {% endcomment %}
+        </div>
 		<!--/ End Book Preloader -->
 	
 		<!-- Mp Color -->
@@ -90,15 +90,7 @@
 								<div class="navbar-collapse">
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
-										<li class="active"><a href="index.html">Home</a></li>
-										
-										<li><a href="#">Departments<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
-												{% for department in departments  %}
-												<li><a href="/about/{{department.slug}}">{{department.name}}</a></li>
-												{% endfor %}
-											</ul>
-										</li>
+										<li class="active"><a href="/">Home</a></li>
 										<li><a href="#">Faculties<i class="fa fa-angle-down"></i></a>
 											<ul class="dropdown">
 												{% for faculty in faculties %}
@@ -120,25 +112,15 @@
 												{% endfor %}
 											</ul>
 										</li>
-										<li><a href="courses.html">Courses</a></li>
-										<li><a href="#">News<i class="fa fa-angle-down"></i> </a>
-											<ul class="dropdown">
-												<li><a href="courses.html">News</a></li>
-												<li><a href="courses.html">Notices</a></li>
-												<li><a href="courses.html">Events</a></li>
-											</ul>
-										</li>
-										
-										<li><a href="about.html">About Us</a></li>
-										<li><a href="contact.html">Contact</a></li>
+										<li><a href="/courses/">Courses</a></li>
+										<li><a href="news/">News</a></li>
+										<li><a href="notice/">Notices</a></li>
+										<li><a href="events/">Events</a></li>
+										<li><a href="aboutUs/">About Us</a></li>
+										<li><a href="contact">Contact</a></li>
 									</ul>
 									<!-- End Main Menu -->
-									<!-- button -->
-<!--									<div class="button">-->
-<!--										<a href="contact.html" class="btn"><i class="fa fa-pencil"></i>Apply Now</a>-->
-<!--									</div>-->
-									<!--/ End Button -->
-								</div> 
+								</div>
 							</nav>
 						</div>
 					</div>
@@ -241,40 +223,7 @@
 									</div>
 								</div>
 								<!-- Skill Main -->
-								<div class="skill-main">
-									<div class="row">
-										<div class="col-lg-4 col-md-4 col-12 wow zoomIn" data-wow-delay="0.8s">
-											<!-- Single Skill -->
-											<div class="single-skill">
-												<div class="circle" data-value="0.7" data-size="130">
-													<strong>10K+</strong>
-												</div>
-												<h4>Students</h4>
-											</div>
-											<!--/ End Single Skill -->
-										</div>
-										<div class="col-lg-4 col-md-4 col-12 wow zoomIn" data-wow-delay="1s">
-											<!-- Single Skill -->
-											<div class="single-skill">
-												<div class="circle" data-value="0.9" data-size="130">
-													<strong>32+</strong>
-												</div>
-												<h4>Courses</h4>
-											</div>
-											<!--/ End Single Skill -->
-										</div>
-										<div class="col-lg-4 col-md-4 col-12 wow zoomIn" data-wow-delay="1.2s">
-											<!-- Single Skill -->
-											<div class="single-skill">
-												<div class="circle" data-value="0.8" data-size="130">
-													<strong>100+</strong>
-												</div>
-												<h4>Teachers</h4>
-											</div>
-											<!--/ End Single Skill -->
-										</div>
-									</div>
-								</div>
+
 								<!--/ End Skill Main -->
 							</div>
 						</div>
@@ -296,46 +245,54 @@
 					</div>
 				</div>
 				<div class="row">
+					<div class="col-xl-8 col-md-12"></div>
+					<div class="col-xl-4 col-md-12">
+						<div class="learnedu-sidebar" style="border-left:0px;">
+							<div class="search">
+								<div class="form">
+							
+							<form action="/courses/" class="">
+								<input type="search"  name="search_courses" placeholder="Search Courses.." required="required">
+								<button class="button" type="submit">
+									<i class="fa fa-search" aria-hidden="true"></i>
+								</button>
+							</form>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div class="col-12">
 						<div class="course-slider">
 							<!-- Single Course -->
 							{% for d in departments %}
 							<div class="single-course">
 								<div class="course-head overlay">
-									<img src="{{d.feature_image.url}}" alt="{{d.name}}" style="">
-									<a href="" class="btn"><i class="fa fa-link"></i></a>
+									<img src="{{d.feature_image.url}}" alt="{{d.name}}" style="height:250px;">
+									<a href="/about/{{d.slug}}" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
-									<h4><a href="course-single.html"><span>{{d.name}}</span></a></h4>
-									<p>{{d.content |safe|truncatewords:"7"}}</p>
+									<h4><a href="/about/{{d.slug}}"><span>{{d.name}}</span></a></h4>
+									<p>{{d.content |safe|truncatewords:"30"}}</p>
 								</div>
-								<div class="course-meta">
-									<div class="meta-left">
-										
-										<p>{% if d.faculty %}{{d.faculty}}{% else %}{{d.institute}}{% endif %}</p>
-										
-										
-									</div>
-									<a href="/about/{{d.slug}}"><span class="price">View Details</span></a>
-								</div>
+								
 							</div>
 							{% endfor %}
 							{% for p in programs %}
 							<div class="single-course">
 								<div class="course-head overlay">
 									<img src="{{p.feature_image.url}}" alt="{{p.name}}" style="height:300px">
-									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
+									<a href="" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
 									<h4><a href="course-single.html"><span>{{p.name}}</span></a></h4>
 									<p>{{p.content |safe|truncatewords:"7"|linebreaks}}</p>
 								</div>
 								<div class="course-meta">
-									<div class="meta-left">
-										<span><i class="fa fa-users"></i>36 Seat</span>
-										<span><i class="fa fa-clock-o"></i>2 Years</span>
-									</div>
-									<a href=""><span class="price">View More</span></a>
+								<div class="meta-left">
+									<span><i class="fa fa-users"></i>&nbsp;36 Seat</span>
+									<span><i class="fa fa-clock-o"></i> 2 Years</span>
+								</div>
+                                	<a href=""><span class="price">View More</span></a>
 								</div>
 							</div>
 							{% endfor %}
@@ -356,7 +313,6 @@
 							<div class="text-content">
 								<h2>We Focus On Brands, Products & Campaigns</h2>
 								<p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore cum. Coluta nobis est eligendi optio cumque nihil impedit quo minusd quod maxime placeat facere possimus, omnis voluptas assumenda est. Our friendly support team is standing by to help you every step of the way.</p>
-
 							</div>
 						</div>
 					</div>
@@ -365,92 +321,57 @@
 		</section>
 		<!--/ End Call To Action -->
 		
-		<!-- Team -->
-		<section class="team section">
+		<!-- Latest Notice -->
+		<section class="blog section">
 			<div class="container">
 				<div class="row">
-					<div class="col-12 wow zoomIn">
+					<div class="col-12">
 						<div class="section-title">
-							<h2>Our Awesome <span>Teachers</span></h2>
+							<h2>Latest <span>Notice</span></h2>
 							<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie nec hendrerit hendreri </p>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-lg-3 col-md-6 col-12 wow fadeIn" data-wow-delay="0.4s">
-						<!-- Single Team -->
-						<div class="single-team">
-							<img src="{% static 'images/team/team1.jpg' %}" alt="#">
-							<div class="team-hover">
-								<h4>Rohan Jonson<span>Associate Professor</span></h4>
-								<p>cumque nihil impedit quo minusid quod maxime placeat facere possimus</p>
-								<ul class="social">
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#"><i class="fa fa-youtube"></i></a></li>
-								</ul>
+					<div class="col-12">
+						<div class="blog-slider">
+							<!-- Single Blog -->
+							{% for n in notices %}
+							<div class="single-blog">
+								<div class="blog-head overlay">
+									<div class="date">
+										<h4>{{n.date| date:"d"}}<span>{{n.date| date:"M"}}</span></h4>
+									</div>
+									<img src="{{n.feature_image.url}}" alt="#" style="height:300px;width:100%">
+								</div>
+								<div class="blog-content">
+									<h4 class="blog-title"><a href="">{{n.title}}</a></h4>
+									<div class="blog-info">
+										<a href="#"><i class="fa fa-user"></i>By:
+										{% if n.department %}{{n.department}}{% else %}{{n.program}}{% endif %}
+										</a>
+										<a href="/notice/{{n.slug}}"><i class="fa fa-list"></i>Learning</a>
+
+									</div>
+									<p>
+									{% autoescape on %}
+									{{n.content |safe|truncatewords:"7"}}
+									{% endautoescape %}
+									</p>
+									<div class="button">
+										<a href="/notice/{{n.slug}}" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
+									</div>
+								</div>
 							</div>
+							{% endfor %}
+							<!-- End Single Blog -->
 						</div>
-						<!--/ End Single Team -->
-					</div>
-					<div class="col-lg-3 col-md-6 col-12 wow fadeIn" data-wow-delay="0.6s">
-						<!-- Single Team -->
-						<div class="single-team">
-							<img src="{% static 'images/team/team2.jpg' %}" alt="#">
-							<div class="team-hover">
-								<h4 class="name">Ian Harvey<span class="work">Web Programmer</span></h4>
-								<p>cumque nihil impedit quo minusid quod maxime placeat facere possimus</p>
-								<ul class="social">
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#"><i class="fa fa-youtube"></i></a></li>
-								</ul>
-							</div>
-						</div>
-						<!--/ End Single Team -->
-					</div>
-					<div class="col-lg-3 col-md-6 col-12 wow fadeIn" data-wow-delay="0.8s">
-						<!-- Single Team -->
-						<div class="single-team">
-							<img src="{% static 'images/team/team3.jpg' %}" alt="#">
-							<div class="team-hover">
-								<h4 class="name">Lusfat Roman<span class="work">Software Engineer</span></h4>
-								<p>cumque nihil impedit quo minusid quod maxime placeat facere possimus</p>
-								<ul class="social">
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#"><i class="fa fa-youtube"></i></a></li>
-								</ul>
-							</div>
-						</div>
-						<!--/ End Single Team -->
-					</div>
-					<div class="col-lg-3 col-md-6 col-12 wow fadeIn" data-wow-delay="1s">
-						<!-- Single Team -->
-						<div class="single-team">
-							<img src="{% static 'images/team/team4.jpg' %}" alt="#">
-							<div class="team-hover">
-								<h4 class="name">Nalpamb Bold<span class="work">JS Developer</span></h4>
-								<p>cumque nihil impedit quo minusid quod maxime placeat facere possimus</p>
-								<ul class="social">
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#"><i class="fa fa-youtube"></i></a></li>
-								</ul>
-							</div>
-						</div>
-						<!--/ End Single Team -->
 					</div>
 				</div>
 			</div>
 		</section>
-		<!--/ End Team -->
-		
-		<!-- Testimonials -->
+		<!--/ End Latest Notice -->
+		<!-- Messages -->
 		<section class="testimonials overlay section" data-stellar-background-ratio="0.5">
 			<div class="container">
 				<div class="row">
@@ -462,18 +383,17 @@
 								<img src="{{message.image.url}}" alt="#">
 								<div class="main-content">
 									<h4 class="name">{{message.chief_name}}</h4>
-									<p>{{message.message}}</p>
+									<p>{{message.message |safe|truncatewords:"35"}}</p>
 								</div>
 							</div>
 							{% endfor %}
 							<!--/ End Single Testimonial -->
-							
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<!--/ End Testimonials -->
+		<!--/ End Messages -->
 		
 		<!-- Events -->
 		<section class="events section">
@@ -492,11 +412,9 @@
 							<!-- Single Event -->
 							{% for event in events %}
 							<div class="single-event">
-								
 								<div class="event-content">
 									<div class="meta"> 
 										<span><i class="fa fa-calendar"></i>{{event.date}}</span>
-										
 									</div>
 									<h4><a href="event-single.html">{{event.title}}</a></h4>
 									<p>
@@ -511,7 +429,6 @@
 							</div>
 							{% endfor %}
 							<!--/ End Single Event -->
-							
 						</div>
 					</div>
 				</div>
@@ -527,7 +444,7 @@
 						<!-- Single Fact -->
 						<div class="single-fact">
 							<i class="fa fa-institution"></i>
-							<div class="number"><span class="counter">80</span>k+</div>
+							<div class="number"><span class="counter">32</span>+</div>
 							<p>Active Cources</p>
 						</div>
 						<!--/ End Single Fact -->
@@ -536,7 +453,7 @@
 						<!-- Single Fact -->
 						<div class="single-fact">
 							<i class="fa fa-graduation-cap"></i>
-							<div class="number"><span class="counter">33</span>k+</div>
+							<div class="number"><span class="counter">10</span>k+</div>
 							<p>Active Students</p>
 						</div>
 						<!--/ End Single Fact -->
@@ -588,17 +505,17 @@
 									<img src="{{n.feature_image.url}}" alt="#" style="height:300px;width:100%">
 								</div>
 								<div class="blog-content">
-									<h4 class="blog-title"><a href="">{{n.title}}</a></h4>
+									<h4 class="blog-title"><a href="">{{n.title |truncatewords:"10"}}</a></h4>
 									<div class="blog-info">
 										<a href="#"><i class="fa fa-user"></i>By:
 										{% if n.department %}{{n.department}}{% else %}{{n.program}}{% endif %}
 										</a>
-										<a href="#"><i class="fa fa-list"></i>Learning</a>
+<!--										<a href="#"><i class="fa fa-list"></i>Learning</a>-->
 										
 									</div>
 									<p>
 									{% autoescape on %}
-									{{n.content |safe|truncatewords:"7"}}
+									{{n.content |safe|truncatewords:"20"}}
 									{% endautoescape %}
 									</p>
 									<div class="button">
