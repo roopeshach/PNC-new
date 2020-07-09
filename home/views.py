@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Content , Slider , Description , Message_From_Chief
-from category.models import Department , Program , Custom_Page
+from category.models import Department , Program , Custom_Page , Faculty , Institute
 from news.models import Notice , News , Event
 
 # Create your views here.
@@ -14,6 +14,9 @@ notices = Notice.objects.all()[:3]
 events = Event.objects.all()[:3]
 messages = Message_From_Chief.objects.all()
 pages = Custom_Page.objects.all()
+faculties = Faculty.objects.all()
+institutes = Institute.objects.all()
+
 
 context = {
     'content' : content,
@@ -26,9 +29,10 @@ context = {
     'events':events,
     'messages' : messages,
     'pages':pages,
+    'faculties':faculties,
+    'institutes' :institutes
 
 }
 
 def index(request):
     return render(request , 'home/index.html', context)
-

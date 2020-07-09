@@ -90,7 +90,7 @@ Version:	1.0
 			Course Slider JS
 		======================================*/ 
 		$('.course-slider').owlCarousel({
-			items:3,
+			items:4,
 			autoplay:true,
 			autoplayTimeout:3500,
 			smartSpeed: 600,
@@ -115,7 +115,8 @@ Version:	1.0
 					nav:false,
 				},
 				1170: {
-					items:3,
+					items:4,
+					
 				},
 			}
 		});	
@@ -225,7 +226,7 @@ Version:	1.0
 			autoplayTimeout:3500,
 			smartSpeed: 600,
 			autoplayHoverPause:true,
-			margin:15,
+			margin:5,
 			loop:true,
 			merge:true,
 			nav:true,

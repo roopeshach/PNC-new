@@ -91,43 +91,44 @@
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
 										<li class="active"><a href="index.html">Home</a></li>
-										<li><a href="#">Faculty & Department<i class="fa fa-angle-down"></i></a>
+										
+										<li><a href="#">Departments<i class="fa fa-angle-down"></i></a>
 											<ul class="dropdown">
-												<li><a href="#">Faculty Of Management<i class="fa fa-angle-right"></i></a>
-													<ul class="dropdown submenu">
-														<li><a href="teacher.html">Department Of MBS</a></li>
-														<li><a href="teacher2.html">Teachers V2</a></li>
-														<li><a href="teacher-single.html">Teacher Single</a></li>
-													</ul>
-												</li>
-												<li><a href="#">Faculty Of Management<i class="fa fa-angle-right"></i></a>
-													<ul class="dropdown submenu">
-														<li><a href="teacher.html">Department Of MBS</a></li>
-														<li><a href="teacher2.html">Teachers V2</a></li>
-														<li><a href="teacher-single.html">Teacher Single</a></li>
-													</ul>
-												</li>
-												<li><a href="#">Faculty Of Management<i class="fa fa-angle-right"></i></a>
-													<ul class="dropdown submenu">
-														<li><a href="teacher.html">Department Of MBS</a></li>
-														<li><a href="teacher2.html">Teachers V2</a></li>
-														<li><a href="teacher-single.html">Teacher Single</a></li>
-													</ul>
-												</li>
-												<li><a href="404.html">404 Page</a></li>
+												{% for department in departments  %}
+												<li><a href="/about/{{department.slug}}">{{department.name}}</a></li>
+												{% endfor %}
+											</ul>
+										</li>
+										<li><a href="#">Faculties<i class="fa fa-angle-down"></i></a>
+											<ul class="dropdown">
+												{% for faculty in faculties %}
+													<li><a href="/faculty/{{faculty.slug}}">{{faculty.name}}</a></li>
+													{% endfor %}
+											</ul>
+										</li>
+										<li><a href="#">Institutes<i class="fa fa-angle-down"></i></a>
+											<ul class="dropdown">
+												{% for i in institutes %}
+													<li><a href="/institute/{{i.slug}}">{{i.name}}</a></li>
+													{% endfor %}
 											</ul>
 										</li>
 										<li><a href="#">Programs<i class="fa fa-angle-down"></i></a>
 											<ul class="dropdown">
-												<li><a href="courses.html">Courses</a></li>
-												<li><a href="course-single.html">Course Single</a></li>
-												<li><a href="course-single-video.html">Course Single Video</a></li>
+												{% for program in programs  %}
+												<li><a href="courses.html">{{program.name}}</a></li>
+												{% endfor %}
 											</ul>
 										</li>
 										<li><a href="courses.html">Courses</a></li>
-										<li><a href="/news">News</a></li>
-										<li><a href="/notice">Notice</a></li>
-										<li><a href="#">Events</a></li>
+										<li><a href="#">News<i class="fa fa-angle-down"></i> </a>
+											<ul class="dropdown">
+												<li><a href="courses.html">News</a></li>
+												<li><a href="courses.html">Notices</a></li>
+												<li><a href="courses.html">Events</a></li>
+											</ul>
+										</li>
+										
 										<li><a href="about.html">About Us</a></li>
 										<li><a href="contact.html">Contact</a></li>
 									</ul>
@@ -301,7 +302,7 @@
 							{% for d in departments %}
 							<div class="single-course">
 								<div class="course-head overlay">
-									<img src="{{d.feature_image.url}}" alt="{{d.name}}" style="height:300px">
+									<img src="{{d.feature_image.url}}" alt="{{d.name}}" style="">
 									<a href="" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
@@ -310,10 +311,12 @@
 								</div>
 								<div class="course-meta">
 									<div class="meta-left">
-										<span><i class="fa fa-users"></i>36 Seat</span>
-										<span><i class="fa fa-clock-o"></i>2 Years</span>
+										
+										<p>{% if d.faculty %}{{d.faculty}}{% else %}{{d.institute}}{% endif %}</p>
+										
+										
 									</div>
-									<a href=""><span class="price">View More</span></a>
+									<a href="/about/{{d.slug}}"><span class="price">View Details</span></a>
 								</div>
 							</div>
 							{% endfor %}

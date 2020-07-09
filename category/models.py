@@ -22,7 +22,7 @@ class Faculty(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        super(Program, self).save(*args, **kwargs)
+        super(Faculty, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -44,7 +44,7 @@ class Institute(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        super(Program, self).save(*args, **kwargs)
+        super(Institute, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
