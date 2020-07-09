@@ -25,7 +25,7 @@ SECRET_KEY = 'lnvgq(rn=5ry2zn8c*a(9iq_n9gs+rg2_jv@&py%b=fh$f_&@6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

@@ -1,14 +1,11 @@
 {% extends 'home/base.html' %}
 {% load static %}
-{% block title %}
-PN campus
-{% endblock title %}
-
 {% block content %}
     <body>
 	
 		<!-- Book Preloader -->
-        {% comment %} <div class="book_preload">
+        {% comment %}
+		<div class="book_preload">
             <div class="book">
                 <div class="book__page"></div>
                 <div class="book__page"></div>
@@ -59,7 +56,6 @@ PN campus
 						<div class="col-lg-3 col-md-3 col-12">
 							<div class="logo">
 								<a href="index.html"><img src="{% static 'images/logo.png' %}" alt="#"></a>
-								<h6 style="color:#252525"><span>{{content.header_text}}</span></h6>
 							</div>
 							<div class="mobile-menu"></div>
 						</div>
@@ -94,68 +90,52 @@ PN campus
 								<div class="navbar-collapse">
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
-										<li class="active"><a href="index.html">Home<i class="fa fa-angle-down"></i></a>
+										<li class="active"><a href="index.html">Home</a></li>
+										<li><a href="#">Faculty & Department<i class="fa fa-angle-down"></i></a>
 											<ul class="dropdown">
-												<li><a href="index.html">Homepage Default</a></li>
-												<li><a href="index2.html">Homepage Animation</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Pages<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
-											<li><a href="about.html">About Us</a></li>
-												<li><a href="#">Teachers<i class="fa fa-angle-right"></i></a>
+												<li><a href="#">Faculty Of Management<i class="fa fa-angle-right"></i></a>
 													<ul class="dropdown submenu">
-														<li><a href="teacher.html">Teachers V1</a></li>
+														<li><a href="teacher.html">Department Of MBS</a></li>
 														<li><a href="teacher2.html">Teachers V2</a></li>
 														<li><a href="teacher-single.html">Teacher Single</a></li>
 													</ul>
 												</li>
-												<li><a href="testimonials.html">Testimonials</a></li>
-												<li><a href="faqs.html">Faqs</a></li>
+												<li><a href="#">Faculty Of Management<i class="fa fa-angle-right"></i></a>
+													<ul class="dropdown submenu">
+														<li><a href="teacher.html">Department Of MBS</a></li>
+														<li><a href="teacher2.html">Teachers V2</a></li>
+														<li><a href="teacher-single.html">Teacher Single</a></li>
+													</ul>
+												</li>
+												<li><a href="#">Faculty Of Management<i class="fa fa-angle-right"></i></a>
+													<ul class="dropdown submenu">
+														<li><a href="teacher.html">Department Of MBS</a></li>
+														<li><a href="teacher2.html">Teachers V2</a></li>
+														<li><a href="teacher-single.html">Teacher Single</a></li>
+													</ul>
+												</li>
 												<li><a href="404.html">404 Page</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Courses<i class="fa fa-angle-down"></i></a> 
+										<li><a href="#">Programs<i class="fa fa-angle-down"></i></a>
 											<ul class="dropdown">
-												
-												<li><a href="#">Programs<i class="fa fa-angle-right"></i></a>
-													<ul class="dropdown submenu">
-														{% for program in programs %}
-														<li><a href="teacher.html">{{program.name}}</a></li>
-														{% endfor %}
-													</ul>
-												</li>
-												<li><a href="#">Departments<i class="fa fa-angle-right"></i></a>
-													<ul class="dropdown submenu">
-														{% for department in departments %}
-														<li><a href="teacher.html">{{department.name}}</a></li>
-														{% endfor %}
-													</ul>
-												</li>
+												<li><a href="courses.html">Courses</a></li>
+												<li><a href="course-single.html">Course Single</a></li>
+												<li><a href="course-single-video.html">Course Single Video</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Events<i class="fa fa-angle-down"></i></a> 
-											<ul class="dropdown">
-												<li><a href="events.html">Events</a></li>
-												<li><a href="event-single.html">Event Single</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Blogs<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
-												<li><a href="blogs.html">Blogs Grid Layout</a></li>
-												<li><a href="blogs-left-sidebar.html">Blogs Left Sidebar</a></li>
-												<li><a href="blogs-right-sidebar.html">Blogs Right Sidebar</a></li>
-												<li><a href="blog-single-left-sidebar.html">Blogs Single - Left Sidebar</a></li>
-												<li><a href="blog-single.html">Blogs Single - Right Sidebar</a></li>
-											</ul>
-										</li>
+										<li><a href="courses.html">Courses</a></li>
+										<li><a href="/news">News</a></li>
+										<li><a href="/notice">Notice</a></li>
+										<li><a href="#">Events</a></li>
+										<li><a href="about.html">About Us</a></li>
 										<li><a href="contact.html">Contact</a></li>
 									</ul>
 									<!-- End Main Menu -->
 									<!-- button -->
-									<div class="button">
-										<a href="contact.html" class="btn"><i class="fa fa-pencil"></i>Apply Now</a>
-									</div>
+<!--									<div class="button">-->
+<!--										<a href="contact.html" class="btn"><i class="fa fa-pencil"></i>Apply Now</a>-->
+<!--									</div>-->
 									<!--/ End Button -->
 								</div> 
 							</nav>
@@ -179,10 +159,6 @@ PN campus
 								<div class="slider-text">
 									<h1>{{slide.head}}</h1>
 									<p>{{slide.content}}</p>
-									<div class="button">
-										<a href="courses.html" class="btn primary">Our Courses</a>
-										<a href="about.html" class="btn">About Learnedu</a>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -214,7 +190,7 @@ PN campus
 								<img src="{% static 'images/feature1.jpg' %}" alt="#">
 							</div>
 							<h2>Online Courses Facilities</h2>
-							<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim</p>	
+							<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim</p>
 						</div>
 						<!--/ End Single Feature -->
 					</div>
@@ -225,7 +201,7 @@ PN campus
 								<img src="{% static 'images/feature2.jpg' %}" alt="#">
 							</div>
 							<h2>Student Admin Panel</h2>
-							<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim</p>	
+							<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim</p>
 						</div>
 						<!--/ End Single Feature -->
 					</div>
@@ -236,7 +212,7 @@ PN campus
 								<img src="{% static 'images/feature3.jpg' %}" alt="#">
 							</div>
 							<h2>Perfect Guidelines</h2>
-							<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim</p>	
+							<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim</p>
 						</div>
 						<!--/ End Single Feature -->
 					</div>
@@ -246,45 +222,21 @@ PN campus
 		<!-- End Features -->
 		
 		<!-- Enroll -->
-		{% comment %} <section class="enroll overlay section" data-stellar-background-ratio="0.5">
+		 <section class="enroll overlay section" data-stellar-background-ratio="0.5">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-10 offset-lg-1">
 						<div class="row">
-							<div class="col-lg-6 col-12 wow fadeInUp" data-wow-delay="0.4s">
-								<!-- Single Enroll -->
-								<div class="enroll-form">
-									<div class="form-title">
-										<h2>Enroll Today</h2>
-										<p>Before you miss the chance to get your seat!</p>
-									</div>
-									<!-- Form -->
-									<form class="form" action="#">
-										<div class="form-group">
-											<label>Enter Your name</label>
-											<input name="name" type="text" placeholder="John Mathew">
-										</div>
-										<div class="form-group">
-											<label>Enter Your Email</label>
-											<input name="email" type="email" placeholder="john@youremail.com">
-										</div>
-										<div class="form-group">
-											<label>Type your messages</label>
-											<textarea name="message" placeholder="i would like to talking..."></textarea>
-										</div>
-										<div class="form-group button">
-											<button type="submit" class="btn">Register Now</button>
-										</div>
-									</form>
-									<!--/ End Form -->
-								</div>
-								<!-- Single Enroll -->
-							</div>
-							<div class="col-lg-6 col-12 wow fadeInUp" data-wow-delay="0.6s">
+							<div class="col-lg-12 col-12 wow fadeInUp" data-wow-delay="0.6s">
 								<div class="enroll-right">
-									<div class="section-title">
-										<h2>We Have More than 28,690+ Student With online Join!</h2>
-										<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis.</p>
+									<div class="section-title text-center">
+										<h2>We Have More than 10,000+ Student In Our Campus!</h2>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias
+											amet consectetur cum facilis fugit id, impedit ipsam quibusdam
+											quis quisquam repellendus suscipit vero. Distinctio explicabo
+											fuga perspiciatis provident quia. orci. Vestibulum interdum
+											felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante
+											vitae laoreet sagittis.</p>
 									</div>
 								</div>
 								<!-- Skill Main -->
@@ -294,7 +246,7 @@ PN campus
 											<!-- Single Skill -->
 											<div class="single-skill">
 												<div class="circle" data-value="0.7" data-size="130">
-													<strong>28K+</strong>
+													<strong>10K+</strong>
 												</div>
 												<h4>Students</h4>
 											</div>
@@ -304,7 +256,7 @@ PN campus
 											<!-- Single Skill -->
 											<div class="single-skill">
 												<div class="circle" data-value="0.9" data-size="130">
-													<strong>50+</strong>
+													<strong>32+</strong>
 												</div>
 												<h4>Courses</h4>
 											</div>
@@ -314,7 +266,7 @@ PN campus
 											<!-- Single Skill -->
 											<div class="single-skill">
 												<div class="circle" data-value="0.8" data-size="130">
-													<strong>33+</strong>
+													<strong>100+</strong>
 												</div>
 												<h4>Teachers</h4>
 											</div>
@@ -329,7 +281,7 @@ PN campus
 				</div>
 			</div>
 		</section>
-		<!--/ End Enroll --> {% endcomment %}
+		<!--/ End Enroll -->
 
 		<!-- Courses -->
 		<section class="courses section-bg section">
@@ -346,55 +298,45 @@ PN campus
 					<div class="col-12">
 						<div class="course-slider">
 							<!-- Single Course -->
-							{% for department in departments %}
+							{% for d in departments %}
 							<div class="single-course">
 								<div class="course-head overlay">
-									<img src="{{department.feature_image.url}}" alt="#">
-									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
+									<img src="{{d.feature_image.url}}" alt="{{d.name}}" style="height:300px">
+									<a href="" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
-									<h4><a href="course-single.html"><span>Department</span>{{department.name}}</a></h4>
-									<p>
-									{% autoescape on %}
-									{{department.content|safe|truncatewords:"10"}}
-									{% endautoescape %}
-									</p>
+									<h4><a href="course-single.html"><span>{{d.name}}</span></a></h4>
+									<p>{{d.content |safe|truncatewords:"7"}}</p>
 								</div>
 								<div class="course-meta">
 									<div class="meta-left">
 										<span><i class="fa fa-users"></i>36 Seat</span>
 										<span><i class="fa fa-clock-o"></i>2 Years</span>
 									</div>
-									<span class="price">$350</span>
+									<a href=""><span class="price">View More</span></a>
 								</div>
 							</div>
 							{% endfor %}
-
-							{% for program in programs %}
+							{% for p in programs %}
 							<div class="single-course">
 								<div class="course-head overlay">
-									<img src="{{program.feature_image.url}}" alt="#">
+									<img src="{{p.feature_image.url}}" alt="{{p.name}}" style="height:300px">
 									<a href="course-single.html" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
-									<h4><a href="course-single.html"><span>program</span>{{program.name}}</a></h4>
-									<p>
-									{% autoescape on %}
-									{{program.content|safe|truncatewords:"10"}}
-									{% endautoescape %}
-									</p>
+									<h4><a href="course-single.html"><span>{{p.name}}</span></a></h4>
+									<p>{{p.content |safe|truncatewords:"7"|linebreaks}}</p>
 								</div>
 								<div class="course-meta">
 									<div class="meta-left">
 										<span><i class="fa fa-users"></i>36 Seat</span>
 										<span><i class="fa fa-clock-o"></i>2 Years</span>
 									</div>
-									<span class="price">$350</span>
+									<a href=""><span class="price">View More</span></a>
 								</div>
 							</div>
 							{% endfor %}
 							<!--/ End Single Course -->
-							
 						</div>
 					</div>
 				</div>
@@ -411,9 +353,7 @@ PN campus
 							<div class="text-content">
 								<h2>We Focus On Brands, Products & Campaigns</h2>
 								<p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore cum. Coluta nobis est eligendi optio cumque nihil impedit quo minusd quod maxime placeat facere possimus, omnis voluptas assumenda est. Our friendly support team is standing by to help you every step of the way.</p>
-								<div class="button">
-									<a class="btn primary wow fadeInUp" href="contact.html" >Register Now</a>
-								</div>
+
 							</div>
 						</div>
 					</div>
@@ -453,7 +393,7 @@ PN campus
 					</div>
 					<div class="col-lg-3 col-md-6 col-12 wow fadeIn" data-wow-delay="0.6s">
 						<!-- Single Team -->
-						<div class="single-team active">
+						<div class="single-team">
 							<img src="{% static 'images/team/team2.jpg' %}" alt="#">
 							<div class="team-hover">
 								<h4 class="name">Ian Harvey<span class="work">Web Programmer</span></h4>
@@ -640,12 +580,12 @@ PN campus
 							<div class="single-blog">
 								<div class="blog-head overlay">
 									<div class="date">
-										<h4><span>{{n.date| date:"M d , Y"}}</span></h4>
+										<h4>{{n.date| date:"d"}}<span>{{n.date| date:"M"}}</span></h4>
 									</div>
-									<img src="{{n.feature_image.url}}" alt="#">
+									<img src="{{n.feature_image.url}}" alt="#" style="height:300px;width:100%">
 								</div>
 								<div class="blog-content">
-									<h4 class="blog-title"><a href="blog-single.html">{{n.title}}</a></h4>
+									<h4 class="blog-title"><a href="">{{n.title}}</a></h4>
 									<div class="blog-info">
 										<a href="#"><i class="fa fa-user"></i>By:
 										{% if n.department %}{{n.department}}{% else %}{{n.program}}{% endif %}
@@ -655,11 +595,11 @@ PN campus
 									</div>
 									<p>
 									{% autoescape on %}
-									{{n.content|safe}}
+									{{n.content |safe|truncatewords:"7"}}
 									{% endautoescape %}
 									</p>
 									<div class="button">
-										<a href="blog-single.html" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
+										<a href="" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
 									</div>
 								</div>
 							</div>
@@ -692,6 +632,7 @@ PN campus
 							</div>
 							<!--/ End About -->
 						</div>
+						<div class="col-md-1"></div>
 						<div class="col-lg-2 col-md-6 col-12">
 							<!-- Useful Links -->
 							<div class="single-widget useful-links">
@@ -700,50 +641,50 @@ PN campus
 									<li><a href="#"><i class="fa fa-angle-right"></i>Home</a></li>
 									<li><a href="#"><i class="fa fa-angle-right"></i>About Us</a></li>
 									<li><a href="#"><i class="fa fa-angle-right"></i>Courses</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>News</a></li>
 									<li><a href="#"><i class="fa fa-angle-right"></i>Events</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Blogs</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Notice</a></li>
 									<li><a href="#"><i class="fa fa-angle-right"></i>Contact</a></li>
 								</ul>
 							</div>
 							<!--/ End Useful Links -->
 						</div>
-						<div class="col-lg-4 col-md-6 col-12">
+						<div class="col-lg-2 col-md-6 col-12">
 							<!-- Latest News -->
-							<div class="single-widget latest-news">
-								<h2>Latest Posts</h2>
-								<div class="news-inner">
-									<div class="single-news">
-										<img src="{% static 'images/blog/blog1.jpg' %}" alt="#">
-										<h4><a href="blog-single.html">Our Teacher the best Link to Savc</a></h4>
-										<p>Nunc purus orci, blandit condimentum rhoncus vels</p>
-									</div>
-									<div class="single-news">
-										<img src="images/blog/blog2.jpg" alt="#">
-										<h4><a href="blog-single.html">Student Have the best Link to Ronae</a></h4>
-										<p>Nunc purus orci, blandit condimentum rhoncus vels</p>
-									</div>
-									<div class="single-news">
-										<img src="images/blog/blog3.jpg" alt="#">
-										<h4><a href="blog-single.html">Sekker the best Link to build</a></h4>
-										<p>Nunc purus orci, blandit condimentum rhoncus vele</p>
-									</div>
-								</div>
+							<div class="single-widget useful-links">
+								<h2>Costume Pages</h2>
+								{% for p in pages  %}
+								<ul>
+									<li><a href="pages/{{p.slug}}"><i class="fa fa-angle-right"></i>{{p.name}}</a></li>
+								</ul>
+								{% endfor %}
 							</div>
 							<!--/ End Latest News -->
 						</div>
-						<div class="col-lg-3 col-md-6 col-12">
-							<!-- Newsletter -->
-							<div class="single-widget newsletter">
-								<h2>Subscribe Newsletter</h2>
-								<div class="mail">
-									<p>Don't miss to  subscribe to our news feed, Get the latest updates from us!</p>
-									<div class="form">
-										<input type="email" placeholder="Enter your email">
-										<button class="button" type="submit"><i class="fa fa-envelope"></i></button>
-									</div>
-								</div>
+						<div class="col-lg-2 col-md-6 col-12">
+							<div class="single-widget useful-links">
+								<h2>Resources For</h2>
+								<ul>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Future Students</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Current Students</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Faculty/Staff</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>International</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Postdocs</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Alumni</a></li>
+								</ul>
 							</div>
-							<!--/ End Newsletter -->
+						</div>
+						<div class="col-lg-2 col-md-6 col-12">
+							<div class="single-widget useful-links">
+								<h2>Study</h2>
+								<ul>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Courses</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Apply Now</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Scholarships</a></li>
+									<li><a href=""><i class="fa fa-angle-right"></i>FAQs</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>International student enquiries</a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>

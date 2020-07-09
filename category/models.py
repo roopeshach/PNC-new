@@ -63,6 +63,7 @@ class Department(models.Model):
     feature_image = models.ImageField(upload_to='department/feature/')
     is_active = models.CharField(max_length=1, choices=IS_ACTIVE)
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE , null=True, default=0, blank=True)
+    institute = models.ForeignKey(Institute, on_delete=models.CASCADE , null=True, default=0, blank=True)
     slug = models.SlugField(unique=True, blank=True)
 
     def save(self, *args, **kwargs):
