@@ -58,9 +58,13 @@ def aboutCustom(request, slug):
         'programs': programs,
         'pages': pages,
         'page': page,
+        'faculties': faculties,
+        'institutes': institutes,
+
     }
 
     return render(request, 'category/aboutCustom.html', context_custom)
+
 
 def aboutFaculty(request, slug):
     fac = Faculty.objects.get(slug=slug)
@@ -79,6 +83,7 @@ def aboutFaculty(request, slug):
     }
 
     return render(request, 'category/aboutFaculty.html',context)
+
 
 def aboutInstitute(request, slug):
     ins = Institute.objects.get(slug=slug)

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-All News
+All Notices
 {% endblock title %}
 
 
@@ -182,29 +182,30 @@ All News
 				</div>
 				<div class="row">
 					<div class="col-12">
-						<!-- Start Pagination -->
-                            {% if news.has_other_pages %}
-                              <ul class="pagination justify-content-center">
-                                {% if news.has_previous %}
-                                  <li class="page-item"><a class="page-link" href="?page={{ news.previous_page_number }}" tabindex="-1">Previous</a></li>
-                                {% else %}
-                                  <li class="page-item page-link disabled"><span>Previous</span></li>
-                                {% endif %}
-                                {% for i in news.paginator.page_range %}
-                                  {% if news.number == i %}
-                                    <li class="page-link active-pg"><span>{{ i }} <span class="sr-only active">(current)</span></span></li>
+						<!-- start pagination-->
+						{% if notice.has_other_pages %}
+						<div class="pagination-main">
+							<ul class="pagination">
+								{% if notice.has_previous %}
+								<li class="prev"><a href="?page={{ notice.previous_page_number }}" tabindex="-1"><i class="fa fa-angle-double-left"></i></a></li>
+								{% else %}
+								<li class="prev"><a ><i class="fa fa-angle-double-left"></i></a></li>
+								{% endif %}
+								{% for i in notice.paginator.page_range %}
+                                  {% if notice.number == i %}
+                                    <li class="active"><a>{{ i }}</a></li>
                                   {% else %}
-                                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
                                   {% endif %}
-                                {% endfor %}
-                                {% if news.has_next %}
-                                  <li class="page-item"><a class="page-link" href="?page={{ news.next_page_number }}">Next</a></li>
+								{% endfor %}
+								{% if notice.has_next %}
+								<li class="next"><a href="?page={{ notice.next_page_number }}"><span><i class="fa fa-angle-double-right"></i></span></a></li>
                                 {% else %}
-                                  <li class="page-item page-link disabled"><span>Next</span></li>
+								<li class="next"><a><span><i class="fa fa-angle-double-right"></i></span></a></li>
                                 {% endif %}
-                              </ul>
-                            {% endif %}
-
+							</ul>
+						</div>
+						{% endif %}
 						<!--/ End Pagination -->
 					</div>
 				</div>

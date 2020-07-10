@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from news.models import News, Notice, Event , NewsImage , NoticeImage , EventImage
+from news.models import News, Notice, Event, NewsImage , NoticeImage , EventImage
 from category.models import Department, Program, Custom_Page,Faculty, Institute
 from home.models import Content
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -13,6 +13,7 @@ programs = Program.objects.all().filter(is_active="T")
 pages = Custom_Page.objects.all().filter(is_active="T")
 faculties = Faculty.objects.all()
 institutes = Institute.objects.all()
+
 
 def viewEvent(request, slug):
     event = Event.objects.get(slug=slug)
@@ -31,8 +32,18 @@ def viewEvent(request, slug):
 
 
 def allEvent(request):
-    event = Event.objects.all()
+    event_list = Event.objects.all()
     images = EventImage.objects.all()
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(event_list, 1)
+    try:
+        event = paginator.page(page)
+    except PageNotAnInteger:
+        event = paginator.page(1)
+    except EmptyPage:
+        event = paginator.page(paginator.num_pages)
+
     context_event = {
         'content': content,
         'departments': departments,
@@ -58,7 +69,6 @@ def viewNews(request, slug):
         'images':images,
         'faculties': faculties,
         'institutes': institutes
-
     }
     return render(request, 'news/news.html', context_news)
 
@@ -83,7 +93,7 @@ def allNews(request):
     news_list = News.objects.all()
 
     page = request.GET.get('page', 1)
-    paginator = Paginator(news_list, 2)
+    paginator = Paginator(news_list, 1)
     try:
         news = paginator.page(page)
     except PageNotAnInteger:
@@ -108,7 +118,7 @@ def allNotice(request):
     notice_list = Notice.objects.all()
 
     page = request.GET.get('page', 1)
-    paginator = Paginator(notice_list, 2)
+    paginator = Paginator(notice_list, 1)
     try:
         notice = paginator.page(page)
     except PageNotAnInteger:

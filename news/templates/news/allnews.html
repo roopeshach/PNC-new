@@ -158,17 +158,18 @@ All News
 								<div class="date">
 									<h4>{{n.date| date:"d"}}<span>{{n.date| date:"M"}}</span></h4>
 								</div>
-								<img src="{{n.feature_image.url}}" alt="{{n.title}}" style="height:300px;width:100%">
+								<img src="{{n.feature_image.url}}" alt="{{n.title}}" style="height:300px;">
 							</div>
 							<div class="blog-content">
-								<h4 class="blog-title"><a href="">{{n.title |truncatewords:"4"}}</a></h4>
+								<h4 class="blog-title"><a href="">{{n.title |truncatewords:"10"}}</a></h4>
 								<div class="blog-info">
 									<a href="#"><i class="fa fa-user"></i>By:
-										{% if n.department %}{{n.department}}{% else %}{{n.program}}{% endif %}</a>
+										{% if n.department %}{{n.department}}{% else %}{{n.program}}{% endif %}
+									</a>
 								</div>
 								<p>
 									{% autoescape on %}
-									{{n.content |safe|truncatewords:"10"}}
+									{{n.content |safe|truncatewords:"20"}}
 									{% endautoescape %}
 									</p>
                                 <div class="button">
@@ -182,28 +183,30 @@ All News
 				</div>
 				<div class="row">
 					<div class="col-12">
-						<!-- Start Pagination -->
-                            {% if news.has_other_pages %}
-                              <ul class="pagination justify-content-center">
-                                {% if news.has_previous %}
-                                  <li class="page-item"><a class="page-link" href="?page={{ news.previous_page_number }}" tabindex="-1">Previous</a></li>
-                                {% else %}
-                                  <li class="page-item page-link disabled"><span>Previous</span></li>
-                                {% endif %}
-                                {% for i in news.paginator.page_range %}
+						<!-- start pagination-->
+						{% if news.has_other_pages %}
+						<div class="pagination-main">
+							<ul class="pagination">
+								{% if news.has_previous %}
+								<li class="prev"><a href="?page={{ news.previous_page_number }}" tabindex="-1"><i class="fa fa-angle-double-left"></i></a></li>
+								{% else %}
+								<li class="prev"><a ><i class="fa fa-angle-double-left"></i></a></li>
+								{% endif %}
+								{% for i in news.paginator.page_range %}
                                   {% if news.number == i %}
-                                    <li class="page-link active-pg"><span>{{ i }} <span class="sr-only active">(current)</span></span></li>
+                                    <li class="active"><a>{{ i }}</a></li>
                                   {% else %}
-                                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
                                   {% endif %}
-                                {% endfor %}
-                                {% if news.has_next %}
-                                  <li class="page-item"><a class="page-link" href="?page={{ news.next_page_number }}">Next</a></li>
+								{% endfor %}
+								{% if news.has_next %}
+								<li class="next"><a href="?page={{ news.next_page_number }}"><span><i class="fa fa-angle-double-right"></i></span></a></li>
                                 {% else %}
-                                  <li class="page-item page-link disabled"><span>Next</span></li>
+								<li class="next"><a><span><i class="fa fa-angle-double-right"></i></span></a></li>
                                 {% endif %}
-                              </ul>
-                            {% endif %}
+							</ul>
+						</div>
+						{% endif %}
 						<!--/ End Pagination -->
 					</div>
 				</div>

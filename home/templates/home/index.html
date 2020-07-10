@@ -250,13 +250,12 @@
 						<div class="learnedu-sidebar" style="border-left:0px;">
 							<div class="search">
 								<div class="form">
-							
-							<form action="/courses/" class="">
-								<input type="search"  name="search_courses" placeholder="Search Courses.." required="required">
-								<button class="button" type="submit">
-									<i class="fa fa-search" aria-hidden="true"></i>
-								</button>
-							</form>
+								<form action="/courses/" class="">
+									<input type="search"  name="search_courses" placeholder="Search Courses.." required="required">
+									<button class="button" type="submit">
+										<i class="fa fa-search" aria-hidden="true"></i>
+									</button>
+								</form>
 								</div>
 							</div>
 						</div>
@@ -342,7 +341,7 @@
 									<div class="date">
 										<h4>{{n.date| date:"d"}}<span>{{n.date| date:"M"}}</span></h4>
 									</div>
-									<img src="{{n.feature_image.url}}" alt="#" style="height:300px;width:100%">
+									<img src="{{n.feature_image.url}}" alt="#" style="height:300px;">
 								</div>
 								<div class="blog-content">
 									<h4 class="blog-title"><a href="">{{n.title}}</a></h4>
@@ -412,18 +411,22 @@
 							<!-- Single Event -->
 							{% for event in events %}
 							<div class="single-event">
+								<div class="head overlay">
+									<img src="{{event.feature_image.url}}" alt="{{event.name}}" style="height:300px">
+									<a href="{{event.feature_image.url}}" data-fancybox="photo" class="btn"><i class="fa fa-search"></i></a>
+								</div>
 								<div class="event-content">
 									<div class="meta"> 
 										<span><i class="fa fa-calendar"></i>{{event.date}}</span>
 									</div>
-									<h4><a href="event-single.html">{{event.title}}</a></h4>
+									<h4><a href="">{{event.title}}</a></h4>
 									<p>
 									{% autoescape on %}
-									{{event.content |safe}}
+									{{event.content |safe|truncatewords:"7"}}
 									{% endautoescape %}
 									</p>
 									<div class="button">
-										<a href="event-single.html" class="btn">Join Event</a>
+										<a href="events/{{event.slug}}" class="btn">View Details</a>
 									</div>
 								</div>
 							</div>

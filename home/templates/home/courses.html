@@ -1,7 +1,7 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block title %}
-All Courses
+All Courses 1
 {% endblock title %}
 {% block content %}
 
@@ -81,39 +81,18 @@ All Courses
 								<div class="navbar-collapse">
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
-										<li class=""><a href="index.html">Home</a></li>
-										<li><a href="#">Faculty & Institute<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
-												<li><a href="#">Faculties<i class="fa fa-angle-right"></i></a>
-													<ul class="dropdown submenu">
-													{% for faculty in faculties %}
-													<li><a href="teacher.html">{{faculty.name}}</a></li>
-													{% endfor %}	
-													
-													</ul>
-												</li>
-												
-												<li><a href="#">Institutes<i class="fa fa-angle-right"></i></a>
-													<ul class="dropdown submenu">
-														{% for institute in institutes  %}
-														<li><a href="teacher.html">{{institute.name}}</a></li>
-														{% endfor %}
-													</ul>
-												</li>
-
-											</ul>
-										</li>
-										<li><a href="#">Departments<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
-												{% for department in departments  %}
-												<li><a href="/about/{{department.slug}}">{{department.name}}</a></li>
-												{% endfor %}
-											</ul>
-										</li>
-                                        <li><a href="#">Faculties<i class="fa fa-angle-down"></i></a>
+										<li><a href="/">Home</a></li>
+										<li><a href="#">Faculties<i class="fa fa-angle-down"></i></a>
 											<ul class="dropdown">
 												{% for faculty in faculties %}
 													<li><a href="/faculty/{{faculty.slug}}">{{faculty.name}}</a></li>
+													{% endfor %}
+											</ul>
+										</li>
+										<li><a href="#">Institutes<i class="fa fa-angle-down"></i></a>
+											<ul class="dropdown">
+												{% for i in institutes %}
+													<li><a href="/institute/{{i.slug}}">{{i.name}}</a></li>
 													{% endfor %}
 											</ul>
 										</li>
@@ -124,25 +103,15 @@ All Courses
 												{% endfor %}
 											</ul>
 										</li>
-										<li class="active"><a href="courses.html">Courses</a></li>
-										<li><a href="#">News<i class="fa fa-angle-down"></i> </a>
-											<ul class="dropdown">
-												<li><a href="courses.html">News</a></li>
-												<li><a href="courses.html">Notices</a></li>
-												<li><a href="courses.html">Events</a></li>
-											</ul>
-										</li>
-										
-										<li><a href="about.html">About Us</a></li>
-										<li><a href="contact.html">Contact</a></li>
+										<li class="active"><a href="/courses/">Courses</a></li>
+										<li><a href="/news/">News</a></li>
+										<li><a href="/notice/">Notices</a></li>
+										<li><a href="/events/">Events</a></li>
+										<li><a href="/aboutUs/">About Us</a></li>
+										<li><a href="/contact">Contact</a></li>
 									</ul>
 									<!-- End Main Menu -->
-									<!-- button -->
-<!--									<div class="button">-->
-<!--										<a href="contact.html" class="btn"><i class="fa fa-pencil"></i>Apply Now</a>-->
-<!--									</div>-->
-									<!--/ End Button -->
-								</div> 
+								</div>
 							</nav>
 						</div>
 					</div>
@@ -196,7 +165,7 @@ All Courses
 							</div>
 						</div>
 					</div>
-                    {% for d in s_department %}
+                    {% for d in courses %}
 					<div class="col-lg-4 col-md-6 col-12">
 						<!-- Single Course -->
 						<div class="single-course">
@@ -217,7 +186,7 @@ All Courses
 						<!--/ End Single Course -->
 					</div>
                     {% endfor %}
-                    {% for p in s_program%}
+                    {% for p in courses%}
 					<div class="col-lg-4 col-md-6 col-12">
 						<!-- Single Course -->
 						<div class="single-course">
@@ -227,7 +196,7 @@ All Courses
 							</div>
 							<div class="single-content">
 								<h4><a href=""><span>Department/Institute</span>{{p.name}}</a></h4>
-                                <p>{{p.content |safe}}</p>
+                                <p>{{p.content |safe|truncatewords:"25"}}</p>
                             </div>
 							
 						</div>
@@ -237,16 +206,30 @@ All Courses
 				</div>
 				<div class="row">
 					<div class="col-12">
-						<!-- Start Pagination -->
+						<!-- start pagination-->
+						{% if courses.has_other_pages %}
 						<div class="pagination-main">
 							<ul class="pagination">
-								<li class="prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-								<li><a href="#">1</a></li>
-								<li class="active"><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li class="next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+								{% if courses.has_previous %}
+								<li class="prev"><a href="?page={{ courses.previous_page_number }}" tabindex="-1"><i class="fa fa-angle-double-left"></i></a></li>
+								{% else %}
+								<li class="prev"><a ><i class="fa fa-angle-double-left"></i></a></li>
+								{% endif %}
+								{% for i in courses.paginator.page_range %}
+                                  {% if courses.number == i %}
+                                    <li class="active"><a>{{ i }}</a></li>
+                                  {% else %}
+                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                  {% endif %}
+								{% endfor %}
+								{% if courses.has_next %}
+								<li class="next"><a href="?page={{ courses.next_page_number }}"><span><i class="fa fa-angle-double-right"></i></span></a></li>
+                                {% else %}
+								<li class="next"><a><span><i class="fa fa-angle-double-right"></i></span></a></li>
+                                {% endif %}
 							</ul>
 						</div>
+						{% endif %}
 						<!--/ End Pagination -->
 					</div>
 				</div>

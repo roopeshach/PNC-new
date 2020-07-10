@@ -191,15 +191,29 @@ All Events
 				<div class="row">
 					<div class="col-12">
 						<!-- Start Pagination -->
+						{% if event.has_other_pages %}
 						<div class="pagination-main">
 							<ul class="pagination">
-								<li class="prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-								<li><a href="#">1</a></li>
-								<li class="active"><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li class="next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+								{% if event.has_previous %}
+								<li class="prev"><a href="?page={{ event.previous_page_number }}" tabindex="-1"><i class="fa fa-angle-double-left"></i></a></li>
+								{% else %}
+								<li class="prev"><a ><i class="fa fa-angle-double-left"></i></a></li>
+								{% endif %}
+								{% for i in event.paginator.page_range %}
+                                  {% if event.number == i %}
+                                    <li class="active"><a>{{ i }}</a></li>
+                                  {% else %}
+                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                  {% endif %}
+								{% endfor %}
+								{% if event.has_next %}
+								<li class="next"><a href="?page={{ event.next_page_number }}"><span><i class="fa fa-angle-double-right"></i></span></a></li>
+                                {% else %}
+								<li class="next"><a><span><i class="fa fa-angle-double-right"></i></span></a></li>
+                                {% endif %}
 							</ul>
 						</div>
+						{% endif %}
 						<!--/ End Pagination -->
 					</div>
 				</div>

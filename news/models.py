@@ -67,12 +67,14 @@ class NewsImage(models.Model):
     def __str__(self):
         return self.news.title
 
+
 class NoticeImage(models.Model):
     notice = models.ForeignKey(Notice,  on_delete=models.CASCADE)
     image = models.ImageField( upload_to="notice/")
 
     def __str__(self):
         return self.notice.title
+
 
 class EventImage(models.Model):
     event = models.ForeignKey(Event,  on_delete=models.CASCADE)
