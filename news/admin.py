@@ -19,7 +19,7 @@ class NewsImageTabularInline(admin.TabularInline):
         
 class NewsAdmin(admin.ModelAdmin):
     inlines = [NewsImageTabularInline]
-    list_display = ['title', 'date']
+    list_display = ['title', 'date', 'department', 'program']
 
 class NoticeImageTabularInline(admin.TabularInline):
     model = NoticeImage
@@ -28,7 +28,7 @@ class NoticeImageTabularInline(admin.TabularInline):
         
 class NoticeAdmin(admin.ModelAdmin):
     inlines = [NoticeImageTabularInline]
-    list_display = ['title', 'date']
+    list_display = ['title', 'date', 'department', 'date']
 
 admin.site.register(Event, EventAdmin)
 admin.site.register(News, NewsAdmin)

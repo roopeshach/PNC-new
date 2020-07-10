@@ -1,13 +1,14 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block title %}
-Faculty | {{fac.name}}
+PN Capmus| FAQ Page
 {% endblock title %}
 {% block content %}
-	<!-- Book Preloader -->
-       
-		<!--/ End Book Preloader -->
-	
+
+
+
+	<body>
+
 		<!-- Header -->
 		<header class="header">
 			<!-- Topbar -->
@@ -81,7 +82,7 @@ Faculty | {{fac.name}}
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
 										<li><a href="/">Home</a></li>
-										<li class="active"><a href="#">Faculties<i class="fa fa-angle-down"></i></a>
+										<li><a href="#">Faculties<i class="fa fa-angle-down"></i></a>
 											<ul class="dropdown">
 												{% for faculty in faculties %}
 													<li><a href="/faculty/{{faculty.slug}}">{{faculty.name}}</a></li>
@@ -119,163 +120,69 @@ Faculty | {{fac.name}}
 			<!--/ End Header Menu -->
 		</header>
 		<!-- End Header -->
-		
-		
+		<!-- Start Breadcrumbs -->
 		<!-- Start Breadcrumbs -->
 		<section class="breadcrumbs overlay">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<h2>{{fac.name}}</h2>
+						<h2>Faqs Page</h2>
 						<ul class="bread-list">
 							<li><a href="/">Home<i class="fa fa-angle-right"></i></a></li>
-                            
-							<li class="active"><a href="#">{{fac.name}}</a></li>
+							<li class="active"><a href="/frequently-asked-questions/">Faqs</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</section>
 		<!--/ End Breadcrumbs -->
-		
-		<!-- Events -->
-		<section class="events single section">
+
+		<!-- Faqs -->
+		<section class="faq page section">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-8 col-12">
-						<div class="single-event">
-							<div class="single-course">
-										<div class="course-head">		
-											<img style="width:100%"src="{{fac.feature_image.url}}" alt="#">
-										</div>			
-									</div>
-							<div class="event-content">
-								<div class="meta"> 
-									<span><i class="fa fa-calendar"></i>
-                                    
-                                    </span>
-									
-								</div>
-								<h2><a href="event-single.html">{{fac.header}}</a></h2>
-                                 <p>
-                                {% autoescape on %}
-                                {{fac.content|safe}}
-                                {% endautoescape %}
-                                </p>
-                                
-                                
-										<h4>Departments</h4>
-										<ul>
-                                       
-                                        {% for  dept  in departments_of_faculty %}
-                                            
-                                            <li class="active"><span>{{forloop.counter}} > </span><a href="/about/{{dept.slug}}" >{{dept.name}}</a></li>
-                                         {% endfor %}
-                                         
-											
-											
-										</ul>
-									
-                                
-								<div class="book-now">
-									
-									<ul class="social">
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-google-plus "></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									</ul>
-								</div>
-							</div>
+					<div class="col-12">
+						<div class="section-title">
+							<h2>Ask<span> & </span>Questions</h2>
+							<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie nec hendrerit hendrerit, sollicitudin nec ante.  </p>
 						</div>
 					</div>
-					<div class="col-lg-4 col-12">
-						<div class="learnedu-sidebar">
-							<div class="search">
-								<div class="form">
-									<input type="email" placeholder="Search ...">
-									<button class="button" href="#"><i class="fa fa-search"></i></button>
-								</div>
-							</div>
-							<!-- Categories -->
-							<div class="single-widget categories">
-                                <h3 class="title">Categories</h3>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>Education Tips<span>16</span></a></li>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>General Knowledge<span>30</span></a></li>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>Tips for success<span>80</span></a></li>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>Student Life<span>23</span></a></li>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>Courses<span>28</span></a></li>
-                                </ul>
-                            </div>
-							<!--/ End Categories -->
-							<div class="single-widget course">
-								<h3>Popular <span>Courses</span></h3>
-								<!-- Single Course -->
-								<div class="single-course">
-									<img src="images/course/course1.jpg" alt="#">
-									<div class="course-content">
-										<h4><a href="#">Web Design Course</a></h4>
-										<div class="meta">$900.00, <span><i class="fa fa-clock-o"></i>3 Years</span></div>
+				</div>
+				<div class="row">
+					<div class="col-lg-10 offset-lg-1 col-12">
+						<div class="faq-content">
+							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+								<div class="panel panel-default">
+									<!-- Single Faq -->
+									{% for faq in faqs %}
+                                    <div class="faq-heading"  id="FaqTitle1">
+										<h4 class="faq-title">
+											<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#{{faq.id}}">
+                                            {{faq.question}}
+                                            </a>
+										</h4>
 									</div>
-								</div>
-								<!-- Single Course -->
-								<!-- Single Course -->
-								<div class="single-course">
-									<img src="images/course/course2.jpg" alt="#">
-									<div class="course-content">
-										<h4><a href="#">Business Management Course</a></h4>
-										<div class="meta">$150.00, <span><i class="fa fa-clock-o"></i>1 Year</span></div>
+									<div id="{{faq.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="FaqTitle1">
+									<div class="faq-body">
+                                    {% autoescape on %}
+                                    {{faq.answer|safe}}
+                                    {% endautoescape %}
+                                    
+                                    </div>
 									</div>
+									<!--/ End Single Faq -->
+                                    {% endfor %}
 								</div>
-								<!-- Single Course -->
-								<!-- Single Course -->
-								<div class="single-course">
-									<img src="images/course/course3.jpg" alt="#">
-									<div class="course-content">
-										<h4><a href="#">Software Engineer Course</a></h4>
-										<div class="meta">$500.00, <span><i class="fa fa-clock-o"></i>6 Month</span></div>
-									</div>
+								
 								</div>
-								<!-- Single Course -->
-								<!-- Single Course -->
-								<div class="single-course">
-									<img src="images/course/course4.jpg" alt="#">
-									<div class="course-content">
-										<h4><a href="#">Master in website Development Course</a></h4>
-										<div class="meta">$200.00, <span><i class="fa fa-clock-o"></i>1 Year</span></div>
-									</div>
-								</div>
-								<!-- Single Course -->
-								<!-- Single Course -->
-								<div class="single-course">
-									<img src="images/course/course5.jpg" alt="#">
-									<div class="course-content">
-										<h4><a href="#">Zero to Hero Cources</a></h4>
-										<div class="meta">$300.00, <span><i class="fa fa-clock-o"></i>2 Years</span></div>
-									</div>
-								</div>
-								<!-- Single Course --> 
-							</div>
-							<div class="single-widget tags">
-								<h3>Recent <span>Tags</span></h3>
-								<ul>
-									<li><a href="#">Course</a></li>
-									<li><a href="#">University</a></li>
-									<li><a href="#">Scholarship</a></li>
-									<li><a href="#">Free</a></li>
-									<li><a href="#">Standard</a></li>
-									<li><a href="#">Standard</a></li>
-								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<!--/ End Events -->
-		
-	
+		<!--/ End Faqs -->
+
 		<!-- Footer -->
 		<footer class="footer overlay section wow fadeIn">
 			<!-- Footer Top -->
@@ -315,7 +222,7 @@ Faculty | {{fac.name}}
 						<div class="col-lg-2 col-md-6 col-12">
 							<!-- Latest News -->
 							<div class="single-widget useful-links">
-								<h2>Costume Pages</h2>
+								<h2>Custom Pages</h2>
 								{% for p in pages  %}
 								<ul>
 									<li><a href="/pages/{{p.slug}}"><i class="fa fa-angle-right"></i>{{p.name}}</a></li>
@@ -372,7 +279,7 @@ Faculty | {{fac.name}}
 										<!-- End Social -->
 										<!-- Copyright -->
 										<div class="copyright">
-											<p>© Copyright 2018 <a href="#">Roopesh Shankar</a>. All Rights Reserved</p>
+											<p>© Copyright 2018 <a href="#">LearnEdu</a>. All Rights Reserved</p>
 										</div>
 										<!--/ End Copyright -->
 									</div>
@@ -385,4 +292,4 @@ Faculty | {{fac.name}}
 			<!--/ End Footer Bottom -->
 		</footer>
 		<!--/ End Footer -->
-		{% endblock content %}
+{% endblock content %}

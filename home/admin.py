@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Content, Slider, Description, Message_From_Chief
+from .models import Content, Slider, Description, Message_From_Chief, FAQ
 
 
 # Register your models here.
@@ -18,8 +18,11 @@ class descView(admin.ModelAdmin):
 class message(admin.ModelAdmin):
     list_display = ['chief_name']
 
+class faq(admin.ModelAdmin):
+    list_display = ['question']
 
 admin.site.register(Content, content)
 admin.site.register(Slider, sliderContent)
 admin.site.register(Description, descView)
 admin.site.register(Message_From_Chief, message)
+admin.site.register(FAQ, faq)

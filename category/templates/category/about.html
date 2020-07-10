@@ -8,6 +8,7 @@ Department |{{dept.name}}
        
 		<!--/ End Book Preloader -->
 	
+	
 		<!-- Header -->
 		<header class="header">
 			<!-- Topbar -->
@@ -80,39 +81,18 @@ Department |{{dept.name}}
 								<div class="navbar-collapse">
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
-										<li class="active"><a href="index.html">Home</a></li>
-										<li><a href="#">Faculty & Institute<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
-												<li><a href="#">Faculties<i class="fa fa-angle-right"></i></a>
-													<ul class="dropdown submenu">
-													{% for faculty in faculties %}
-													<li><a href="teacher.html">{{faculty.name}}</a></li>
-													{% endfor %}	
-													
-													</ul>
-												</li>
-												
-												<li><a href="#">Institutes<i class="fa fa-angle-right"></i></a>
-													<ul class="dropdown submenu">
-														{% for institute in institutes  %}
-														<li><a href="teacher.html">{{institute.name}}</a></li>
-														{% endfor %}
-													</ul>
-												</li>
-
-											</ul>
-										</li>
-										<li><a href="#">Departments<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
-												{% for department in departments  %}
-												<li><a href="/about/{{department.slug}}">{{department.name}}</a></li>
-												{% endfor %}
-											</ul>
-										</li>
-                                        <li><a href="#">Faculties<i class="fa fa-angle-down"></i></a>
+										<li><a href="/">Home</a></li>
+										<li><a href="#">Faculties<i class="fa fa-angle-down"></i></a>
 											<ul class="dropdown">
 												{% for faculty in faculties %}
 													<li><a href="/faculty/{{faculty.slug}}">{{faculty.name}}</a></li>
+													{% endfor %}
+											</ul>
+										</li>
+										<li><a href="#">Institutes<i class="fa fa-angle-down"></i></a>
+											<ul class="dropdown">
+												{% for i in institutes %}
+													<li><a href="/institute/{{i.slug}}">{{i.name}}</a></li>
 													{% endfor %}
 											</ul>
 										</li>
@@ -123,25 +103,15 @@ Department |{{dept.name}}
 												{% endfor %}
 											</ul>
 										</li>
-										<li><a href="courses.html">Courses</a></li>
-										<li><a href="#">News<i class="fa fa-angle-down"></i> </a>
-											<ul class="dropdown">
-												<li><a href="courses.html">News</a></li>
-												<li><a href="courses.html">Notices</a></li>
-												<li><a href="courses.html">Events</a></li>
-											</ul>
-										</li>
-										
-										<li><a href="about.html">About Us</a></li>
-										<li><a href="contact.html">Contact</a></li>
+										<li><a href="/courses/">Courses</a></li>
+										<li><a href="/news/">News</a></li>
+										<li><a href="/notice/">Notices</a></li>
+										<li><a href="/events/">Events</a></li>
+										<li><a href="/aboutUs/">About Us</a></li>
+										<li><a href="/contact">Contact</a></li>
 									</ul>
 									<!-- End Main Menu -->
-									<!-- button -->
-<!--									<div class="button">-->
-<!--										<a href="contact.html" class="btn"><i class="fa fa-pencil"></i>Apply Now</a>-->
-<!--									</div>-->
-									<!--/ End Button -->
-								</div> 
+								</div>
 							</nav>
 						</div>
 					</div>
@@ -150,8 +120,7 @@ Department |{{dept.name}}
 			<!--/ End Header Menu -->
 		</header>
 		<!-- End Header -->
-		
-		
+
 		<!-- Start Breadcrumbs -->
 		<section class="breadcrumbs overlay">
 			<div class="container">
@@ -218,6 +187,19 @@ Department |{{dept.name}}
 									<button class="button" href="#"><i class="fa fa-search"></i></button>
 								</div>
 							</div>
+							<div class="single-widget course">
+								<h3>Department <span>Head</span></h3>
+								<!-- Single Course -->
+								<div class="single-course">
+									<img src="{{dept.dean_image.url}}" alt="{{dept.dean}}">
+									<div class="course-content">
+										<h4><a href="#">{{dept.dean}}</a></h4>
+										<div class="meta">{{dept.name}}</span></div>
+									</div>
+								</div>
+								<!-- Single Course -->
+							 
+							</div>
 							<!-- Categories -->
 							<div class="single-widget categories">
                                 <h3 class="title">Categories</h3>
@@ -230,54 +212,38 @@ Department |{{dept.name}}
                                 </ul>
                             </div>
 							<!--/ End Categories -->
+							{% if news %}
 							<div class="single-widget course">
-								<h3>Popular <span>Courses</span></h3>
+								<h3>Recent <span>News</span></h3>
 								<!-- Single Course -->
+								{% for n in news %}
 								<div class="single-course">
-									<img src="images/course/course1.jpg" alt="#">
+									<img src="{{n.feature_image.url}}" alt="{{n.title}}">
 									<div class="course-content">
-										<h4><a href="#">Web Design Course</a></h4>
-										<div class="meta">$900.00, <span><i class="fa fa-clock-o"></i>3 Years</span></div>
+										<h4><a href="#">{{n.title}}</a></h4>
+										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
 									</div>
 								</div>
+								{% endfor %}
 								<!-- Single Course -->
-								<!-- Single Course -->
-								<div class="single-course">
-									<img src="images/course/course2.jpg" alt="#">
-									<div class="course-content">
-										<h4><a href="#">Business Management Course</a></h4>
-										<div class="meta">$150.00, <span><i class="fa fa-clock-o"></i>1 Year</span></div>
-									</div>
-								</div>
-								<!-- Single Course -->
-								<!-- Single Course -->
-								<div class="single-course">
-									<img src="images/course/course3.jpg" alt="#">
-									<div class="course-content">
-										<h4><a href="#">Software Engineer Course</a></h4>
-										<div class="meta">$500.00, <span><i class="fa fa-clock-o"></i>6 Month</span></div>
-									</div>
-								</div>
-								<!-- Single Course -->
-								<!-- Single Course -->
-								<div class="single-course">
-									<img src="images/course/course4.jpg" alt="#">
-									<div class="course-content">
-										<h4><a href="#">Master in website Development Course</a></h4>
-										<div class="meta">$200.00, <span><i class="fa fa-clock-o"></i>1 Year</span></div>
-									</div>
-								</div>
-								<!-- Single Course -->
-								<!-- Single Course -->
-								<div class="single-course">
-									<img src="images/course/course5.jpg" alt="#">
-									<div class="course-content">
-										<h4><a href="#">Zero to Hero Cources</a></h4>
-										<div class="meta">$300.00, <span><i class="fa fa-clock-o"></i>2 Years</span></div>
-									</div>
-								</div>
-								<!-- Single Course --> 
 							</div>
+							{% endif %}
+							{% if notices %}
+							<div class="single-widget course">
+								<h3>Recent <span>Notices</span></h3>
+								<!-- Single Course -->
+								{% for no in notices %}
+								<div class="single-course">
+									<img src="{{no.feature_image.url}}" alt="{{no.title}}">
+									<div class="course-content">
+										<h4><a href="#">{{no.title}}</a></h4>
+										<div class="meta"> <span><i class="fa fa-calendar"></i>{{no.date|date:"d, M"}}</span></div>
+									</div>
+								</div>
+								{% endfor %}
+								<!-- Single Course -->
+							</div>
+							{% endif %}
 							<div class="single-widget tags">
 								<h3>Recent <span>Tags</span></h3>
 								<ul>
@@ -297,7 +263,7 @@ Department |{{dept.name}}
 		<!--/ End Events -->
 		
 		<!-- Footer -->
-		<footer class="footer overlay section">
+		<footer class="footer overlay section wow fadeIn">
 			<!-- Footer Top -->
 			<div class="footer-top">
 				<div class="container">
@@ -305,16 +271,17 @@ Department |{{dept.name}}
 						<div class="col-lg-3 col-md-6 col-12">
 							<!-- About -->
 							<div class="single-widget about">
-								<div class="logo"><a href="#"><img src="images/logo2.png" alt="#"></a></div>
+								<div class="logo"><a href="#"><img src="{% static 'images/logo.png' %}" alt="#"></a></div>
 								<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Lorem ipsum dolor sit amet, consectetur</p>
 								<ul class="list">
-									<li><i class="fa fa-phone"></i>Phone: +123 456-7890 </li>
-									<li><i class="fa fa-envelope"></i>Email: <a href="mailto:info@youremail.com">Info@youremail.com</a></li>
-									<li><i class="fa fa-map-o"></i>Address: 211 Ronad, California, Us</li>
+									<li><i class="fa fa-phone"></i>Phone: {{content.phone}} </li>
+									<li><i class="fa fa-envelope"></i>Email: <a href="mailto:{{content.email}}">{{content.email}}</a></li>
+									<li><i class="fa fa-map-o"></i>Address: {{content.address}}</li>
 								</ul>
 							</div>
 							<!--/ End About -->
 						</div>
+						<div class="col-md-1"></div>
 						<div class="col-lg-2 col-md-6 col-12">
 							<!-- Useful Links -->
 							<div class="single-widget useful-links">
@@ -323,50 +290,50 @@ Department |{{dept.name}}
 									<li><a href="#"><i class="fa fa-angle-right"></i>Home</a></li>
 									<li><a href="#"><i class="fa fa-angle-right"></i>About Us</a></li>
 									<li><a href="#"><i class="fa fa-angle-right"></i>Courses</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>News</a></li>
 									<li><a href="#"><i class="fa fa-angle-right"></i>Events</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Blogs</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Notice</a></li>
 									<li><a href="#"><i class="fa fa-angle-right"></i>Contact</a></li>
 								</ul>
 							</div>
 							<!--/ End Useful Links -->
 						</div>
-						<div class="col-lg-4 col-md-6 col-12">
+						<div class="col-lg-2 col-md-6 col-12">
 							<!-- Latest News -->
-							<div class="single-widget latest-news">
-								<h2>Latest Posts</h2>
-								<div class="news-inner">
-									<div class="single-news">
-										<img src="images/blog/blog1.jpg" alt="#">
-										<h4><a href="blog-single.html">Our Teacher the best Link to Savc</a></h4>
-										<p>Nunc purus orci, blandit condimentum rhoncus vels</p>
-									</div>
-									<div class="single-news">
-										<img src="images/blog/blog2.jpg" alt="#">
-										<h4><a href="blog-single.html">Student Have the best Link to Ronae</a></h4>
-										<p>Nunc purus orci, blandit condimentum rhoncus vels</p>
-									</div>
-									<div class="single-news">
-										<img src="images/blog/blog3.jpg" alt="#">
-										<h4><a href="blog-single.html">Sekker the best Link to build</a></h4>
-										<p>Nunc purus orci, blandit condimentum rhoncus vele</p>
-									</div>
-								</div>
+							<div class="single-widget useful-links">
+								<h2>Costume Pages</h2>
+								{% for p in pages  %}
+								<ul>
+									<li><a href="/pages/{{p.slug}}"><i class="fa fa-angle-right"></i>{{p.name}}</a></li>
+								</ul>
+								{% endfor %}
 							</div>
 							<!--/ End Latest News -->
 						</div>
-						<div class="col-lg-3 col-md-6 col-12">
-							<!-- Newsletter -->
-							<div class="single-widget newsletter">
-								<h2>Subscribe Newsletter</h2>
-								<div class="mail">
-									<p>Don't miss to  subscribe to our news feed, Get the latest updates from us!</p>
-									<div class="form">
-										<input type="email" placeholder="Enter your email">
-										<button class="button" type="submit"><i class="fa fa-envelope"></i></button>
-									</div>
-								</div>
+						<div class="col-lg-2 col-md-6 col-12">
+							<div class="single-widget useful-links">
+								<h2>Resources For</h2>
+								<ul>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Future Students</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Current Students</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Faculty/Staff</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>International</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Postdocs</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Alumni</a></li>
+								</ul>
 							</div>
-							<!--/ End Newsletter -->
+						</div>
+						<div class="col-lg-2 col-md-6 col-12">
+							<div class="single-widget useful-links">
+								<h2>Study</h2>
+								<ul>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Courses</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Apply Now</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Scholarships</a></li>
+									<li><a href=""><i class="fa fa-angle-right"></i>FAQs</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>International student enquiries</a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -391,7 +358,7 @@ Department |{{dept.name}}
 										<!-- End Social -->
 										<!-- Copyright -->
 										<div class="copyright">
-											<p>© Copyright 2018 <a href="#">LearnEdu</a>. All Rights Reserved</p>
+											<p>© Copyright 2018 <a href="#">Roopesh Shankar</a>. All Rights Reserved</p>
 										</div>
 										<!--/ End Copyright -->
 									</div>
@@ -404,4 +371,4 @@ Department |{{dept.name}}
 			<!--/ End Footer Bottom -->
 		</footer>
 		<!--/ End Footer -->
-{% endblock content %}
+		{% endblock content %}

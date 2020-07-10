@@ -18,8 +18,9 @@ institutes = Institute.objects.all()
 def aboutDepartment(request, slug):
     dept = Department.objects.get(slug=slug)
     news = News.objects.filter(
-        Q(department=dept.id))
-
+        Q(department=dept.id))[:4]
+    notices = Notice.objects.filter(
+        Q(department=dept.id))[:4]
     context = {
         'content': content,
         'departments': departments,
@@ -27,6 +28,7 @@ def aboutDepartment(request, slug):
         'programs': programs,
         'pages': pages,
         'news': news,
+        'notices':notices,
         'faculties':faculties,
         'institutes' :institutes
 

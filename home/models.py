@@ -1,5 +1,5 @@
 from django.db import models
-
+from tinymce import HTMLField
 
 # Create your models here.
 class Content(models.Model):
@@ -26,3 +26,8 @@ class Message_From_Chief(models.Model):
     chief_name = models.CharField(max_length=254)
     message = models.TextField()
     image = models.ImageField(upload_to="chiefs/", height_field=None, width_field=None, max_length=None)
+
+
+class FAQ(models.Model):
+    question = models.TextField()
+    answer = HTMLField()

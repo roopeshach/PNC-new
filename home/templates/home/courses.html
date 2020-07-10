@@ -166,15 +166,16 @@ All Courses 1
 						</div>
 					</div>
                     {% for d in courses %}
-					<div class="col-lg-4 col-md-6 col-12">
+					<div class="col-lg-12 col-md-6 col-12">
 						<!-- Single Course -->
 						<div class="single-course">
 							<div class="course-head overlay">
-								<img src="{{d.feature_image.url}}" alt="{{d.name}}">
 								<a href="" class="btn"><i class="fa fa-link"></i></a>
 							</div>
 							<div class="single-content">
-								<h4><span>{{d.faculty}}</span><a href="/about/{{d.slug}}">{{d.name}}</a></h4>
+								<h4><span>
+								{% if d.faculty %}{{d.faculty}}{% elif d.institute %}{{d.institute}}{%else%}{{d.department}}{% endif %}
+								</span><a href="/about/{{d.slug}}">{{d.name}}</a></h4>
                                 <p>
                                 {% autoescape on %}
                                 {{d.content |safe|truncatewords:"25"}}
@@ -186,23 +187,7 @@ All Courses 1
 						<!--/ End Single Course -->
 					</div>
                     {% endfor %}
-                    {% for p in courses%}
-					<div class="col-lg-4 col-md-6 col-12">
-						<!-- Single Course -->
-						<div class="single-course">
-							<div class="course-head overlay">
-								<img src="{{p.feature_image.url}}" alt="{{p.name}}" style="height:300px">
-								<a href="" class="btn"><i class="fa fa-link"></i></a>
-							</div>
-							<div class="single-content">
-								<h4><a href=""><span>Department/Institute</span>{{p.name}}</a></h4>
-                                <p>{{p.content |safe|truncatewords:"25"}}</p>
-                            </div>
-							
-						</div>
-						<!--/ End Single Course -->
-					</div>
-                    {% endfor %}
+                    
 				</div>
 				<div class="row">
 					<div class="col-12">
@@ -333,7 +318,7 @@ All Courses 1
 										<!-- End Social -->
 										<!-- Copyright -->
 										<div class="copyright">
-											<p>© Copyright 2018 <a href="#">LearnEdu</a>. All Rights Reserved</p>
+											<p>© Copyright 2018 <a href="#">Roopesh Shankar</a>. All Rights Reserved</p>
 										</div>
 										<!--/ End Copyright -->
 									</div>

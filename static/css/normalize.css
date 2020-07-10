@@ -1,5 +1,5 @@
 /*!
-Theme Name: LearnEdu
+Theme Name: Roopesh Shankar
 Theme URI: http://ithemer.com/
 Author: Underscores.me
 Author URI: http://underscores.me/
@@ -7,7 +7,7 @@ Description: Description
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
-Text Domain: l-LearnEdu
+Text Domain: l-Roopesh Shankar
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
@@ -442,7 +442,7 @@ big {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: #00B16A;
+  background: #f15a00;
   z-index: 999999;
 }
 .book {
@@ -464,7 +464,7 @@ big {
   border-top: 5px solid #ecf0f1;
   border-bottom: 5px solid #ecf0f1;
   border-right: 5px solid #ecf0f1;
-  background: #15D588;
+  background: #559af8;
   width: 50px;
   height: 60px;
   -webkit-transform-origin: 0% 50%;
@@ -495,15 +495,15 @@ big {
     transform: perspective(600px) rotateY(0deg);
   }
   20% {
-    background: #00B16A;
+    background: #559af8;
   }
   29.9% {
-    background: #00B16A;
+    background: #559af8;
   }
   30% {
     -webkit-transform: perspective(200px) rotateY(-90deg);
     transform: perspective(200px) rotateY(-90deg);
-    background: #15D588;
+    background: #559af8;
   }
   54.999% {
     opacity: 1;
@@ -514,12 +514,12 @@ big {
   60% {
     -webkit-transform: perspective(200px) rotateY(-180deg);
     transform: perspective(200px) rotateY(-180deg);
-    background: #15D588;
+    background: #559af8;
   }
   100% {
     -webkit-transform: perspective(200px) rotateY(-180deg);
     transform: perspective(200px) rotateY(-180deg);
-    background: #15D588;
+    background: #559af8;
   }
 }
 @keyframes flip {
@@ -528,15 +528,15 @@ big {
     transform: perspective(600px) rotateY(0deg);
   }
   20% {
-    background: #00B16A;
+    background: #559af8;
   }
   29.9% {
-    background: #00B16A;
+    background: #559af8;
   }
   30% {
     -webkit-transform: perspective(200px) rotateY(-90deg);
     transform: perspective(200px) rotateY(-90deg);
-    background: #15D588;
+    background: #559af8;
   }
   54.999% {
     opacity: 1;
@@ -547,12 +547,12 @@ big {
   60% {
     -webkit-transform: perspective(200px) rotateY(-180deg);
     transform: perspective(200px) rotateY(-180deg);
-    background: #15D588;
+    background: #559af8;
   }
   100% {
     -webkit-transform: perspective(200px) rotateY(-180deg);
     transform: perspective(200px) rotateY(-180deg);
-    background: #15D588;
+    background: #559af8;
   }
 }
 

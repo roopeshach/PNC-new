@@ -1,8 +1,8 @@
 /* =====================================
-Template Name: LearnEdu
+Template Name: Roopesh Shankar
 Author Name: iThemer
 Author URI: http://ithemer.com/
-Description: LearnEdu is a Education & Courses Template.
+Description: Roopesh Shankar is a Education & Courses Template.
 Version:	1.0
 ========================================*/
 /*=======================================

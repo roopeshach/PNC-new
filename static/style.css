@@ -1,8 +1,8 @@
 /* =====================================
-Template Name: LearnEdu
+Template Name: Roopesh Shankar
 Author Name: iThemer
 Author URI: http://ithemer.com/
-Description: LearnEdu is a Education & Courses Template.
+Description: Roopesh Shankar is a Education & Courses Template.
 Version:	1.0
 ========================================*/
 /*======================================
@@ -29,7 +29,7 @@ Version:	1.0
 	+ Blogs Archive
 	+ Blogs Sidebar
 	+ Blogs Single
-* LearnEdu Sidebar
+* Roopesh Shankar Sidebar
 * About US CSS
 * Faqs CSS
 * 404 CSS
@@ -2092,7 +2092,7 @@ width: 100%;
 ===============================*/
 
 /*=============================
-	LearnEdu Sidebar
+	Roopesh Shankar Sidebar
 ===============================*/
 /* Blog Sidebar */
 .learnedu-sidebar {
@@ -2291,7 +2291,7 @@ width: 100%;
 	color: #777;
 }
 /*=============================
-	End LearnEdu Sidebar
+	End Roopesh Shankar Sidebar
 ===============================*/
 
 /*=============================
@@ -2717,7 +2717,7 @@ width: 100%;
 	padding: 0;
 }
 .footer::before {
-	opacity: 0.9;
+	opacity: 0.8;
 }
 .footer a,
 .footer p{

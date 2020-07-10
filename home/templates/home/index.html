@@ -326,35 +326,49 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="section-title">
-							<h2>Latest <span>Notice</span></h2>
+							<h2>Latest <span>notices</span></h2>
 							<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie nec hendrerit hendreri </p>
 						</div>
 					</div>
 				</div>
 				<div class="row">
+					<div class="col-xl-8 col-md-12"></div>
+					<div class="col-xl-4 col-md-12">
+						<div class="learnedu-sidebar" style="border-left:0px;">
+							<div class="search">
+								<div class="form">
+								<form action="/notice/" class="">
+									<input type="search"  name="search_courses" placeholder="Search Notices.." required="required">
+									<button class="button" type="submit">
+										<i class="fa fa-search" aria-hidden="true"></i>
+									</button>
+								</form>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div class="col-12">
 						<div class="blog-slider">
 							<!-- Single Blog -->
-							{% for n in notices %}
+							{% for n in notices  %}
 							<div class="single-blog">
 								<div class="blog-head overlay">
 									<div class="date">
 										<h4>{{n.date| date:"d"}}<span>{{n.date| date:"M"}}</span></h4>
 									</div>
-									<img src="{{n.feature_image.url}}" alt="#" style="height:300px;">
+									<img src="{{n.feature_image.url}}" alt="#" style="height:300px;width:100%">
 								</div>
 								<div class="blog-content">
-									<h4 class="blog-title"><a href="">{{n.title}}</a></h4>
+									<h4 class="blog-title"><a href="/notice/{{n.slug}}">{{n.title |truncatewords:"10"}}</a></h4>
 									<div class="blog-info">
 										<a href="#"><i class="fa fa-user"></i>By:
 										{% if n.department %}{{n.department}}{% else %}{{n.program}}{% endif %}
 										</a>
-										<a href="/notice/{{n.slug}}"><i class="fa fa-list"></i>Learning</a>
-
+										
 									</div>
 									<p>
 									{% autoescape on %}
-									{{n.content |safe|truncatewords:"7"}}
+									{{n.content |safe|truncatewords:"20"}}
 									{% endautoescape %}
 									</p>
 									<div class="button">
@@ -364,6 +378,7 @@
 							</div>
 							{% endfor %}
 							<!-- End Single Blog -->
+							
 						</div>
 					</div>
 				</div>
@@ -395,43 +410,63 @@
 		<!--/ End Messages -->
 		
 		<!-- Events -->
-		<section class="events section">
+		<section class="blog section">
 			<div class="container">
 				<div class="row">
-					<div class="col-12 wow zoomIn">
+					<div class="col-12">
 						<div class="section-title">
-							<h2>Upcoming <span>Events</span></h2>
+							<h2>Latest <span>Events</span></h2>
 							<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie nec hendrerit hendreri </p>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-12">
-						<div class="event-slider">
-							<!-- Single Event -->
-							{% for event in events %}
-							<div class="single-event">
-								<div class="head overlay">
-									<img src="{{event.feature_image.url}}" alt="{{event.name}}" style="height:300px">
-									<a href="{{event.feature_image.url}}" data-fancybox="photo" class="btn"><i class="fa fa-search"></i></a>
+					<div class="col-xl-8 col-md-12"></div>
+					<div class="col-xl-4 col-md-12">
+						<div class="learnedu-sidebar" style="border-left:0px;">
+							<div class="search">
+								<div class="form">
+								<form action="/events/" class="">
+									<input type="search"  name="search_courses" placeholder="Search Events.." required="required">
+									<button class="button" type="submit">
+										<i class="fa fa-search" aria-hidden="true"></i>
+									</button>
+								</form>
 								</div>
-								<div class="event-content">
-									<div class="meta"> 
-										<span><i class="fa fa-calendar"></i>{{event.date}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="blog-slider">
+							<!-- Single Blog -->
+							{% for e in events  %}
+							<div class="single-blog">
+								<div class="blog-head overlay">
+									<div class="date">
+										<h4>{{e.date| date:"d"}}<span>{{e.date| date:"M"}}</span></h4>
 									</div>
-									<h4><a href="">{{event.title}}</a></h4>
+									<img src="{{e.feature_image.url}}" alt="#" style="height:300px;width:100%">
+								</div>
+								<div class="blog-content">
+									<h4 class="blog-title"><a href="/events/{{e.slug}}">{{e.title |truncatewords:"10"}}</a></h4>
+									<div class="blog-info">
+										
+										
+										
+									</div>
 									<p>
 									{% autoescape on %}
-									{{event.content |safe|truncatewords:"7"}}
+									{{n.content |safe|truncatewords:"20"}}
 									{% endautoescape %}
 									</p>
 									<div class="button">
-										<a href="events/{{event.slug}}" class="btn">View Details</a>
+										<a href="/events/{{e.slug}}" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
 									</div>
 								</div>
 							</div>
 							{% endfor %}
-							<!--/ End Single Event -->
+							<!-- End Single Blog -->
+							
 						</div>
 					</div>
 				</div>
@@ -496,6 +531,22 @@
 					</div>
 				</div>
 				<div class="row">
+									<div class="col-xl-8 col-md-12"></div>
+					<div class="col-xl-4 col-md-12">
+						<div class="learnedu-sidebar" style="border-left:0px;">
+							<div class="search">
+								<div class="form">
+								<form action="/news/" class="">
+									<input type="search"  name="search_courses" placeholder="Search News
+									.." required="required">
+									<button class="button" type="submit">
+										<i class="fa fa-search" aria-hidden="true"></i>
+									</button>
+								</form>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div class="col-12">
 						<div class="blog-slider">
 							<!-- Single Blog -->
@@ -508,12 +559,12 @@
 									<img src="{{n.feature_image.url}}" alt="#" style="height:300px;width:100%">
 								</div>
 								<div class="blog-content">
-									<h4 class="blog-title"><a href="">{{n.title |truncatewords:"10"}}</a></h4>
+									<h4 class="blog-title"><a href="/news/{{n.slug}}">{{n.title |truncatewords:"10"}}</a></h4>
 									<div class="blog-info">
 										<a href="#"><i class="fa fa-user"></i>By:
 										{% if n.department %}{{n.department}}{% else %}{{n.program}}{% endif %}
 										</a>
-<!--										<a href="#"><i class="fa fa-list"></i>Learning</a>-->
+										<a href="#"><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</a>
 										
 									</div>
 									<p>
@@ -522,7 +573,7 @@
 									{% endautoescape %}
 									</p>
 									<div class="button">
-										<a href="" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
+										<a href="/news/{{n.slug}}" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
 									</div>
 								</div>
 							</div>
@@ -632,7 +683,7 @@
 										<!-- End Social -->
 										<!-- Copyright -->
 										<div class="copyright">
-											<p>© Copyright 2018 <a href="#">LearnEdu</a>. All Rights Reserved</p>
+											<p>© Copyright 2018 <a href="#">Roopesh Shankar</a>. All Rights Reserved</p>
 										</div>
 										<!--/ End Copyright -->
 									</div>
