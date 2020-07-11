@@ -31,3 +31,9 @@ class Message_From_Chief(models.Model):
 class FAQ(models.Model):
     question = models.TextField()
     answer = HTMLField()
+
+class aboutUs(models.Model):
+    content = HTMLField()
+    image1 = models.ImageField( upload_to="aboutus/", height_field=None, width_field=None, max_length=None)
+    image2 = models.ImageField( upload_to="aboutus/", height_field=None, width_field=None, max_length=None)
+    image3 = models.ImageField( upload_to="aboutus/", height_field=None, width_field=None, max_length=None)

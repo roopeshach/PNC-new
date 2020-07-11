@@ -12,7 +12,7 @@ class EventAdmin(admin.ModelAdmin):
     inlines = [EventImageTabularInline]
     list_display = ['title', 'date']
 
-class NewsImageTabularInline(admin.TabularInline):
+class NewsImageTabularInline(admin.StackedInline):
     model = NewsImage
     class Meta:
         model = News

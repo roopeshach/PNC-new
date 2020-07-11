@@ -3,7 +3,7 @@ from .models import Department, Program, Custom_Page , Faculty , Institute
 from home.models import Content
 from news.models import News, Notice, Event
 from photos.models import DepartmentGallery 
-
+from staffs.models import Staff
 from django.db.models import Q
 
 # Create your views here.
@@ -21,6 +21,8 @@ def aboutDepartment(request, slug):
         Q(department=dept.id))[:4]
     notices = Notice.objects.filter(
         Q(department=dept.id))[:4]
+
+    staffs = Staff.objects.all().filter(department__id=dept.id)
     context = {
         'content': content,
         'departments': departments,
@@ -30,7 +32,8 @@ def aboutDepartment(request, slug):
         'news': news,
         'notices':notices,
         'faculties':faculties,
-        'institutes' :institutes
+        'institutes' :institutes,
+        'staffs':staffs
 
     }
     return render(request, 'category/about.html', context)

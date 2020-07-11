@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Content, Slider, Description, Message_From_Chief , FAQ
+from .models import Content, Slider, Description, Message_From_Chief , FAQ , aboutUs
 from category.models import Department, Program, Custom_Page, Faculty, Institute
 from news.models import Notice, News, Event
 from itertools import chain
@@ -81,3 +81,18 @@ def faqs(request):
 
     return render(request, 'home/faq.html', context)
     
+
+def aboutus(request):
+    about = aboutUs.objects.all().first()
+    context = {
+        'content': content,
+        'programs': programs,
+        'pages': pages,
+        'faculties': faculties,
+        'institutes': institutes,
+        'about':about
+
+
+    }
+
+    return render(request , 'home/aboutUs.html', context)

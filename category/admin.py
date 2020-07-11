@@ -1,7 +1,15 @@
 from django.contrib import admin
 from .models import Department , Program , Custom_Page , Faculty , Institute
+from staffs.models import Staff
 # Register your models here.
+
+class StaffTabularInline(admin.TabularInline):
+    model = Staff
+    class Meta:
+        model = Department
+
 class department(admin.ModelAdmin):
+    
     list_display  = ['name' , 'dean' , 'faculty']
     list_filter = ['faculty']
 
