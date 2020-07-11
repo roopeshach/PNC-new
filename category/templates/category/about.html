@@ -270,51 +270,14 @@ Department |{{dept.name}}
 							<div class="single-widget tags">
 								<h3>Our <span>Gallery</span></h3>
 								<div class="gallery-small-thumbs clearfix">
-                            <div class="thumb-small-gallery">
-                                <a data-fancybox="photo" rel="gallery1" href="{{dept.feature_image.url}}" title="Gallery Tittle One">
-                                    <img alt="" src="{{dept.feature_image.url}}"/>
+								{% for image in images %}
+								<div class="thumb-small-gallery">
+                                <a data-fancybox="photo" rel="gallery1" href="{{image.image.url}}" data-caption="{{image.title.image_title}}">
+                                    <img alt="" src="{{image.image.url}}"/>
                                 </a>
                             </div>
-                            <div class="thumb-small-gallery">
-                                <a data-fancybox="photo" rel="gallery1" href="{{dept.feature_image.url}}" title="Gallery Tittle One">
-                                    <img src="{{dept.feature_image.url}}" alt="" />
-                                </a>
-                            </div>
-                            <div class="thumb-small-gallery">
-                                <a data-fancybox="photo" rel="gallery1" href="{{dept.feature_image.url}}" title="Gallery Tittle One">
-                                    <img src="{{dept.feature_image.url}}" alt="" />
-                                </a>
-                            </div>
-                            <div class="thumb-small-gallery">
-                                <a data-fancybox="photo" rel="gallery1" href="{{dept.feature_image.url}}" title="Gallery Tittle One">
-                                    <img src="{{dept.feature_image.url}}" alt="" />
-                                </a>
-                            </div>
-                            <div class="thumb-small-gallery">
-                                <a data-fancybox="photo" rel="gallery1" href="{{dept.feature_image.url}}" title="Gallery Tittle One">
-                                    <img src="{{dept.feature_image.url}}" alt="" />
-                                </a>
-                            </div>
-                            <div class="thumb-small-gallery">
-                                <a data-fancybox="photo" rel="gallery1" href="{{dept.feature_image.url}}" title="Gallery Tittle One">
-                                    <img src="{{dept.feature_image.url}}" alt="" />
-                                </a>
-                            </div>
-                            <div class="thumb-small-gallery">
-                                <a data-fancybox="photo" rel="gallery1" href="{{dept.feature_image.url}}" title="Gallery Tittle One">
-                                    <img src="{{dept.feature_image.url}}" alt="" />
-                                </a>
-                            </div>
-                            <div class="thumb-small-gallery">
-                                <a data-fancybox="photo" rel="gallery1" href="{{dept.feature_image.url}}" title="Gallery Tittle One">
-                                    <img src="{{dept.feature_image.url}}" alt="" />
-                                </a>
-                            </div>
-							<div class="thumb-small-gallery">
-								<a data-fancybox="photo" rel="gallery1" href="{{dept.feature_image.url}}" title="Gallery Tittle One">
-									<img src="{{dept.feature_image.url}}" alt="" />
-								</a>
-							</div>
+								{% endfor %}
+                            
                         </div> <!-- /.galler-small-thumbs -->
 							</div>
 						</div>

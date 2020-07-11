@@ -21,8 +21,11 @@ def aboutDepartment(request, slug):
         Q(department=dept.id))[:4]
     notices = Notice.objects.filter(
         Q(department=dept.id))[:4]
+    
 
     staffs = Staff.objects.all().filter(department__id=dept.id)
+
+    images = DepartmentGallery.objects.all().filter(title__department=dept.id)[:18]
     context = {
         'content': content,
         'departments': departments,
@@ -33,7 +36,8 @@ def aboutDepartment(request, slug):
         'notices':notices,
         'faculties':faculties,
         'institutes' :institutes,
-        'staffs':staffs
+        'staffs':staffs,
+        'images':images
 
     }
     return render(request, 'category/about.html', context)
