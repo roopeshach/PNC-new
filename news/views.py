@@ -32,7 +32,9 @@ def viewEvent(request, slug):
 
 
 def allEvent(request):
-    event_list = Event.objects.all()
+    search_query = request.GET.get("search_event", "")
+
+    event_list = Event.objects.all().filter(title__icontains=search_query)
     images = EventImage.objects.all()
 
     page = request.GET.get('page', 1)
@@ -90,7 +92,8 @@ def viewNotice(request, slug):
 
 
 def allNews(request):
-    news_list = News.objects.all()
+    search_query = request.GET.get("search_news", "")
+    news_list = News.objects.all().filter(title__icontains=search_query)
 
     page = request.GET.get('page', 1)
     paginator = Paginator(news_list, 6)
@@ -115,7 +118,8 @@ def allNews(request):
 
 
 def allNotice(request):
-    notice_list = Notice.objects.all()
+    search_query = request.GET.get("search_notice", "")
+    notice_list = Notice.objects.all().filter(title__icontains=search_query)
 
     page = request.GET.get('page', 1)
     paginator = Paginator(notice_list, 6)
