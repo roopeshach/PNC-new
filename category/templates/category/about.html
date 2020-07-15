@@ -146,9 +146,11 @@ Department |{{dept.name}}
 						<div class="single-event">
 							<div class="single-course">
 										<div class="course-head">		
+											{% if dept.feature_image %}
 											<img style="width:100%"src="{{dept.feature_image.url}}" alt="#">
+											{% endif %}
 										</div>			
-									</div>
+									</div>	
 							<div class="event-content">
 								<div class="meta"> 
 									<span><i class="fa fa-calendar"></i>
@@ -235,7 +237,11 @@ Department |{{dept.name}}
 								<!-- Single Course -->
 								{% for n in news %}
 								<div class="single-course">
+									{% if n.feature_image %}
 									<img src="{{n.feature_image.url}}" alt="{{n.title}}">
+									{% else %}
+									<img src="{% static 'images/logo.png' %}" alt="{{n.title}}">
+									{% endif %}
 									<div class="course-content">
 										<h4><a href="/news/{{n.slug}}">{{n.title}}</a></h4>
 										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
@@ -251,7 +257,9 @@ Department |{{dept.name}}
 								<!-- Single Course -->
 								{% for no in notices %}
 								<div class="single-course">
+									{% if no.feature_image %}
 									<img src="{{no.feature_image.url}}" alt="{{no.title}}">
+									{% endif %}
 									<div class="course-content">
 										<h4><a href="/notice/{{no.slug}}">{{no.title}}</a></h4>
 										<div class="meta"> <span><i class="fa fa-calendar"></i>{{no.date|date:"d, M"}}</span></div>
@@ -261,7 +269,15 @@ Department |{{dept.name}}
 								<!-- Single Course -->
 							</div>
 							{% endif %}
-							
+							<div class="single-widget categories">
+                                <h3 class="title">Syllabus</h3>
+                                <ul>
+                                   {% for s in syllabus %}
+								    <li><a href="{{s.file.url}}" download><i class="fa fa-angle-right"></i>{{s.subject_name}}</a></li>
+								   {% endfor %}
+                        
+                                </ul>
+                            </div>
 							<div class="single-widget tags">
 								<h3>Our <span>Gallery</span></h3>
 								<div class="gallery-small-thumbs clearfix">

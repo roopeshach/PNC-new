@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Department, Program, Custom_Page , Faculty , Institute
+from .models import Department, Program, Custom_Page , Faculty , Institute , Syllabus
 from home.models import Content
 from news.models import News, Notice, Event
 from photos.models import DepartmentGallery 
@@ -26,6 +26,8 @@ def aboutDepartment(request, slug):
     staffs = Staff.objects.all().filter(department__id=dept.id)
 
     images = DepartmentGallery.objects.all().filter(title__department=dept.id)[:18]
+
+    syllabus = Syllabus.objects.all().filter(department=dept.id)
     context = {
         'content': content,
         'departments': departments,
@@ -37,7 +39,8 @@ def aboutDepartment(request, slug):
         'faculties':faculties,
         'institutes' :institutes,
         'staffs':staffs,
-        'images':images
+        'images':images,
+        'syllabus':syllabus,
 
     }
     return render(request, 'category/about.html', context)

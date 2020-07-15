@@ -119,3 +119,9 @@ class Custom_Page(models.Model):
 
     def __str__(self):
         return self.name
+
+class Syllabus(models.Model):
+    subject_name = models.CharField( max_length=254)
+    department = models.ForeignKey(Department, blank=True, null=True, on_delete=models.CASCADE)
+    program = models.ForeignKey(Program, blank=True, null=True, on_delete=models.CASCADE)
+    file = models.FileField( upload_to="syllabus/", max_length=100)

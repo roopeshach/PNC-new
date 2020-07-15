@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Department , Program , Custom_Page , Faculty , Institute
+from .models import Department , Program , Custom_Page , Faculty , Institute , Syllabus
 from staffs.models import Staff
 # Register your models here.
 
@@ -22,9 +22,17 @@ class faculty(admin.ModelAdmin):
 
 class institute(admin.ModelAdmin):
     list_display  = ['name' , 'dean' , 'header']
+
+class syllabus(admin.ModelAdmin):
+    list_display  = ['subject_name']
+    list_filter = ['department']
+
+
+
 admin.site.register(Faculty, faculty)
 admin.site.register(Institute, institute)
 admin.site.register(Department, department)
 admin.site.register(Program , program)
 admin.site.register(Custom_Page)
+admin.site.register(Syllabus, syllabus)
 
