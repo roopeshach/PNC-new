@@ -1,5 +1,8 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% block title %}
+    {{notice.title}}
+{% endblock title %}
 {% block content %}
     <body>
 
@@ -87,33 +90,30 @@
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
 										<li><a href="/">Home</a></li>
-										<li><a href="#">Faculties<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
+										<li><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
+										<ul class="dropdown">
+											<li><a href="#">Faculties<i class="fa fa-angle-right"></i></a>
+												<ul class="dropdown submenu">
 												{% for faculty in faculties %}
 													<li><a href="/faculty/{{faculty.slug}}">{{faculty.name}}</a></li>
 													{% endfor %}
-											</ul>
-										</li>
-										<li><a href="#">Institutes<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
+												</ul>
+											</li>
+											<li><a href="#">Institutes<i class="fa fa-angle-right"></i></a>
+												<ul class="dropdown submenu">
 												{% for i in institutes %}
 													<li><a href="/institute/{{i.slug}}">{{i.name}}</a></li>
 													{% endfor %}
-											</ul>
-										</li>
-										<li><a href="#">Programs<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
-												{% for program in programs  %}
-												<li><a href="courses.html">{{program.name}}</a></li>
-												{% endfor %}
-											</ul>
+												</ul>
+											</li>
+										</ul>
 										</li>
 										<li><a href="/courses/">Courses</a></li>
 										<li><a href="/news/">News</a></li>
 										<li class="active"><a href="/notice/">Notices</a></li>
-										<li><a href="/events">Events</a></li>
-										<li><a href="">About Us</a></li>
-										<li><a href="">Contact</a></li>
+										<li><a href="/events/">Events</a></li>
+										<li><a href="/about-us/">About Us</a></li>
+										<li><a href="/contact">Contact</a></li>
 									</ul>
 									<!-- End Main Menu -->
 								</div>
@@ -181,180 +181,54 @@
 								</ul>
 								<!--/ End Next Prev -->
 							</div>
-<!--							<div class="comment-main">-->
-<!--								<div class="comment-title">-->
-<!--									<h2>Leave a Reply</h2>-->
-<!--									<p>Your email address will not be published. Required fields are marked *</p>-->
-<!--								</div>-->
-<!--								&lt;!&ndash; Form &ndash;&gt;-->
-<!--								<form class="form" action="#">-->
-<!--									<div class="row">-->
-<!--										<div class="col-lg-6 col-12">-->
-<!--											<div class="form-group">-->
-<!--												<input name="name" type="text" placeholder="Full name">-->
-<!--											</div>-->
-<!--										</div>-->
-<!--										<div class="col-lg-6 col-12">-->
-<!--											<div class="form-group">-->
-<!--												<input name="email" type="email" placeholder="Enter your email">-->
-<!--											</div>-->
-<!--										</div>-->
-<!--										<div class="col-lg-6 col-12">-->
-<!--											<div class="form-group">-->
-<!--												<input name="subject" type="text" placeholder="Subjects">-->
-<!--											</div>-->
-<!--										</div>-->
-<!--										<div class="col-lg-6 col-12">-->
-<!--											<div class="form-group">-->
-<!--												<input name="address" type="url" placeholder="Web Address">-->
-<!--											</div>-->
-<!--										</div>-->
-<!--										<div class="col-12">-->
-<!--											<div class="form-group">-->
-<!--												<textarea name="address" rows="6" placeholder="Web Address"></textarea>-->
-<!--											</div>-->
-<!--										</div>-->
-<!--										<div class="col-12">-->
-<!--											<div class="form-group">-->
-<!--												<div class="button">-->
-<!--													<button type="submit" class="btn primary">Post Comment</button>-->
-<!--												</div>-->
-<!--											</div>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</form>-->
-<!--								&lt;!&ndash;/ End Form &ndash;&gt;-->
-<!--							</div>-->
 						</div>
 					</div>
 					<div class="col-lg-4 col-12">
 						<div class="learnedu-sidebar">
-							<div class="search">
-								<div class="form">
-									<input type="email" placeholder="Search ...">
-									<button class="button"><i class="fa fa-search"></i></button>
-								</div>
-							</div>
-							<!-- Categories -->
-							<div class="single-widget categories">
-                                <h3 class="title">Categories</h3>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>Education Tips<span>16</span></a></li>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>General Knowledge<span>30</span></a></li>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>Tips for success<span>80</span></a></li>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>Student Life<span>23</span></a></li>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>Courses<span>28</span></a></li>
-                                </ul>
-                            </div>
-							<!--/ End Categories -->
+<!--							<div class="search">-->
+<!--								<div class="form">-->
+<!--									<input type="email" placeholder="Search ...">-->
+<!--									<button class="button"><i class="fa fa-search"></i></button>-->
+<!--								</div>-->
+<!--							</div>-->
+
 							<!-- Posts -->
 							<div class="single-widget posts">
-								<h3>Recent <span>Posts</span></h3>
-								<div class="single-post">
-									<div class="post-img">
-										<img src="images/blog/blog1.jpg" alt="">
-									</div>
-									<div class="post-info">
-										<h4><a href="#">Sed libero justo, tempus sit amet efficitur auctor</a></h4>
-										<span><i class="fa fa-calendar"></i>May 05, 2018</span>
-									</div>
-								</div>
-								<div class="single-post">
-									<div class="post-img">
-										<img src="images/blog/blog2.jpg" alt="">
-									</div>
-									<div class="post-info">
-										<h4><a href="#">velit mauris pharetra ligula, luctus suscipit dui dui </a></h4>
-										<span><i class="fa fa-calendar"></i>April 10, 2018</span>
+								<h3>Recent <span>News</span></h3>
+								{% for n in recent_news %}
+								<div class="single-course">
+									<img src="{{n.feature_image.url}}" alt="{{n.title}}">
+									<div class="course-content">
+										<h4><a href="#">{{n.title}}</a></h4>
+										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
 									</div>
 								</div>
-								<div class="single-post">
-									<div class="post-img">
-										<img src="images/blog/blog3.jpg" alt="">
-									</div>
-									<div class="post-info">
-										<h4><a href="#"> Aenean congue laoreet velit a varius. Nulla facilisi.</a></h4>
-										<span><i class="fa fa-calendar"></i>March 15, 2018</span>
-									</div>
-								</div>
-								<div class="single-post">
-									<div class="post-img">
-										<img src="images/blog/blog1.jpg" alt="">
-									</div>
-									<div class="post-info">
-										<h4><a href="#">Ut malesuada sed lorem sagittis ullamcorper Class </a></h4>
-										<span><i class="fa fa-calendar"></i>Feb 29, 2018</span>
-									</div>
-								</div>
-								<div class="single-post">
-									<div class="post-img">
-										<img src="images/blog/blog2.jpg" alt="">
-									</div>
-									<div class="post-info">
-										<h4><a href="#">Nunc id arcu eros. Proin nec mattis elit. Nulla ut odio</a></h4>
-										<span><i class="fa fa-calendar"></i>Jan 11, 2018</span>
-									</div>
-								</div>
+								{% endfor %}
 							</div>
 							<!--/ End Posts -->
-							<div class="single-widget course">
-								<h3>Popular <span>Courses</span></h3>
-								<!-- Single Course -->
+							<div class="single-widget posts">
+								<h3>Recent <span>Notice</span></h3>
+								{% for n in recent_notice %}
 								<div class="single-course">
-									<img src="images/course/course1.jpg" alt="#">
+									<img src="{{n.feature_image.url}}" alt="{{n.title}}">
 									<div class="course-content">
-										<h4><a href="#">Web Design Course</a></h4>
-										<div class="meta">$900.00, <span><i class="fa fa-clock-o"></i>3 Years</span></div>
+										<h4><a href="#">{{n.title}}</a></h4>
+										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
 									</div>
 								</div>
-								<!-- Single Course -->
-								<!-- Single Course -->
-								<div class="single-course">
-									<img src="images/course/course2.jpg" alt="#">
-									<div class="course-content">
-										<h4><a href="#">Business Management Course</a></h4>
-										<div class="meta">$150.00, <span><i class="fa fa-clock-o"></i>1 Year</span></div>
-									</div>
-								</div>
-								<!-- Single Course -->
-								<!-- Single Course -->
-								<div class="single-course">
-									<img src="images/course/course3.jpg" alt="#">
-									<div class="course-content">
-										<h4><a href="#">Software Engineer Course</a></h4>
-										<div class="meta">$500.00, <span><i class="fa fa-clock-o"></i>6 Month</span></div>
-									</div>
-								</div>
-								<!-- Single Course -->
-								<!-- Single Course -->
-								<div class="single-course">
-									<img src="images/course/course4.jpg" alt="#">
-									<div class="course-content">
-										<h4><a href="#">Master in website Development Course</a></h4>
-										<div class="meta">$200.00, <span><i class="fa fa-clock-o"></i>1 Year</span></div>
-									</div>
-								</div>
-								<!-- Single Course -->
-								<!-- Single Course -->
-								<div class="single-course">
-									<img src="images/course/course5.jpg" alt="#">
-									<div class="course-content">
-										<h4><a href="#">Zero to Hero Cources</a></h4>
-										<div class="meta">$300.00, <span><i class="fa fa-clock-o"></i>2 Years</span></div>
-									</div>
-								</div>
-								<!-- Single Course -->
+								{% endfor %}
 							</div>
 							<div class="single-widget tags">
-								<h3>Recent <span>Tags</span></h3>
-								<ul>
-									<li><a href="#">Course</a></li>
-									<li><a href="#">University</a></li>
-									<li><a href="#">Scholarship</a></li>
-									<li><a href="#">Free</a></li>
-									<li><a href="#">Standard</a></li>
-									<li><a href="#">Standard</a></li>
-								</ul>
+								<h3>Our <span>Gallery</span></h3>
+								<div class="gallery-small-thumbs clearfix">
+								{% for image in gallery %}
+									<div class="thumb-small-gallery">
+									<a data-fancybox="photo" rel="gallery1" href="{{image.image.url}}" data-caption="{{image.title.image_title}}">
+										<img alt="" src="{{image.image.url}}"/>
+									</a>
+                            	</div>
+								{% endfor %}
+                        		</div>
 							</div>
 						</div>
 					</div>

@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <body>
-	
+
 		<!-- Book Preloader -->
        
 		<div class="book_preload">
@@ -66,13 +66,24 @@
 									<i class="fa fa-phone"></i>
 									<h4>Call Now<span>{{content.phone}}</span></h4>
 								</div>
-								<div class="single-widget">
-									<i class="fa fa-envelope-o"></i>
-									<h4>Send Message<a href="{{content.email}}"><span>{{content.email}}</span></a></h4>
-								</div>
+
 								<div class="single-widget">
 									<i class="fa fa-map-marker"></i>
 									<h4>Our Location<span>Pokhara-01, Bagar </span></h4>
+								</div>
+								<div class="single-widget">
+									<div class="learnedu-sidebar" style="border-left:0px;">
+										<div class="search">
+											<div class="form">
+											<form action="/courses/" class="">
+												<input type="search"  name="search_courses" placeholder="Search .." required="required">
+												<button class="button" type="submit">
+													<i class="fa fa-search" aria-hidden="true"></i>
+												</button>
+											</form>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 							<!--/ End Header Widget -->
@@ -91,32 +102,36 @@
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
 										<li class="active"><a href="/">Home</a></li>
-										<li><a href="#">Faculties<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
+										<li><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
+										<ul class="dropdown">
+											<li><a href="#">Faculties<i class="fa fa-angle-right"></i></a>
+												<ul class="dropdown submenu">
 												{% for faculty in faculties %}
 													<li><a href="/faculty/{{faculty.slug}}">{{faculty.name}}</a></li>
 													{% endfor %}
-											</ul>
-										</li>
-										<li><a href="#">Institutes<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
+												</ul>
+											</li>
+											<li><a href="#">Institutes<i class="fa fa-angle-right"></i></a>
+												<ul class="dropdown submenu">
 												{% for i in institutes %}
 													<li><a href="/institute/{{i.slug}}">{{i.name}}</a></li>
 													{% endfor %}
-											</ul>
+												</ul>
+											</li>
+										</ul>
 										</li>
-										<li><a href="#">Programs<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
-												{% for program in programs  %}
-												<li><a href="courses.html">{{program.name}}</a></li>
-												{% endfor %}
-											</ul>
-										</li>
+<!--										<li><a href="#">Programs<i class="fa fa-angle-down"></i></a>-->
+<!--											<ul class="dropdown">-->
+<!--												{% for program in programs  %}-->
+<!--												<li><a href="courses.html">{{program.name}}</a></li>-->
+<!--												{% endfor %}-->
+<!--											</ul>-->
+<!--										</li>-->
 										<li><a href="/courses/">Courses</a></li>
 										<li><a href="news/">News</a></li>
 										<li><a href="notice/">Notices</a></li>
 										<li><a href="events/">Events</a></li>
-										<li><a href="aboutUs/">About Us</a></li>
+										<li><a href="about-us/">About Us</a></li>
 										<li><a href="contact">Contact</a></li>
 									</ul>
 									<!-- End Main Menu -->
@@ -338,7 +353,7 @@
 							<div class="search">
 								<div class="form">
 								<form action="/notice/" class="">
-									<input type="search"  name="search_notice" placeholder="Search Notices.." required="required">
+									<input type="search"  name="search_courses" placeholder="Search Notices.." required="required">
 									<button class="button" type="submit">
 										<i class="fa fa-search" aria-hidden="true"></i>
 									</button>
@@ -427,7 +442,7 @@
 							<div class="search">
 								<div class="form">
 								<form action="/events/" class="">
-									<input type="search"  name="search_event" placeholder="Search Events.." required="required">
+									<input type="search"  name="search_courses" placeholder="Search Events.." required="required">
 									<button class="button" type="submit">
 										<i class="fa fa-search" aria-hidden="true"></i>
 									</button>
@@ -537,7 +552,7 @@
 							<div class="search">
 								<div class="form">
 								<form action="/news/" class="">
-									<input type="search"  name="search_news" placeholder="Search News
+									<input type="search"  name="search_courses" placeholder="Search News
 									.." required="required">
 									<button class="button" type="submit">
 										<i class="fa fa-search" aria-hidden="true"></i>
@@ -612,13 +627,13 @@
 							<div class="single-widget useful-links">
 								<h2>Useful Links</h2>
 								<ul>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Home</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>About Us</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Courses</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>News</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Events</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Notice</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Contact</a></li>
+									<li><a href="/"><i class="fa fa-angle-right"></i>Home</a></li>
+									<li><a href="/about-us/"><i class="fa fa-angle-right"></i>About Us</a></li>
+									<li><a href="/courses/"><i class="fa fa-angle-right"></i>Courses</a></li>
+									<li><a href="/news/"><i class="fa fa-angle-right"></i>News</a></li>
+									<li><a href="/events/"><i class="fa fa-angle-right"></i>Events</a></li>
+									<li><a href="/notice/"><i class="fa fa-angle-right"></i>Notice</a></li>
+									<li><a href="/contact/"><i class="fa fa-angle-right"></i>Contact</a></li>
 								</ul>
 							</div>
 							<!--/ End Useful Links -->
@@ -652,7 +667,7 @@
 							<div class="single-widget useful-links">
 								<h2>Study</h2>
 								<ul>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Courses</a></li>
+									<li><a href="/courses/"><i class="fa fa-angle-right"></i>Courses</a></li>
 									<li><a href="#"><i class="fa fa-angle-right"></i>Apply Now</a></li>
 									<li><a href="#"><i class="fa fa-angle-right"></i>Scholarships</a></li>
 									<li><a href="/frequently-asked-questions/"><i class="fa fa-angle-right"></i>FAQs</a></li>

@@ -37,3 +37,12 @@ class aboutUs(models.Model):
     image1 = models.ImageField( upload_to="aboutus/", height_field=None, width_field=None, max_length=None)
     image2 = models.ImageField( upload_to="aboutus/", height_field=None, width_field=None, max_length=None)
     image3 = models.ImageField( upload_to="aboutus/", height_field=None, width_field=None, max_length=None)
+
+class SocialMedia(models.Model):
+    facebook = models.CharField(blank=True, max_length=254)
+    twitter = models.CharField( blank=True,max_length=254)
+    google_plus = models.CharField(blank=True, max_length=254)
+    linkedin = models.CharField(blank=True, max_length=254)
+    youtube = models.CharField(blank=True, max_length=254)
+
+    

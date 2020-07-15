@@ -93,33 +93,30 @@ All Events
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
 										<li><a href="/">Home</a></li>
-										<li><a href="#">Faculties<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
+										<li><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
+										<ul class="dropdown">
+											<li><a href="#">Faculties<i class="fa fa-angle-right"></i></a>
+												<ul class="dropdown submenu">
 												{% for faculty in faculties %}
 													<li><a href="/faculty/{{faculty.slug}}">{{faculty.name}}</a></li>
 													{% endfor %}
-											</ul>
-										</li>
-										<li><a href="#">Institutes<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
+												</ul>
+											</li>
+											<li><a href="#">Institutes<i class="fa fa-angle-right"></i></a>
+												<ul class="dropdown submenu">
 												{% for i in institutes %}
 													<li><a href="/institute/{{i.slug}}">{{i.name}}</a></li>
 													{% endfor %}
-											</ul>
-										</li>
-										<li><a href="#">Programs<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
-												{% for program in programs  %}
-												<li><a href="courses.html">{{program.name}}</a></li>
-												{% endfor %}
-											</ul>
+												</ul>
+											</li>
+										</ul>
 										</li>
 										<li><a href="/courses/">Courses</a></li>
-										<li><a href="/news">News</a></li>
-										<li><a href="/notice">Notices</a></li>
-										<li class="active"><a href="/events">Events</a></li>
-										<li><a href="">About Us</a></li>
-										<li><a href="">Contact</a></li>
+										<li><a href="/news/">News</a></li>
+										<li><a href="/notice/">Notices</a></li>
+										<li class="active"><a href="/events/">Events</a></li>
+										<li><a href="/about-us/">About Us</a></li>
+										<li><a href="/contact">Contact</a></li>
 									</ul>
 									<!-- End Main Menu -->
 								</div>
@@ -158,21 +155,6 @@ All Events
 					</div>
 				</div>
 				<div class="row">
-				<div class="col-xl-8 col-md-12"></div>
-					<div class="col-xl-4 col-md-12">
-						<div class="learnedu-sidebar" style="border-left:0px;">
-							<div class="search">
-								<div class="form">
-								<form action="/events/" class="">
-									<input type="search"  name="search_event" placeholder="Search Events.." required="required">
-									<button class="button" type="submit">
-										<i class="fa fa-search" aria-hidden="true"></i>
-									</button>
-								</form>
-								</div>
-							</div>
-						</div>
-					</div>
 					{% for event in event %}
 					<div class="col-lg-4 col-md-6 col-12">
 						<!-- Single Event -->

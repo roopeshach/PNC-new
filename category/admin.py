@@ -11,7 +11,7 @@ class StaffTabularInline(admin.TabularInline):
 class department(admin.ModelAdmin):
     
     list_display  = ['name' , 'dean' , 'faculty']
-    list_filter = ['faculty']
+    list_filter = ['faculty' , 'institute']
 
 class program(admin.ModelAdmin):
     list_display  = ['name' , 'dean' , 'department' , 'institute']
@@ -27,3 +27,4 @@ admin.site.register(Institute, institute)
 admin.site.register(Department, department)
 admin.site.register(Program , program)
 admin.site.register(Custom_Page)
+

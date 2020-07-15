@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from .models import Content, Slider, Description, Message_From_Chief , FAQ , aboutUs
+from .models import Content, Slider, Description, Message_From_Chief , FAQ , aboutUs, SocialMedia
 from category.models import Department, Program, Custom_Page, Faculty, Institute
 from news.models import Notice, News, Event
 from itertools import chain
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from itertools import chain
+from staffs.models import Staff
 # Create your views here.
 content = Content.objects.all().first()
 desc = Description.objects.all().first()
@@ -18,7 +19,12 @@ messages = Message_From_Chief.objects.all()
 pages = Custom_Page.objects.all()
 faculties = Faculty.objects.all()
 institutes = Institute.objects.all()
-
+d_c = departments.count()
+p_c = programs.count()
+courses_c = d_c + p_c
+staffs = Staff.objects.all().count()
+about = aboutUs.objects.all()
+sm = SocialMedia.objects.all().first()
 context = {
     'content': content,
     'departments': departments,
@@ -31,7 +37,11 @@ context = {
     'messages': messages,
     'pages': pages,
     'faculties': faculties,
-    'institutes': institutes
+    'institutes': institutes,
+    'courses':courses_c,
+    'staffs':staffs,
+    'about':about,
+    'sm':sm,
 
 }
 

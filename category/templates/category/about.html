@@ -82,32 +82,29 @@ Department |{{dept.name}}
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
 										<li><a href="/">Home</a></li>
-										<li><a href="#">Faculties<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
+										<li class="active"><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
+										<ul class="dropdown">
+											<li><a href="#">Faculties<i class="fa fa-angle-right"></i></a>
+												<ul class="dropdown submenu">
 												{% for faculty in faculties %}
 													<li><a href="/faculty/{{faculty.slug}}">{{faculty.name}}</a></li>
 													{% endfor %}
-											</ul>
-										</li>
-										<li><a href="#">Institutes<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
+												</ul>
+											</li>
+											<li><a href="#">Institutes<i class="fa fa-angle-right"></i></a>
+												<ul class="dropdown submenu">
 												{% for i in institutes %}
 													<li><a href="/institute/{{i.slug}}">{{i.name}}</a></li>
 													{% endfor %}
-											</ul>
-										</li>
-										<li><a href="#">Programs<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
-												{% for program in programs  %}
-												<li><a href="courses.html">{{program.name}}</a></li>
-												{% endfor %}
-											</ul>
+												</ul>
+											</li>
+										</ul>
 										</li>
 										<li><a href="/courses/">Courses</a></li>
 										<li><a href="/news/">News</a></li>
 										<li><a href="/notice/">Notices</a></li>
 										<li><a href="/events/">Events</a></li>
-										<li><a href="/aboutUs/">About Us</a></li>
+										<li><a href="/about-us/">About Us</a></li>
 										<li><a href="/contact">Contact</a></li>
 									</ul>
 									<!-- End Main Menu -->
@@ -160,43 +157,40 @@ Department |{{dept.name}}
                                     </span>
 									
 								</div>
-								<h2><a href="event-single.html">{{dept.header}}</a></h2>
+								<h2><a href="">{{dept.header}}</a></h2>
                                  <p>
                                 {% autoescape on %}
                                 {{dept.content|safe}}
                                 {% endautoescape %}
                                 </p>
-								<table class="table table-bordered">
-									
-									<thead>
-										<th>S.N</th>
-										<th>Name</th>
-										<th>Role</th>
-										<th> Admin Role </th>
-										<th>Bio-data</th>
+								<div class="table-responsive">
+									<table class="table table-striped">
+										<thead>
+											<th>S.N</th>
+											<th>Name</th>
+											<th>Role</th>
+											<th> Admin Role </th>
+											<th>Bio-data</th>
+										</thead>
+										<tbody>
+										{%with empty=""%}
+											{% for staff in staffs %}
+											<tr>
+											<td>{{forloop.counter}}</td>
+											<td>{{staff.name}}</td>
+											<td>{{staff.role}}</td>
+											<td>{% if staff.admin_role %}{{staff.admin_role}}{%else%} {{empty}}{% endif %}</td>
+											<td>{% if staff.biodata %}
+											<a href="{{staff.biodata.url}}" download><i class="fa fa-file"></i></a>
 
-									</thead>
-									<tbody>
-									{%with empty=""%}
-										{% for staff in staffs %}
-										<tr>
-										<td>{{forloop.counter}}</td>
-										<td>{{staff.name}}</td>
-										<td>{{staff.role}}</td>
-										<td>{% if staff.admin_role %}{{staff.admin_role}}{%else%} {{empty}}{% endif %}</td>
-										<td>{% if staff.biodata %}
-										<a href="{{staff.biodata.url}}" download><i class="fa fa-file"></i></a>
-										
-										{% else %}{{empty}}{% endif %}
-										</td>	
-										</tr>
-										
-										{% endfor %}
-									{% endwith %}
-									</tbody>
-
-								</table>
-								
+											{% else %}{{empty}}{% endif %}
+											</td>
+											</tr>
+											{% endfor %}
+										{% endwith %}
+										</tbody>
+									</table>
+								</div>
                                
 								<div class="book-now">
 									
@@ -212,12 +206,12 @@ Department |{{dept.name}}
 					</div>
 					<div class="col-lg-4 col-12">
 						<div class="learnedu-sidebar">
-							<div class="search">
-								<div class="form">
-									<input type="email" placeholder="Search ...">
-									<button class="button" href="#"><i class="fa fa-search"></i></button>
-								</div>
-							</div>
+<!--							<div class="search">-->
+<!--								<div class="form">-->
+<!--									<input type="email" placeholder="Search ...">-->
+<!--									<button class="button" href="#"><i class="fa fa-search"></i></button>-->
+<!--								</div>-->
+<!--							</div>-->
 							<div class="single-widget course">
 								<h3>Department <span>Head</span></h3>
 								<!-- Single Course -->
@@ -271,14 +265,13 @@ Department |{{dept.name}}
 								<h3>Our <span>Gallery</span></h3>
 								<div class="gallery-small-thumbs clearfix">
 								{% for image in images %}
-								<div class="thumb-small-gallery">
-                                <a data-fancybox="photo" rel="gallery1" href="{{image.image.url}}" data-caption="{{image.title.image_title}}">
-                                    <img alt="" src="{{image.image.url}}"/>
-                                </a>
-                            </div>
+									<div class="thumb-small-gallery">
+									<a data-fancybox="photo" rel="gallery1" href="{{image.image.url}}" data-caption="{{image.title.image_title}}">
+										<img alt="" src="{{image.image.url}}"/>
+									</a>
+                            	</div>
 								{% endfor %}
-                            
-                        </div> <!-- /.galler-small-thumbs -->
+                        		</div> <!-- /.galler-small-thumbs -->
 							</div>
 						</div>
 					</div>

@@ -276,8 +276,8 @@ Version:	1.0
 			Faqs JS
 		======================================*/ 
 		$('.panel').on('click', function() {
-            $(".panel").removeClass("active");
-            $(this).addClass("active");
+            $(".panel").removeClass("");
+            $(this).addClass("");
 		});
 		
 		/*=====================================

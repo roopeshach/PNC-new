@@ -1,11 +1,9 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block title %}
-All Courses 1
+All Courses
 {% endblock title %}
 {% block content %}
-
-	
 
 	<body>
 
@@ -82,32 +80,29 @@ All Courses 1
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
 										<li><a href="/">Home</a></li>
-										<li><a href="#">Faculties<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
+										<li><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
+										<ul class="dropdown">
+											<li><a href="#">Faculties<i class="fa fa-angle-right"></i></a>
+												<ul class="dropdown submenu">
 												{% for faculty in faculties %}
 													<li><a href="/faculty/{{faculty.slug}}">{{faculty.name}}</a></li>
 													{% endfor %}
-											</ul>
-										</li>
-										<li><a href="#">Institutes<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
+												</ul>
+											</li>
+											<li><a href="#">Institutes<i class="fa fa-angle-right"></i></a>
+												<ul class="dropdown submenu">
 												{% for i in institutes %}
 													<li><a href="/institute/{{i.slug}}">{{i.name}}</a></li>
 													{% endfor %}
-											</ul>
-										</li>
-										<li><a href="#">Programs<i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown">
-												{% for program in programs  %}
-												<li><a href="courses.html">{{program.name}}</a></li>
-												{% endfor %}
-											</ul>
+												</ul>
+											</li>
+										</ul>
 										</li>
 										<li class="active"><a href="/courses/">Courses</a></li>
 										<li><a href="/news/">News</a></li>
 										<li><a href="/notice/">Notices</a></li>
 										<li><a href="/events/">Events</a></li>
-										<li><a href="/aboutUs/">About Us</a></li>
+										<li><a href="/about-us/">About Us</a></li>
 										<li><a href="/contact">Contact</a></li>
 									</ul>
 									<!-- End Main Menu -->
@@ -178,16 +173,14 @@ All Courses 1
 								</span><a href="/about/{{d.slug}}">{{d.name}}</a></h4>
                                 <p>
                                 {% autoescape on %}
-                                {{d.content |safe|truncatewords:"25"}}
+                                {{d.content |safe|truncatewords:"35"}}
                                 {% endautoescape %}
                                 </p>
                             </div>
-							
 						</div>
 						<!--/ End Single Course -->
 					</div>
                     {% endfor %}
-                    
 				</div>
 				<div class="row">
 					<div class="col-12">
