@@ -170,6 +170,9 @@ Department |{{dept.name}}
 											<th>Name</th>
 											<th>Role</th>
 											<th> Admin Role </th>
+											<th>Contact</th>
+											<th>Mail</th>
+											
 											<th>Bio-data</th>
 										</thead>
 										<tbody>
@@ -180,6 +183,9 @@ Department |{{dept.name}}
 											<td>{{staff.name}}</td>
 											<td>{{staff.role}}</td>
 											<td>{% if staff.admin_role %}{{staff.admin_role}}{%else%} {{empty}}{% endif %}</td>
+											<td>{{staff.phone}}</td>
+											<td>{{staff.email}}</td>
+											
 											<td>{% if staff.biodata %}
 											<a href="{{staff.biodata.url}}" download><i class="fa fa-file"></i></a>
 
@@ -206,12 +212,7 @@ Department |{{dept.name}}
 					</div>
 					<div class="col-lg-4 col-12">
 						<div class="learnedu-sidebar">
-<!--							<div class="search">-->
-<!--								<div class="form">-->
-<!--									<input type="email" placeholder="Search ...">-->
-<!--									<button class="button" href="#"><i class="fa fa-search"></i></button>-->
-<!--								</div>-->
-<!--							</div>-->
+							
 							<div class="single-widget course">
 								<h3>Department <span>Head</span></h3>
 								<!-- Single Course -->
@@ -236,7 +237,7 @@ Department |{{dept.name}}
 								<div class="single-course">
 									<img src="{{n.feature_image.url}}" alt="{{n.title}}">
 									<div class="course-content">
-										<h4><a href="#">{{n.title}}</a></h4>
+										<h4><a href="/news/{{n.slug}}">{{n.title}}</a></h4>
 										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
 									</div>
 								</div>
@@ -252,7 +253,7 @@ Department |{{dept.name}}
 								<div class="single-course">
 									<img src="{{no.feature_image.url}}" alt="{{no.title}}">
 									<div class="course-content">
-										<h4><a href="#">{{no.title}}</a></h4>
+										<h4><a href="/notice/{{no.slug}}">{{no.title}}</a></h4>
 										<div class="meta"> <span><i class="fa fa-calendar"></i>{{no.date|date:"d, M"}}</span></div>
 									</div>
 								</div>

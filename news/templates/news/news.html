@@ -159,14 +159,30 @@
 							</div>
 							<div class="detail-content">
 								<div class="blog-info">
+									
 									<a href="#"><i class="fa fa-user"></i>By:
                                     {% if news.department %}{{news.department}}{% else %}{{news.program}}{% endif %}</a>
 									<a href="#"><i class="fa fa-calendar"></i>{{news.date| date:"d M Y"}}</a>
+									
 								</div>
 								<h2 class="blog-title">{{news.title}}</h2>
+								{% if news.feature_image %}
+								<img src="{{news.feature_image.url}}" alt="{{news.name}}">
+								{% endif %}
                                 <p>{% autoescape on %}
                                 {{news.content |safe}}
                                 {% endautoescape %}</p>
+								{% if news.file %}
+								<strong>File:<br></strong>
+								
+								<a href="{{news.file.url}}" download >
+								<button class="btn btn-primary">
+								{{news.title|truncatechars:"10"}}
+								</button>
+								</a>
+								
+								
+								{% endif %}
                             </div>
 							<div class="blog-bottom">
 								<ul class="share">
@@ -178,8 +194,8 @@
 								</ul>
 								<!-- Next Prev -->
 								<ul class="prev-next">
-									<li class="prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-									<li class="next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+									<li class="prev"><a {% if previous %}href="/news/{{previous.slug}}"{% endif %}><i class="fa fa-angle-double-left"></i></a></li>
+									<li class="next"><a {% if next %}href="/news/{{next.slug}}"{% endif %}><i class="fa fa-angle-double-right"></i></a></li>
 								</ul>
 								<!--/ End Next Prev -->
 							</div>
@@ -189,8 +205,13 @@
 						<div class="learnedu-sidebar">
 							<div class="search">
 								<div class="form">
-									<input type="email" placeholder="Search ...">
-									<button class="button"><i class="fa fa-search"></i></button>
+								<form action="/news/" class="">
+									<input type="search"  name="search_news" placeholder="Search News
+									.." required="required">
+									<button class="button" type="submit">
+										<i class="fa fa-search" aria-hidden="true"></i>
+									</button>
+								</form>
 								</div>
 							</div>
 							<!-- Categories -->

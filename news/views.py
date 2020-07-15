@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from news.models import News, Notice, Event, NewsImage , NoticeImage , EventImage
+from photos.models import DepartmentGallery 
 from category.models import Department, Program, Custom_Page,Faculty, Institute
 from home.models import Content
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+import os
+from next_prev import next_in_order, prev_in_order
 # Create your views here.
 
 
@@ -13,11 +15,15 @@ programs = Program.objects.all().filter(is_active="T")
 pages = Custom_Page.objects.all().filter(is_active="T")
 faculties = Faculty.objects.all()
 institutes = Institute.objects.all()
+recent_news = News.objects.all()[:4]
+recent_notice = Notice.objects.all()[:4]
+gallery = DepartmentGallery.objects.all()[:12]
 
 
 def viewEvent(request, slug):
     event = Event.objects.get(slug=slug)
     images = EventImage.objects.all().filter(event=event.id)
+    file = os.path.basename(event.file.url)
     context_event = {
         'content': content,
         'departments': departments,
@@ -26,7 +32,8 @@ def viewEvent(request, slug):
         'event': event,
         'images': images,
         'faculties': faculties,
-        'institutes': institutes
+        'institutes': institutes,
+        'file':file,
     }
     return render(request, 'news/events.html', context_event)
 
@@ -60,8 +67,12 @@ def allEvent(request):
 
 
 def viewNews(request, slug):
+
     news = News.objects.get(slug=slug)
     images = NewsImage.objects.all().filter(news=news.id)
+   
+    previous = prev_in_order(news)
+    next = next_in_order(news)
     context_news = {
         'content': content,
         'departments': departments,
@@ -70,7 +81,13 @@ def viewNews(request, slug):
         'news': news,
         'images':images,
         'faculties': faculties,
-        'institutes': institutes
+        'institutes': institutes,
+        
+        'previous':previous,
+        'next':next,
+        'recent_news':recent_news,
+        'recent_notice':recent_notice,
+        'gallery':gallery,
     }
     return render(request, 'news/news.html', context_news)
 
@@ -78,6 +95,7 @@ def viewNews(request, slug):
 def viewNotice(request, slug):
     notice = Notice.objects.get(slug=slug)
     images = NoticeImage.objects.all().filter(notice=notice.id)
+    file = os.path.basename(notice.file.url)
     context_notice = {
         'content': content,
         'departments': departments,
@@ -86,7 +104,8 @@ def viewNotice(request, slug):
         'notice': notice,
         'images' :images,
         'faculties': faculties,
-        'institutes': institutes
+        'institutes': institutes,
+        'file':file,
     }
     return render(request, 'news/notice.html', context_notice)
 

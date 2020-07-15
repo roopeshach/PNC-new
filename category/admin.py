@@ -10,7 +10,7 @@ class StaffTabularInline(admin.TabularInline):
 
 class department(admin.ModelAdmin):
     
-    list_display  = ['name' , 'dean' , 'faculty']
+    list_display  = ['name' , 'dean' , 'faculty' , 'institute']
     list_filter = ['faculty' , 'institute']
 
 class program(admin.ModelAdmin):

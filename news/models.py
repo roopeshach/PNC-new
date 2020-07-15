@@ -26,7 +26,7 @@ class News(models.Model):
     date = models.DateTimeField()
     department = models.ForeignKey(Department, on_delete=models.CASCADE, blank=True, default=0, null=True)
     program = models.ForeignKey(Program, on_delete=models.CASCADE, null=True, default=0, blank=True)
-    feature_image = models.ImageField( upload_to="news/", height_field=None, width_field=None, max_length=None)
+    feature_image = models.ImageField( upload_to="news/", blank=True, null=True)
 
     file = models.FileField(upload_to="news_file/", blank=True, null=True)
 
