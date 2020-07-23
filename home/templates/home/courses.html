@@ -176,7 +176,11 @@ All Courses
 								{% endif %}
 								</span>
 								
+								{% if d.flag %}
+								<a href="/about_program/{{d.slug}}">{{d.name}}</a>
+								{% else %}
 								<a href="/about/{{d.slug}}">{{d.name}}</a>
+								{% endif %}
 								
 								</h4>
                                 <p>

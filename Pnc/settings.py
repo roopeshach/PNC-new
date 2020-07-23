@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'category',
     'news',
     'photos',
-    'staffs'
+    'staffs',
+    'dev'
 ]
 
 MIDDLEWARE = [

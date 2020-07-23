@@ -298,7 +298,7 @@
 									<a href="" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
-									<h4><a href="course-single.html"><span>{{p.name}}</span></a></h4>
+									<h4><a href="about_program/{{p.slug}}"><span>{{p.name}}</span></a></h4>
 									<p>{{p.content |safe|truncatewords:"7"|linebreaks}}</p>
 								</div>
 								<div class="course-meta">
@@ -325,8 +325,10 @@
 					<div class="col-lg-5 offset-lg-6 col-12">
 						<div class="cta-inner overlay">
 							<div class="text-content">
-								<h2>We Focus On Brands, Products & Campaigns</h2>
-								<p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore cum. Coluta nobis est eligendi optio cumque nihil impedit quo minusd quod maxime placeat facere possimus, omnis voluptas assumenda est. Our friendly support team is standing by to help you every step of the way.</p>
+								<h2>About Us.</h2>
+								{% autoescape off %}
+								<p>Our vision haru static mai halne ho yesma</p>
+								{% endautoescape %}
 							</div>
 						</div>
 					</div>
@@ -471,7 +473,7 @@
 									</div>
 									<p>
 									{% autoescape on %}
-									{{n.content |safe|truncatewords:"20"}}
+									{{e.content |safe|truncatewords:"35"}}
 									{% endautoescape %}
 									</p>
 									<div class="button">

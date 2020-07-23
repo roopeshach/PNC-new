@@ -167,7 +167,7 @@
 								</div>
 								<h2 class="blog-title">{{news.title}}</h2>
 								{% if news.feature_image %}
-								<img src="{{news.feature_image.url}}" alt="{{news.name}}">
+								<img style="width:100%" src="{{news.feature_image.url}}" alt="{{news.name}}">
 								{% endif %}
                                 <p>{% autoescape on %}
                                 {{news.content |safe}}
@@ -203,17 +203,7 @@
 					</div>
 					<div class="col-lg-4 col-12">
 						<div class="learnedu-sidebar">
-							<div class="search">
-								<div class="form">
-								<form action="/news/" class="">
-									<input type="search"  name="search_news" placeholder="Search News
-									.." required="required">
-									<button class="button" type="submit">
-										<i class="fa fa-search" aria-hidden="true"></i>
-									</button>
-								</form>
-								</div>
-							</div>
+							
 							<!-- Categories -->
 
 							<div class="single-widget course">
@@ -223,7 +213,7 @@
 								<div class="single-course">
 									<img src="{{n.feature_image.url}}" alt="{{n.title}}">
 									<div class="course-content">
-										<h4><a href="#">{{n.title}}</a></h4>
+										<h4><a href="/news/{{n.slug}}">{{n.title}}</a></h4>
 										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
 									</div>
 								</div>
@@ -238,7 +228,7 @@
 								<div class="single-course">
 									<img src="{{n.feature_image.url}}" alt="{{n.title}}">
 									<div class="course-content">
-										<h4><a href="#">{{n.title}}</a></h4>
+										<h4><a href="/notice/{{n.slug}}">{{n.title}}</a></h4>
 										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
 									</div>
 								</div>

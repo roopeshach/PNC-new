@@ -23,7 +23,7 @@ gallery = DepartmentGallery.objects.all()[:12]
 def viewEvent(request, slug):
     event = Event.objects.get(slug=slug)
     images = EventImage.objects.all().filter(event=event.id)
-    file = os.path.basename(event.file.url)
+
     context_event = {
         'content': content,
         'departments': departments,
@@ -33,7 +33,10 @@ def viewEvent(request, slug):
         'images': images,
         'faculties': faculties,
         'institutes': institutes,
-        'file':file,
+        'recent_news':recent_news,
+        'recent_notice':recent_notice,
+        'gallery':gallery,
+        
     }
     return render(request, 'news/events.html', context_event)
 
@@ -82,7 +85,6 @@ def viewNews(request, slug):
         'images':images,
         'faculties': faculties,
         'institutes': institutes,
-        
         'previous':previous,
         'next':next,
         'recent_news':recent_news,
@@ -95,7 +97,7 @@ def viewNews(request, slug):
 def viewNotice(request, slug):
     notice = Notice.objects.get(slug=slug)
     images = NoticeImage.objects.all().filter(notice=notice.id)
-    file = os.path.basename(notice.file.url)
+
     context_notice = {
         'content': content,
         'departments': departments,
@@ -105,7 +107,10 @@ def viewNotice(request, slug):
         'images' :images,
         'faculties': faculties,
         'institutes': institutes,
-        'file':file,
+        'recent_news':recent_news,
+        'recent_notice':recent_notice,
+        'gallery':gallery,
+       
     }
     return render(request, 'news/notice.html', context_notice)
 

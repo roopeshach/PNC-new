@@ -89,7 +89,7 @@ class Program(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE, null=True, default=0, blank=True)
     institute = models.ForeignKey(Institute, on_delete=models.CASCADE, null=True, default=0, blank=True)
     slug = models.SlugField(unique=True, blank=True)
-
+    flag = models.IntegerField()
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Program, self).save(*args, **kwargs)

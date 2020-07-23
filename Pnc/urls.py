@@ -26,6 +26,8 @@ urlpatterns = [
     path('' , include('category.urls')),
     path('tinymce/', include('tinymce.urls')),
     path('', include('news.urls')),
+    path('', include('dev.urls')),
+
 
 ] 
 

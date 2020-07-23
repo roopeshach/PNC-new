@@ -12,6 +12,8 @@ class Event(models.Model):
     feature_image = models.ImageField( upload_to="events/", height_field=None, width_field=None, max_length=None)
     slug = models.SlugField(blank=True)
 
+    file = models.FileField(upload_to="events_file/", blank=True, null=True)
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.date) + "-" + slugify(self.title)
         super(Event, self).save(*args, **kwargs)

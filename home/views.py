@@ -23,7 +23,8 @@ d_c = departments.count()
 p_c = programs.count()
 courses_c = d_c + p_c
 staffs = Staff.objects.all().count()
-about = aboutUs.objects.all()
+about = aboutUs.objects.all().first()
+
 sm = SocialMedia.objects.all().first()
 context = {
     'content': content,
