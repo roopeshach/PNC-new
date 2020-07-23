@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Department, Program, Custom_Page , Faculty , Institute , Syllabus
 from home.models import Content
 from news.models import News, Notice, Event
-from photos.models import DepartmentGallery 
+from photos.models import DepartmentGallery , ProgramGallery
 from staffs.models import Staff
 from django.db.models import Q
 
@@ -45,11 +45,15 @@ def aboutDepartment(request, slug):
     }
     return render(request, 'category/about.html', context)
 
-
 def aboutProgram(request, slug):
     program = Program.objects.get(slug=slug)
     news = News.objects.filter(
-        Q(program=program.id))
+        Q(program=program.id))[:4]
+    notices = Notice.objects.filter(
+        Q(program=program.id))[:4]
+    staffs = Staff.objects.all().filter(program__id=program.id)
+    images = ProgramGallery.objects.all().filter(title__program=program.id)[:18]
+    syllabus = Syllabus.objects.all().filter(program=program.id)
     context_program = {
         'content': content,
         'departments': departments,
@@ -57,9 +61,16 @@ def aboutProgram(request, slug):
         'programs': programs,
         'pages': pages,
         'news': news,
+        'notices': notices,
+        'staffs': staffs,
+        'images': images,
+        'syllabus': syllabus,
+        'faculties': faculties,
+        'institutes': institutes,
     }
 
     return render(request, 'category/aboutProgram.html', context_program)
+
 
 
 def aboutCustom(request, slug):

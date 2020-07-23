@@ -1,11 +1,13 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block title %}
-All Courses
+{{program.name}}
 {% endblock title %}
 {% block content %}
+	<!-- Book Preloader -->
 
-	<body>
+		<!--/ End Book Preloader -->
+
 
 		<!-- Header -->
 		<header class="header">
@@ -80,7 +82,7 @@ All Courses
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
 										<li><a href="/">Home</a></li>
-										<li><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
+										<li class="active"><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											<li><a href="#">Faculties<i class="fa fa-angle-right"></i></a>
 												<ul class="dropdown submenu">
@@ -98,7 +100,7 @@ All Courses
 											</li>
 										</ul>
 										</li>
-										<li class="active"><a href="/courses/">Courses</a></li>
+										<li><a href="/courses/">Courses</a></li>
 										<li><a href="/news/">News</a></li>
 										<li><a href="/notice/">Notices</a></li>
 										<li><a href="/events/">Events</a></li>
@@ -115,15 +117,20 @@ All Courses
 			<!--/ End Header Menu -->
 		</header>
 		<!-- End Header -->
+
 		<!-- Start Breadcrumbs -->
 		<section class="breadcrumbs overlay">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<h2>Our Courses</h2>
+						<h2>{{dept.name}}</h2>
 						<ul class="bread-list">
 							<li><a href="/">Home<i class="fa fa-angle-right"></i></a></li>
-							<li class="active"><a href="">Courses</a></li>
+                           <li><a href="#">
+                           {% if program.department %}{{program.department}}{% else %}{{program .institute}}{% endif %}
+
+		                   <i class="fa fa-angle-right"></i></a></li>
+							<li class="active"><a href="#">{{program.name}}</a></li>
 						</ul>
 					</div>
 				</div>
@@ -131,97 +138,159 @@ All Courses
 		</section>
 		<!--/ End Breadcrumbs -->
 
-		<!-- Courses -->
-		<section class="courses archives section">
+		<!-- Events -->
+		<section class="events single section">
 			<div class="container">
 				<div class="row">
-					<div class="col-12">
-						<div class="section-title">
-							<h2>Popular <span>Courses</span> We Offer</h2>
-							<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie nec hendrerit hendreri </p>
-						</div>
-					</div>
-				</div>
-                
-				<div class="row">
-                <div class="col-xl-8 col-md-12"></div>
-					<div class="col-xl-4 col-md-12">
-						<div class="learnedu-sidebar" style="border-left:0px;">
-							<div class="search">
-								<div class="form">
-							
-							<form action="" class="">
-								<input type="search"  name="search_courses" placeholder="Search Courses.." required="required">
-								<button class="button" type="submit">
-									<i class="fa fa-search" aria-hidden="true"></i>
-								</button>
-							</form>
+					<div class="col-lg-8 col-12">
+						<div class="single-event">
+							<div class="single-course">
+										<div class="course-head">
+											{% if program.feature_image %}
+											<img style="width:100%"src="{{program.feature_image.url}}" alt="#">
+											{% endif %}
+										</div>
+									</div>
+							<div class="event-content">
+								<div class="meta">
+									<span><i class="fa fa-calendar"></i>
+
+                                    {% if program.departments %}{{program.departments}}{% else %}{{program.institute}}{% endif %}
+                                    </span>
+
+								</div>
+								<h2><a href="/about_program/{{program.slug}}">{{program.header}}</a></h2>
+                                 <p>
+                                {% autoescape on %}
+                                {{program.content|safe}}
+                                {% endautoescape %}
+                                </p>
+								<div class="table-responsive">
+									<table class="table table-striped">
+										<thead>
+											<th>S.N</th>
+											<th>Name</th>
+											<th>Role</th>
+											<th>Contact</th>
+											<th>Mail</th>
+											<th>Bio-data</th>
+										</thead>
+										<tbody>
+										{%with empty=""%}
+											{% for staff in staffs %}
+											<tr>
+											<td>{{forloop.counter}}</td>
+											<td>{{staff.name}}</td>
+											<td>{{staff.role}}</td>
+											<td>{{staff.phone}}</td>
+											<td>{{staff.email}}</td>
+											<td>{% if staff.biodata %}
+											<a href="{{staff.biodata.url}}" download><i class="fa fa-file"></i></a>
+											{% else %}{{empty}}{% endif %}
+											</td>
+											</tr>
+											{% endfor %}
+										{% endwith %}
+										</tbody>
+									</table>
+								</div>
+
+								<div class="book-now">
+
+									<ul class="social">
+										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#"><i class="fa fa-google-plus "></i></a></li>
+										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
-                    {% for d in courses %}
-					<div class="col-lg-12 col-md-6 col-12">
-						<!-- Single Course -->
-						<div class="single-course">
-							<div class="course-head overlay">
-								<a href="" class="btn"><i class="fa fa-link"></i></a>
+					<div class="col-lg-4 col-12">
+						<div class="learnedu-sidebar">
+
+							<div class="single-widget course">
+								<h3>Program <span>Head</span></h3>
+								<!-- Single Course -->
+								<div class="single-course">
+									<img src="{{program.dean_image.url}}" alt="{{program.dean}}">
+									<div class="course-content">
+										<h4><a href="#">{{program.dean}}</a></h4>
+										<div class="meta">{{program.name}}</span></div>
+									</div>
+								</div>
+								<!-- Single Course -->
+
 							</div>
-							<div class="single-content">
-								<h4>
-								<span>
-								{% if d.faculty %}{{d.faculty}}
-								{% elif d.institute %}{{d.institute}}
-								{%else%}{{d.department}}
-								{% endif %}
-								</span>
-								
-								<a href="/about/{{d.slug}}">{{d.name}}</a>
-								
-								</h4>
-                                <p>
-                                {% autoescape on %}
-                                {{d.content |safe|truncatewords:"35"}}
-                                {% endautoescape %}
-                                </p>
-                            </div>
-						</div>
-						<!--/ End Single Course -->
-					</div>
-                    {% endfor %}
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<!-- start pagination-->
-						{% if courses.has_other_pages %}
-						<div class="pagination-main">
-							<ul class="pagination">
-								{% if courses.has_previous %}
-								<li class="prev"><a href="?page={{ courses.previous_page_number }}" tabindex="-1"><i class="fa fa-angle-double-left"></i></a></li>
-								{% else %}
-								<li class="prev"><a ><i class="fa fa-angle-double-left"></i></a></li>
-								{% endif %}
-								{% for i in courses.paginator.page_range %}
-                                  {% if courses.number == i %}
-                                    <li class="active"><a>{{ i }}</a></li>
-                                  {% else %}
-                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
-                                  {% endif %}
+							<!-- Categories -->
+
+							<!--/ End Categories -->
+							{% if news %}
+							<div class="single-widget course">
+								<h3>Recent <span>News</span></h3>
+								<!-- Single Course -->
+								{% for n in news %}
+								<div class="single-course">
+									{% if n.feature_image %}
+									<img src="{{n.feature_image.url}}" alt="{{n.title}}">
+									{% else %}
+									<img src="{% static 'images/logo.png' %}" alt="{{n.title}}">
+									{% endif %}
+									<div class="course-content">
+										<h4><a href="/news/{{n.slug}}">{{n.title}}</a></h4>
+										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
+									</div>
+								</div>
 								{% endfor %}
-								{% if courses.has_next %}
-								<li class="next"><a href="?page={{ courses.next_page_number }}"><span><i class="fa fa-angle-double-right"></i></span></a></li>
-                                {% else %}
-								<li class="next"><a><span><i class="fa fa-angle-double-right"></i></span></a></li>
-                                {% endif %}
-							</ul>
+								<!-- Single Course -->
+							</div>
+							{% endif %}
+							{% if notices %}
+							<div class="single-widget course">
+								<h3>Recent <span>Notices</span></h3>
+								<!-- Single Course -->
+								{% for no in notices %}
+								<div class="single-course">
+									{% if no.feature_image %}
+									<img src="{{no.feature_image.url}}" alt="{{no.title}}">
+									{% endif %}
+									<div class="course-content">
+										<h4><a href="/notice/{{no.slug}}">{{no.title}}</a></h4>
+										<div class="meta"> <span><i class="fa fa-calendar"></i>{{no.date|date:"d, M"}}</span></div>
+									</div>
+								</div>
+								{% endfor %}
+								<!-- Single Course -->
+							</div>
+							{% endif %}
+							<div class="single-widget categories">
+                                <h3 class="title">Syllabus</h3>
+                                <ul>
+                                   {% for s in syllabus %}
+								    <li><a href="{{s.file.url}}" download><i class="fa fa-angle-right"></i>{{s.subject_name}}</a></li>
+								   {% endfor %}
+
+                                </ul>
+                            </div>
+							<div class="single-widget tags">
+								<h3>Our <span>Gallery</span></h3>
+								<div class="gallery-small-thumbs clearfix">
+								{% for image in images %}
+									<div class="thumb-small-gallery">
+									<a data-fancybox="photo" rel="gallery1" href="{{image.image.url}}" data-caption="{{image.title.image_title}}">
+										<img alt="" src="{{image.image.url}}"/>
+									</a>
+                            	</div>
+								{% endfor %}
+                        		</div> <!-- /.galler-small-thumbs -->
+							</div>
 						</div>
-						{% endif %}
-						<!--/ End Pagination -->
 					</div>
 				</div>
 			</div>
 		</section>
-		<!--/ End Courses -->
+		<!--/ End Events -->
 
 		<!-- Footer -->
 		<footer class="footer overlay section wow fadeIn">
@@ -332,4 +401,4 @@ All Courses
 			<!--/ End Footer Bottom -->
 		</footer>
 		<!--/ End Footer -->
-{% endblock content %}
+		{% endblock content %}
