@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 	var map;
 	map = new GMaps({
-		el: '#map',
+		el: '#ma',
 		lat: 51.507351,
 		lng: -0.127758,
 		scrollwheel:false,

@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'news',
     'photos',
     'staffs',
-    'dev'
+    'dev',
+    'contact'
 ]
 
 MIDDLEWARE = [

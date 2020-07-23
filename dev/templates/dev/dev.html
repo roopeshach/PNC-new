@@ -1,1 +1,357 @@
-hai hai
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}
+    Developer Team
+{% endblock title %}
+
+
+{% block content %}
+    <body>
+
+		<!-- Book Preloader -->
+
+		<div class="book_preload">
+            <div class="book">
+                <div class="book__page"></div>
+                <div class="book__page"></div>
+                <div class="book__page"></div>
+            </div>
+        </div>
+		<!--/ End Book Preloader -->
+
+		<!-- Header -->
+		<header class="header">
+			<!-- Topbar -->
+			<div class="topbar">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 col-12">
+							<!-- Contact -->
+							<ul class="content">
+								<li><i class="fa fa-phone"></i>{{content.phone}}</li>
+								<li><a href="mailto:info@yourdomain.com"><i class="fa fa-envelope-o"></i>{{content.email}}</a></li>
+							</ul>
+							<!-- End Contact -->
+						</div>
+						<div class="col-lg-4 col-12">
+							<!-- Social -->
+							<ul class="social">
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus "></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#"><i class="fa fa-behance"></i></a></li>
+								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+								<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+							</ul>
+							<!-- End Social -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Topbar -->
+			<!-- Header Inner -->
+			<div class="header-inner">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-3 col-12">
+							<div class="logo">
+								<a href="/"><img src="{% static 'images/logo.png' %}" alt="#"></a>
+							</div>
+							<div class="mobile-menu"></div>
+						</div>
+						<div class="col-lg-9 col-md-9 col-12">
+							<!-- Header Widget -->
+							<div class="header-widget">
+								<div class="single-widget">
+									<i class="fa fa-phone"></i>
+									<h4>Call Now<span>{{content.phone}}</span></h4>
+								</div>
+								<div class="single-widget">
+									<i class="fa fa-envelope-o"></i>
+									<h4>Send Message<a href="{{content.email}}"><span>{{content.email}}</span></a></h4>
+								</div>
+								<div class="single-widget">
+									<i class="fa fa-map-marker"></i>
+									<h4>Our Location<span>Pokhara-01, Bagar </span></h4>
+								</div>
+							</div>
+							<!--/ End Header Widget -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/ End Header Inner -->
+			<!-- Header Menu -->
+			<div class="header-menu">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<nav class="navbar navbar-default">
+								<div class="navbar-collapse">
+									<!-- Main Menu -->
+									<ul id="nav" class="nav menu navbar-nav">
+										<li><a href="/">Home</a></li>
+										<li><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
+										<ul class="dropdown">
+											<li><a href="#">Faculties<i class="fa fa-angle-right"></i></a>
+												<ul class="dropdown submenu">
+												{% for faculty in faculties %}
+													<li><a href="/faculty/{{faculty.slug}}">{{faculty.name}}</a></li>
+													{% endfor %}
+												</ul>
+											</li>
+											<li><a href="#">Institutes<i class="fa fa-angle-right"></i></a>
+												<ul class="dropdown submenu">
+												{% for i in institutes %}
+													<li><a href="/institute/{{i.slug}}">{{i.name}}</a></li>
+													{% endfor %}
+												</ul>
+											</li>
+										</ul>
+										</li>
+										<li><a href="/courses/">Courses</a></li>
+										<li><a href="/news/">News</a></li>
+										<li><a href="/notice/">Notices</a></li>
+										<li><a href="/events/">Events</a></li>
+										<li><a href="/about-us/">About Us</a></li>
+										<li><a href="/contact-us/">Contact</a></li>
+									</ul>
+									<!-- End Main Menu -->
+								</div>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/ End Header Menu -->
+		</header>
+		<!-- End Header -->
+
+		<!-- Start Breadcrumbs -->
+		<section class="breadcrumbs overlay">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<h2>Developer Team</h2>
+						<ul class="bread-list">
+							<li><a href="/">Home<i class="fa fa-angle-right"></i></a></li>
+							<li class="active"><a href="#">Developers</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Breadcrumbs -->
+        <!-- Start Team Area -->
+		<section class="team-style2 section">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="section-title">
+							<h2>Developer<span> Team</span></h2>
+							<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie nec hendrerit hendreri </p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Single Team -->
+						<div class="single-team">
+							<div class="image">
+								<img src="{% static 'developers/shankar.jpg' %}" alt="#">
+								<a href="{% static 'developers/shankar.jpg' %}" data-fancybox="photo"><i class="fa fa-search"></i></a>
+							</div>
+							<!--team-content -->
+							<div class="team-content">
+								<h4 class="name">Rupesh Acharya<span>Web Developer</span></h4>
+								<p>Completely network collaborative web services via user centric initiatives Quickly promote sticky</p>
+								<ul class="social">
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<!--/ End Single Team -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Single Team -->
+						<div class="single-team">
+							<div class="image">
+								<img src="{% static 'developers/shankar.jpg' %}" alt="#">
+								<a href="{% static 'developers/shankar.jpg' %}" data-fancybox="photo"><i class="fa fa-search"></i></a>
+							</div>
+							<!--team-content -->
+							<div class="team-content">
+								<h4 class="name">Shankar Lamichhane<span>Web Developer</span></h4>
+								<p>Completely network collaborative web services via user centric initiatives Quickly promote sticky</p>
+								<ul class="social">
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<!--/ End Single Team -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Single Team -->
+						<div class="single-team">
+							<div class="image">
+								<img src="{% static 'developers/shankar.jpg' %}" alt="#">
+								<a href="{% static 'developers/shankar.jpg' %}" data-fancybox="photo"><i class="fa fa-search"></i></a>
+							</div>
+							<!--team-content -->
+							<div class="team-content">
+								<h4 class="name">Amrit Chapagain<span>Web Devloper</span></h4>
+								<p>Completely network collaborative web services via user centric initiatives Quickly promote sticky</p>
+								<ul class="social">
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<!--/ End Single Team -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Single Team -->
+						<div class="single-team">
+							<div class="image">
+								<img src="{% static 'developers/shankar.jpg' %}" alt="#">
+								<a href="{% static 'developers/shankar.jpg' %}" data-fancybox="photo"><i class="fa fa-search"></i></a>
+							</div>
+							<!--team-content -->
+							<div class="team-content">
+								<h4 class="name">Sandeep Paudel<span>Web Devloper</span></h4>
+								<p>Completely network collaborative web services via user centric initiatives Quickly promote sticky</p>
+								<ul class="social">
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<!--/ End Single Team -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Team Area -->
+
+     <!-- Footer -->
+		<footer class="footer overlay section wow fadeIn">
+			<!-- Footer Top -->
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-6 col-12">
+							<!-- About -->
+							<div class="single-widget about">
+								<div class="logo"><a href="#"><img src="{% static 'images/logo.png' %}" alt="#"></a></div>
+								<p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Lorem ipsum dolor sit amet, consectetur</p>
+								<ul class="list">
+									<li><i class="fa fa-phone"></i>Phone: {{content.phone}} </li>
+									<li><i class="fa fa-envelope"></i>Email: <a href="mailto:{{content.email}}">{{content.email}}</a></li>
+									<li><i class="fa fa-map-o"></i>Address: {{content.address}}</li>
+								</ul>
+							</div>
+							<!--/ End About -->
+						</div>
+						<div class="col-md-1"></div>
+						<div class="col-lg-2 col-md-6 col-12">
+							<!-- Useful Links -->
+							<div class="single-widget useful-links">
+								<h2>Useful Links</h2>
+								<ul>
+									<li><a href="/"><i class="fa fa-angle-right"></i>Home</a></li>
+									<li><a href="/about-us/"><i class="fa fa-angle-right"></i>About Us</a></li>
+									<li><a href="/courses/"><i class="fa fa-angle-right"></i>Courses</a></li>
+									<li><a href="/news/"><i class="fa fa-angle-right"></i>News</a></li>
+									<li><a href="/events/"><i class="fa fa-angle-right"></i>Events</a></li>
+									<li><a href="/notice/"><i class="fa fa-angle-right"></i>Notice</a></li>
+									<li><a href="/contact/"><i class="fa fa-angle-right"></i>Contact</a></li>
+								</ul>
+							</div>
+							<!--/ End Useful Links -->
+						</div>
+						<div class="col-lg-2 col-md-6 col-12">
+							<!-- Latest News -->
+							<div class="single-widget useful-links">
+								<h2>Costume Pages</h2>
+								<ul>
+									{% for p in pages  %}
+									<li><a href="/pages/{{p.slug}}"><i class="fa fa-angle-right"></i>{{p.name}}</a></li>
+									{% endfor %}
+								</ul>
+							</div>
+							<!--/ End Latest News -->
+						</div>
+						<div class="col-lg-2 col-md-6 col-12">
+							<div class="single-widget useful-links">
+								<h2>Resources For</h2>
+								<ul>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Library </a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Current Students</a></li>
+									<li><a href=""><i class="fa fa-angle-right"></i>Faculty/Staff</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>International</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Postdocs</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Alumni</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-6 col-12">
+							<div class="single-widget useful-links">
+								<h2>Study</h2>
+								<ul>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Courses</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Apply Now</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>Scholarships</a></li>
+									<li><a href=""><i class="fa fa-angle-right"></i>FAQs</a></li>
+									<li><a href="#"><i class="fa fa-angle-right"></i>International student enquiries</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/ End Footer Top -->
+			<!-- Footer Bottom -->
+			<div class="footer-bottom">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="bottom-head">
+								<div class="row">
+									<div class="col-12">
+										<!-- Social -->
+										<ul class="social">
+											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+											<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+											<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+											<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+										</ul>
+										<!-- End Social -->
+										<!-- Copyright -->
+										<div class="copyright">
+											<p>© Copyright 2020 <a href="/developers/">Roopesh, Shankar, Amrit & Sandeep</a>. All Rights Reserved</p>
+										</div>
+										<!--/ End Copyright -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/ End Footer Bottom -->
+		</footer>
+		<!--/ End Footer -->
+		{% endblock content %}

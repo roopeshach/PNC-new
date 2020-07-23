@@ -1,12 +1,14 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block title %}
-All Courses
+Department |{{dept.name}}
 {% endblock title %}
 {% block content %}
-
-	<body>
-
+	<!-- Book Preloader -->
+       
+		<!--/ End Book Preloader -->
+	
+	
 		<!-- Header -->
 		<header class="header">
 			<!-- Topbar -->
@@ -80,7 +82,7 @@ All Courses
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
 										<li><a href="/">Home</a></li>
-										<li><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
+										<li ><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											<li><a href="#">Faculties<i class="fa fa-angle-right"></i></a>
 												<ul class="dropdown submenu">
@@ -98,12 +100,12 @@ All Courses
 											</li>
 										</ul>
 										</li>
-										<li class="active"><a href="/courses/">Courses</a></li>
+										<li><a href="/courses/">Courses</a></li>
 										<li><a href="/news/">News</a></li>
 										<li><a href="/notice/">Notices</a></li>
 										<li><a href="/events/">Events</a></li>
 										<li><a href="/about-us/">About Us</a></li>
-										<li><a href="/contact-us/">Contact</a></li>
+										<li class="active"><a href="/contact-us/">Contact</a></li>
 									</ul>
 									<!-- End Main Menu -->
 								</div>
@@ -115,118 +117,113 @@ All Courses
 			<!--/ End Header Menu -->
 		</header>
 		<!-- End Header -->
+	
 		<!-- Start Breadcrumbs -->
 		<section class="breadcrumbs overlay">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<h2>Our Courses</h2>
+						<h2>Contact Pages</h2>
 						<ul class="bread-list">
-							<li><a href="/">Home<i class="fa fa-angle-right"></i></a></li>
-							<li class="active"><a href="">Courses</a></li>
+							<li><a href="index.html">Home<i class="fa fa-angle-right"></i></a></li>
+							<li class="active"><a href="contact.html">Contact</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</section>
 		<!--/ End Breadcrumbs -->
-
-		<!-- Courses -->
-		<section class="courses archives section">
+		
+		<!-- Contact Us -->
+		<section id="contact" class="contact section">
 			<div class="container">
 				<div class="row">
-					<div class="col-12">
+					<div class="col-md-12">
 						<div class="section-title">
-							<h2>Popular <span>Courses</span> We Offer</h2>
-							<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie nec hendrerit hendreri </p>
+							<h2><span>Contact</span> Information</h2>
+							<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie nec hendrerit hendrerit, sollicitudin nec ante.  </p>
 						</div>
 					</div>
 				</div>
-                
-				<div class="row">
-                <div class="col-xl-8 col-md-12"></div>
-					<div class="col-xl-4 col-md-12">
-						<div class="learnedu-sidebar" style="border-left:0px;">
-							<div class="search">
-								<div class="form">
+				<div class="contact-head">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="contact-map">
+								<!-- Map -->
+								<div id="map"></div>
+								<!--/ End Map -->
+							</div>
+						</div>
+						
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="form-head">
+								<!-- Form -->
+								<form class="form" method="POST">
+									{% csrf_token %}
+									<div class="form-group">
+										<input name="name" type="text" placeholder="Enter Name">
+									</div>
+									<div class="form-group">
+										<input name="email" type="email" placeholder="Email Address">
+									</div>
+									<div class="form-group">
+										<input name="title" type="text" placeholder="Website">
+									</div>
+									<div class="form-group">
+										<textarea name="comment" placeholder="Comment"></textarea>
+									</div>
+									<div class="form-group">
+										<div class="button">
+											<button type="submit" class="btn primary">Post Comment</button>
+										</div>
+									</div>
+								</form>
+								
+
 							
-							<form action="" class="">
-								<input type="search"  name="search_courses" placeholder="Search Courses.." required="required">
-								<button class="button" type="submit">
-									<i class="fa fa-search" aria-hidden="true"></i>
-								</button>
-							</form>
-								</div>
+
+								<!--/ End Form -->
 							</div>
 						</div>
 					</div>
-                    {% for d in courses %}
-					<div class="col-lg-12 col-md-6 col-12">
-						<!-- Single Course -->
-						<div class="single-course">
-							<div class="course-head overlay">
-								<a href="" class="btn"><i class="fa fa-link"></i></a>
-							</div>
-							<div class="single-content">
-								<h4>
-								<span>
-								{% if d.faculty %}{{d.faculty}}
-								{% elif d.institute %}{{d.institute}}
-								{%else%}{{d.department}}
-								{% endif %}
-								</span>
-								
-								{% if d.flag %}
-								<a href="/about_program/{{d.slug}}">{{d.name}}</a>
-								{% else %}
-								<a href="/about/{{d.slug}}">{{d.name}}</a>
-								{% endif %}
-								
-								</h4>
-                                <p>
-                                {% autoescape on %}
-                                {{d.content |safe|truncatewords:"35"}}
-                                {% endautoescape %}
-                                </p>
-                            </div>
-						</div>
-						<!--/ End Single Course -->
-					</div>
-                    {% endfor %}
 				</div>
-				<div class="row">
-					<div class="col-12">
-						<!-- start pagination-->
-						{% if courses.has_other_pages %}
-						<div class="pagination-main">
-							<ul class="pagination">
-								{% if courses.has_previous %}
-								<li class="prev"><a href="?page={{ courses.previous_page_number }}" tabindex="-1"><i class="fa fa-angle-double-left"></i></a></li>
-								{% else %}
-								<li class="prev"><a ><i class="fa fa-angle-double-left"></i></a></li>
-								{% endif %}
-								{% for i in courses.paginator.page_range %}
-                                  {% if courses.number == i %}
-                                    <li class="active"><a>{{ i }}</a></li>
-                                  {% else %}
-                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
-                                  {% endif %}
-								{% endfor %}
-								{% if courses.has_next %}
-								<li class="next"><a href="?page={{ courses.next_page_number }}"><span><i class="fa fa-angle-double-right"></i></span></a></li>
-                                {% else %}
-								<li class="next"><a><span><i class="fa fa-angle-double-right"></i></span></a></li>
-                                {% endif %}
-							</ul>
+
+				
+				<div class="contact-bottom">
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-12">
+							<!-- Contact-Info -->
+							<div class="contact-info">
+								<div class="icon"><i class="fa fa-map"></i></div>
+								<h3>Location</h3>
+								<p>{{content.address}}</p>
+							</div>
 						</div>
-						{% endif %}
-						<!--/ End Pagination -->
+						<div class="col-lg-4 col-md-4 col-12">
+							<!-- Contact-Info -->
+							<div class="contact-info">
+								<div class="icon"><i class="fa fa-envelope"></i></div>
+								<h3>Email Address</h3>
+								<a href="mailto:{{content.email}}">{{content.email}}</a>
+								
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-12">
+							<!-- Contact-Info -->
+							<div class="contact-info">
+								<div class="icon"><i class="fa fa-phone"></i></div>
+								<h3>Get in Touch</h3>
+								<p>{{content.phone}}</p>
+								
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<!--/ End Courses -->
-
+		<!--/ End Contact Us -->
+		
+		
 		<!-- Footer -->
 		<footer class="footer overlay section wow fadeIn">
 			<!-- Footer Top -->
@@ -336,4 +333,4 @@ All Courses
 			<!--/ End Footer Bottom -->
 		</footer>
 		<!--/ End Footer -->
-{% endblock content %}
+		{% endblock content %}

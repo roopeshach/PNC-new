@@ -10,15 +10,19 @@ from staffs.models import Staff
 content = Content.objects.all().first()
 desc = Description.objects.all().first()
 slides = Slider.objects.all()
+
 departments = Department.objects.all().filter(is_active="T")
 programs = Program.objects.all().filter(is_active="T")
+pages = Custom_Page.objects.all()
+faculties = Faculty.objects.all()
+institutes = Institute.objects.all()
+
 news = News.objects.all()[:20]
 notices = Notice.objects.all()[:20]
 events = Event.objects.all()[:20]
 messages = Message_From_Chief.objects.all()
-pages = Custom_Page.objects.all()
-faculties = Faculty.objects.all()
-institutes = Institute.objects.all()
+
+
 d_c = departments.count()
 p_c = programs.count()
 courses_c = d_c + p_c
@@ -29,16 +33,19 @@ sm = SocialMedia.objects.all().first()
 context = {
     'content': content,
     'departments': departments,
+    'programs': programs,
+    'pages': pages,
+    'faculties': faculties,
+    'institutes': institutes,
+    
     'slides': slides,
     'desc': desc,
-    'programs': programs,
+    
     'news': news,
     'notices': notices,
     'events': events,
     'messages': messages,
-    'pages': pages,
-    'faculties': faculties,
-    'institutes': institutes,
+    
     'courses':courses_c,
     'staffs':staffs,
     'about':about,
