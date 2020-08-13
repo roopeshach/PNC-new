@@ -7,14 +7,13 @@
     <body>
 
 		<!-- Book Preloader -->
-        {% comment %}
 		<div class="book_preload">
             <div class="book">
                 <div class="book__page"></div>
                 <div class="book__page"></div>
                 <div class="book__page"></div>
             </div>
-        </div> {% endcomment %}
+        </div>
 		<!--/ End Book Preloader -->
 
 		<!-- Header -->
@@ -147,13 +146,15 @@
 				<div class="row">
 					<div class="col-lg-8 col-12">
 						<div class="blog-detail">
+							{% if images %}
 							<div class="b-gallery">
                                 {% for image in images %}
 								<div class="single-image">
-									<img src="{{image.image.url}}" alt="{{news.name}}">
+									<img src="{{image.image.url}}" alt="{{notice.name}}">
 								</div>
                                 {% endfor %}
 							</div>
+							{% endif %}
 							<div class="detail-content">
 								<div class="blog-info">
 									<a href="#"><i class="fa fa-user"></i>By:
@@ -162,6 +163,9 @@
 									<a href="#"><i class="fa fa-bolt"></i>Learning</a>
 								</div>
 								<h2 class="blog-title">{{notice.title}}</h2>
+								{% if notice.feature_image %}
+								<img style="width:100%" src="{{notice.feature_image.url}}" alt="{{notice.name}}">
+								{% endif %}
                                 <p>{% autoescape on %}
                                 {{notice.content |safe}}
                                 {% endautoescape %}</p>
@@ -176,16 +180,15 @@
 								</ul>
 								<!-- Next Prev -->
 								<ul class="prev-next">
-									<li class="prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-									<li class="next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+									<li class="prev"><a {% if previous %}href="/notice/{{previous.slug}}"{% endif %}><i class="fa fa-angle-double-left"></i></a></li>
+									<li class="next"><a {% if next %}href="/notice/{{next.slug}}"{% endif %}><i class="fa fa-angle-double-right"></i></a></li>
 								</ul>
 								<!--/ End Next Prev -->
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-4 col-12">
-						<div class="learnedu-sidebar">
-
+						<div class="sidebar">
 							<!-- Posts -->
 							<div class="single-widget posts">
 								<h3>Recent <span>News</span></h3>
@@ -193,7 +196,7 @@
 								<div class="single-course">
 									<img src="{{n.feature_image.url}}" alt="{{n.title}}">
 									<div class="course-content">
-										<h4><a href="#">{{n.title}}</a></h4>
+										<h4><a href="/news/{{n.slug}}">{{n.title}}</a></h4>
 										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
 									</div>
 								</div>

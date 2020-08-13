@@ -37,20 +37,16 @@ context = {
     'pages': pages,
     'faculties': faculties,
     'institutes': institutes,
-    
     'slides': slides,
     'desc': desc,
-    
     'news': news,
     'notices': notices,
     'events': events,
     'messages': messages,
-    
     'courses':courses_c,
     'staffs':staffs,
     'about':about,
     'sm':sm,
-
 }
 
 

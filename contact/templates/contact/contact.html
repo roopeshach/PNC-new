@@ -1,7 +1,7 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block title %}
-Department |{{dept.name}}
+Contact Us
 {% endblock title %}
 {% block content %}
 	<!-- Book Preloader -->
@@ -125,8 +125,8 @@ Department |{{dept.name}}
 					<div class="col-12">
 						<h2>Contact Pages</h2>
 						<ul class="bread-list">
-							<li><a href="index.html">Home<i class="fa fa-angle-right"></i></a></li>
-							<li class="active"><a href="contact.html">Contact</a></li>
+							<li><a href="/">Home<i class="fa fa-angle-right"></i></a></li>
+							<li class="active"><a href="/contact">Contact</a></li>
 						</ul>
 					</div>
 				</div>
@@ -161,16 +161,16 @@ Department |{{dept.name}}
 								<form class="form" method="POST">
 									{% csrf_token %}
 									<div class="form-group">
-										<input name="name" type="text" placeholder="Enter Name">
+										<input name="name" type="text" placeholder="Enter Name" required>
 									</div>
 									<div class="form-group">
-										<input name="email" type="email" placeholder="Email Address">
+										<input name="email" type="email" placeholder="Email Address" required>
 									</div>
 									<div class="form-group">
-										<input name="title" type="text" placeholder="Website">
+										<input name="title" type="text" placeholder="Enter Title" required>
 									</div>
 									<div class="form-group">
-										<textarea name="comment" placeholder="Comment"></textarea>
+										<textarea name="comment" placeholder="Comment" required></textarea>
 									</div>
 									<div class="form-group">
 										<div class="button">

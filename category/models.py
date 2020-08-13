@@ -3,7 +3,6 @@ from django.utils.text import slugify
 from tinymce import HTMLField
 
 
-
 # Create your models here.
 class Faculty(models.Model):
     IS_ACTIVE = (
@@ -27,6 +26,7 @@ class Faculty(models.Model):
     def __str__(self):
         return self.name
 
+
 class Institute(models.Model):
     IS_ACTIVE = (
         ('T', 'Active'),
@@ -48,7 +48,7 @@ class Institute(models.Model):
 
     def __str__(self):
         return self.name
-    
+
 
 class Department(models.Model):
     IS_ACTIVE = (
@@ -62,8 +62,8 @@ class Department(models.Model):
     content = HTMLField()
     feature_image = models.ImageField(upload_to='department/feature/')
     is_active = models.CharField(max_length=1, choices=IS_ACTIVE)
-    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE , null=True, default=0, blank=True)
-    institute = models.ForeignKey(Institute, on_delete=models.CASCADE , null=True, default=0, blank=True)
+    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, null=True, default=0, blank=True)
+    institute = models.ForeignKey(Institute, on_delete=models.CASCADE, null=True, default=0, blank=True)
     slug = models.SlugField(unique=True, blank=True)
 
     def save(self, *args, **kwargs):
@@ -90,6 +90,7 @@ class Program(models.Model):
     institute = models.ForeignKey(Institute, on_delete=models.CASCADE, null=True, default=0, blank=True)
     slug = models.SlugField(unique=True, blank=True)
     flag = models.IntegerField()
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Program, self).save(*args, **kwargs)
@@ -103,7 +104,6 @@ class Custom_Page(models.Model):
         ('T', 'Active'),
         ('F', 'In-Active'),
     )
-
     name = models.CharField(max_length=254)
     header = models.CharField(max_length=254)
     content = HTMLField()
@@ -120,8 +120,17 @@ class Custom_Page(models.Model):
     def __str__(self):
         return self.name
 
+
+class PageImage(models.Model):
+    custom_page = models.ForeignKey(Custom_Page, on_delete=models.CASCADE)
+    image = models.ImageField( upload_to="custom_pages/")
+
+    def __str__(self):
+        return self.custom_page.header
+
+
 class Syllabus(models.Model):
-    subject_name = models.CharField( max_length=254)
+    subject_name = models.CharField(max_length=254)
     department = models.ForeignKey(Department, blank=True, null=True, on_delete=models.CASCADE)
     program = models.ForeignKey(Program, blank=True, null=True, on_delete=models.CASCADE)
-    file = models.FileField( upload_to="syllabus/", max_length=100)
+    file = models.FileField(upload_to="syllabus/", max_length=100)

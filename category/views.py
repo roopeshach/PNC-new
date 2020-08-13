@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from .models import Department, Program, Custom_Page , Faculty , Institute , Syllabus
+from .models import Department, Program, Custom_Page, Faculty, Institute, Syllabus, PageImage
 from home.models import Content
 from news.models import News, Notice, Event
-from photos.models import DepartmentGallery , ProgramGallery
+from photos.models import DepartmentGallery, ProgramGallery
 from staffs.models import Staff
 from django.db.models import Q
 
@@ -21,7 +21,6 @@ def aboutDepartment(request, slug):
         Q(department=dept.id))[:4]
     notices = Notice.objects.filter(
         Q(department=dept.id))[:4]
-    
 
     staffs = Staff.objects.all().filter(department__id=dept.id)
 
@@ -35,15 +34,16 @@ def aboutDepartment(request, slug):
         'programs': programs,
         'pages': pages,
         'news': news,
-        'notices':notices,
-        'faculties':faculties,
-        'institutes' :institutes,
-        'staffs':staffs,
-        'images':images,
-        'syllabus':syllabus,
+        'notices': notices,
+        'faculties': faculties,
+        'institutes': institutes,
+        'staffs': staffs,
+        'images': images,
+        'syllabus': syllabus,
 
     }
     return render(request, 'category/about.html', context)
+
 
 def aboutProgram(request, slug):
     program = Program.objects.get(slug=slug)
@@ -72,9 +72,9 @@ def aboutProgram(request, slug):
     return render(request, 'category/aboutProgram.html', context_program)
 
 
-
 def aboutCustom(request, slug):
     page = Custom_Page.objects.get(slug=slug)
+    images = PageImage.objects.all().filter(custom_page=page.id)
     context_custom = {
         'content': content,
         'departments': departments,
@@ -83,7 +83,7 @@ def aboutCustom(request, slug):
         'page': page,
         'faculties': faculties,
         'institutes': institutes,
-
+        'images': images,
     }
 
     return render(request, 'category/aboutCustom.html', context_custom)
@@ -97,15 +97,14 @@ def aboutFaculty(request, slug):
         'departments': departments,
         'programs': programs,
         'pages': pages,
-        'faculties':faculties,
-        'institutes':institutes,
-        'fac':fac,
-        'departments_of_faculty' :departments_of_faculty,
-
+        'faculties': faculties,
+        'institutes': institutes,
+        'fac': fac,
+        'departments_of_faculty': departments_of_faculty,
 
     }
 
-    return render(request, 'category/aboutFaculty.html',context)
+    return render(request, 'category/aboutFaculty.html', context)
 
 
 def aboutInstitute(request, slug):
@@ -116,11 +115,10 @@ def aboutInstitute(request, slug):
         'departments': departments,
         'programs': programs,
         'pages': pages,
-        'faculties':faculties,
-        'institutes':institutes,
-        'ins':ins,
-        'departments_of_faculty' :departments_of_faculty,
-
+        'faculties': faculties,
+        'institutes': institutes,
+        'ins': ins,
+        'departments_of_faculty': departments_of_faculty,
     }
 
-    return render(request, 'category/aboutIns.html',context)
+    return render(request, 'category/aboutIns.html', context)

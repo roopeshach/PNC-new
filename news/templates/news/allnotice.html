@@ -158,14 +158,15 @@ All Notices
 								<img src="{{n.feature_image.url}}" alt="{{n.title}}" style="height:300px;width:100%">
 							</div>
 							<div class="blog-content">
-								<h4 class="blog-title"><a href="">{{n.title}}</a></h4>
+								<h4 class="blog-title"><a href="/notice/{{n.slug}}">{{n.title |truncatechars:"50"}}</a></h4>
 								<div class="blog-info">
 									<a href="#"><i class="fa fa-user"></i>By:
-										{% if n.department %}{{n.department}}{% else %}{{n.program}}{% endif %}</a>
+										{% if n.department %}{{n.department}}{% else %}{{n.program}}{% endif %}
+									</a>
 								</div>
 								<p>
 									{% autoescape on %}
-									{{n.content |safe|truncatewords:"30"}}
+									{{n.content |safe|striptags|truncatechars:"200"}}
 									{% endautoescape %}
 									</p>
                                 <div class="button">

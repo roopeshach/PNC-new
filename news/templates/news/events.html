@@ -175,14 +175,15 @@
 										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 										<li><a href="#"><i class="fa fa-google-plus "></i></a></li>
 										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+										<li class="prev"><a {% if previous %}href="/event/{{previous.slug}}"{% endif %}><i class="fa fa-angle-double-left"></i></a></li>
+										<li class="next"><a {% if next %}href="/event/{{next.slug}}"{% endif %}><i class="fa fa-angle-double-right"></i></a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-4 col-12">
-						<div class="learnedu-sidebar">
-
+						<div class="sidebar">
 							<div class="single-widget course">
 								<h3>Recent <span>News</span></h3>
 								<!-- Single news -->

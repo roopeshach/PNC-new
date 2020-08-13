@@ -57,7 +57,7 @@ About Prithvi Narayan Campus
 					<div class="row">
 						<div class="col-lg-3 col-md-3 col-12">
 							<div class="logo">
-								<a href="index.html"><img src="{% static 'images/logo.png' %}" alt="#"></a>
+								<a href="/"><img src="{% static 'images/logo.png' %}" alt="#"></a>
 							</div>
 							<div class="mobile-menu"></div>
 						</div>
@@ -149,15 +149,14 @@ About Prithvi Narayan Campus
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6 col-12">
-						<div class="single-image overlay mb-3">
-							<img src="{{about.image1.url}}" alt="#">
-                            <img src="{{about.image2.url}}" alt="#">
-                            <img src="{{about.image3.url}}" alt="#">
+						<div class="single-image mb-3">
+							<img src="{{about.image1.url}}" alt="#" style="margin-bottom:10px;border-radius:10px">
+                            <img src="{{about.image2.url}}" alt="#" style="margin-bottom:10px;border-radius:10px">
+                            <img src="{{about.image3.url}}" alt="#" style="margin-bottom:10px;border-radius:10px">
 						</div>
 					</div>
 					<div class="col-lg-6 col-12">
-						<div class="about-text">
-							<h2>About Our Education</h2>
+						<div class="about-text" style="position:sticky;top:80px">
 							<p>
                             {% autoescape on %}
                             {{about.content|safe}}

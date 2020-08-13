@@ -6,7 +6,6 @@ All Courses
 {% block content %}
 
 	<body>
-
 		<!-- Header -->
 		<header class="header">
 			<!-- Topbar -->
@@ -146,16 +145,15 @@ All Courses
 				<div class="row">
                 <div class="col-xl-8 col-md-12"></div>
 					<div class="col-xl-4 col-md-12">
-						<div class="learnedu-sidebar" style="border-left:0px;">
+						<div class="sidebar" style="border-left:0px;padding:0px;">
 							<div class="search">
 								<div class="form">
-							
-							<form action="" class="">
-								<input type="search"  name="search_courses" placeholder="Search Courses.." required="required">
-								<button class="button" type="submit">
-									<i class="fa fa-search" aria-hidden="true"></i>
-								</button>
-							</form>
+									<form action="" class="">
+										<input type="search"  name="search_courses" placeholder="Search Courses.." required="required">
+										<button class="button" type="submit">
+											<i class="fa fa-search" aria-hidden="true"></i>
+										</button>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -175,17 +173,15 @@ All Courses
 								{%else%}{{d.department}}
 								{% endif %}
 								</span>
-								
 								{% if d.flag %}
 								<a href="/about_program/{{d.slug}}">{{d.name}}</a>
 								{% else %}
 								<a href="/about/{{d.slug}}">{{d.name}}</a>
 								{% endif %}
-								
 								</h4>
                                 <p>
                                 {% autoescape on %}
-                                {{d.content |safe|truncatewords:"35"}}
+                                {{d.content |safe|striptags|truncatechars:"350"}}
                                 {% endautoescape %}
                                 </p>
                             </div>

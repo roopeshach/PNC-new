@@ -1,6 +1,7 @@
 from django.db import models
 from tinymce import HTMLField
 
+
 # Create your models here.
 class Content(models.Model):
     email = models.EmailField(max_length=254)
@@ -32,11 +33,13 @@ class FAQ(models.Model):
     question = models.TextField()
     answer = HTMLField()
 
+
 class aboutUs(models.Model):
     content = HTMLField()
     image1 = models.ImageField( upload_to="aboutus/", height_field=None, width_field=None, max_length=None)
     image2 = models.ImageField( upload_to="aboutus/", height_field=None, width_field=None, max_length=None)
     image3 = models.ImageField( upload_to="aboutus/", height_field=None, width_field=None, max_length=None)
+
 
 class SocialMedia(models.Model):
     facebook = models.CharField(blank=True, max_length=254)
@@ -44,5 +47,3 @@ class SocialMedia(models.Model):
     google_plus = models.CharField(blank=True, max_length=254)
     linkedin = models.CharField(blank=True, max_length=254)
     youtube = models.CharField(blank=True, max_length=254)
-
-    

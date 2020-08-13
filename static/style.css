@@ -1,7 +1,5 @@
 /* =====================================
 Template Name: Roopesh Shankar
-Author Name: iThemer
-Author URI: http://ithemer.com/
 Description: Roopesh Shankar is a Education & Courses Template.
 Version:	1.0
 ========================================*/
@@ -2095,20 +2093,22 @@ width: 100%;
 	Roopesh Shankar Sidebar
 ===============================*/
 /* Blog Sidebar */
-.learnedu-sidebar {
+.sidebar {
 	margin-top: 30px;
 	border-left: 1px solid #e6e6e6;
 	padding-left: 30px;
+	position: sticky;
+    top: 70px;
 }
-.learnedu-sidebar.left{
+.sidebar.left{
 	border-left:0px;
 	border-right:1px solid #e6e6e6;
 	padding:0 30px 0 0;
 }
-.learnedu-sidebar .search{
+.sidebar .search{
 	position:relative;
 }
-.learnedu-sidebar .search input {
+.sidebar .search input {
 	width: 100%;
 	height: 52px;
 	box-shadow: none;
@@ -2119,7 +2119,7 @@ width: 100%;
 	color: #6c6c6c;
 	padding: 0 48px 0 20px;
 }
-.learnedu-sidebar .search .button {
+.sidebar .search .button {
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -2137,42 +2137,42 @@ width: 100%;
 	transition: all 0.4s ease;
 	border-radius: 0px;
 }
-.learnedu-sidebar .search .button:hover{
+.sidebar .search .button:hover{
 	background:#00000b;
 	color:#fff;
 }
-.learnedu-sidebar .single-widget {
+.sidebar .single-widget {
 	margin-top: 30px;
 	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
 	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
 	padding: 15px;
 }
-.learnedu-sidebar .single-widget h3 {
+.sidebar .single-widget h3 {
 	font-size: 20px;
 	padding-left: 10px;
 	border-left: 2px solid transparent;
 	margin-bottom: 20px;
 }
-.learnedu-sidebar .single-widget.categories ul{}
-.learnedu-sidebar .single-widget.categories ul li {
+.sidebar .single-widget.categories ul{}
+.sidebar .single-widget.categories ul li {
 	margin-bottom: 15px;
 	border-bottom: 1px solid #e6e6e6;
 	padding-bottom: 15px;
 }
-.learnedu-sidebar .single-widget.categories ul li:last-child{
+.sidebar .single-widget.categories ul li:last-child{
 	margin:0;
 	padding:0;
 	border:none;
 	border:none;
 }
-.learnedu-sidebar .single-widget.categories ul li a{
+.sidebar .single-widget.categories ul li a{
 	color:#252525;
 }
-.learnedu-sidebar .single-widget.categories ul li a:hover{
+.sidebar .single-widget.categories ul li a:hover{
 	color:#00B069;
 }
-.learnedu-sidebar .single-widget.categories ul li a span {
+.sidebar .single-widget.categories ul li a span {
 	float: right;
 	width: 30px;
 	height: 30px;
@@ -2182,109 +2182,109 @@ width: 100%;
 	text-align: center;
 	font-size: 13px;
 }
-.learnedu-sidebar .single-widget.categories ul li i{
+.sidebar .single-widget.categories ul li i{
 	margin-right:5px;
 }
-.learnedu-sidebar .single-post {
+.sidebar .single-post {
 	margin-bottom: 15px;
 	padding-bottom: 15px;
 	border-bottom: 1px solid #e6e6e6;
 	overflow: hidden;
 }
-.learnedu-sidebar .single-post:last-child{
+.sidebar .single-post:last-child{
 	border:none;
 	margin-bottom:0px;
 	padding-bottom:0px;
 }
-.learnedu-sidebar .post-img {
+.sidebar .post-img {
 	float: left;
 	width: 70px;
 	margin-right: 10px;
 }
-.learnedu-sidebar .post-img img {
+.sidebar .post-img img {
 	width: 64px;
 	height: 64px;
 	border-radius: 100%;
 }
-.learnedu-sidebar .post-info h4 {
+.sidebar .post-info h4 {
 	color: #252525;
 	font-size: 15px;
 	margin-bottom: 5px;
 }
-.learnedu-sidebar .post-info h4 a {
+.sidebar .post-info h4 a {
 	color: #252525;
 }
-.learnedu-sidebar .post-info span{
+.sidebar .post-info span{
 	color:#666;
 }
-.learnedu-sidebar .post-info span i{
+.sidebar .post-info span i{
 	margin-right:5px;
 }
-.learnedu-sidebar .single-course {
+.sidebar .single-course {
 	overflow: hidden;
 	margin-bottom: 15px;
 	padding-bottom: 15px;
 	border-bottom: 1px solid #e6e6e6;
 }
-.learnedu-sidebar .single-course:last-child{
+.sidebar .single-course:last-child{
 	padding:0;
 	margin:0;
 	border:none;
 }
-.learnedu-sidebar .single-course img {
+.sidebar .single-course img {
 	width: 64px;
 	height: 64px;
 	border-radius: 100%;
 	float: left;
 	margin:0 15px 0 0 !important;
 }
-.learnedu-sidebar .course-content h4{
+.sidebar .course-content h4{
 	font-size:15px;
 }
-.learnedu-sidebar .course-content a {
+.sidebar .course-content a {
 	color: #252525;
 }
-.learnedu-sidebar .course-content .meta {
+.sidebar .course-content .meta {
 	color: #666;
 	font-size: 14px;
 	font-weight: 500;
 }
-.learnedu-sidebar .course-content .meta span{
+.sidebar .course-content .meta span{
 	margin-left:10px;
 }
-.learnedu-sidebar .course-content .meta span i{
+.sidebar .course-content .meta span i{
 	margin-right:5px;
 }
-.learnedu-sidebar .calendar li{
+.sidebar .calendar li{
 	margin-bottom:12px;
 	padding-bottom:12px;
 	border-bottom:1px solid #e7e7e7;
 }
-.learnedu-sidebar .calendar li:last-child{
+.sidebar .calendar li:last-child{
 	margin:0;
 	padding:0;
 	border:none;
 }
-.learnedu-sidebar .calendar li a{
+.sidebar .calendar li a{
 	color:#252525;
 	font-size:15px;
 }
-.learnedu-sidebar .calendar li a i{
+.sidebar .calendar li a i{
 	margin-right:10px;
 	color:#777;
 }
-.learnedu-sidebar .tags h3{
+.sidebar .tags h3{
 	margin-bottom:10px;
 }
-.learnedu-sidebar .tags ul{
+.sidebar .tags ul{
 	margin-left:-10px;
 }
-.learnedu-sidebar .tags ul li {
+.sidebar .tags ul li {
 	display: inline-block;
 	margin-top: 10px;
 	padding-left:10px;
 }
-.learnedu-sidebar .tags ul li a {
+.sidebar .tags ul li a {
 	border: 1px solid #e7e7e7;
 	display: block;
 	padding: 5px 10px;
@@ -2905,4 +2905,8 @@ gallery-small-thumbs {
   .thumb-small-gallery img {
 	width: 100%;
 	height: 100%;
+  }
+  .myimage {
+    position:sticky;
+    top:80px;
   }

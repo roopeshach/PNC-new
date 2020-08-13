@@ -23,7 +23,8 @@ gallery = DepartmentGallery.objects.all()[:12]
 def viewEvent(request, slug):
     event = Event.objects.get(slug=slug)
     images = EventImage.objects.all().filter(event=event.id)
-
+    previous = prev_in_order(event)
+    next = next_in_order(event)
     context_event = {
         'content': content,
         'departments': departments,
@@ -36,7 +37,8 @@ def viewEvent(request, slug):
         'recent_news':recent_news,
         'recent_notice':recent_notice,
         'gallery':gallery,
-        
+        'previous': previous,
+        'next': next,
     }
     return render(request, 'news/events.html', context_event)
 
@@ -70,10 +72,8 @@ def allEvent(request):
 
 
 def viewNews(request, slug):
-
     news = News.objects.get(slug=slug)
     images = NewsImage.objects.all().filter(news=news.id)
-   
     previous = prev_in_order(news)
     next = next_in_order(news)
     context_news = {
@@ -97,7 +97,8 @@ def viewNews(request, slug):
 def viewNotice(request, slug):
     notice = Notice.objects.get(slug=slug)
     images = NoticeImage.objects.all().filter(notice=notice.id)
-
+    previous = prev_in_order(notice)
+    next = next_in_order(notice)
     context_notice = {
         'content': content,
         'departments': departments,
@@ -110,7 +111,8 @@ def viewNotice(request, slug):
         'recent_news':recent_news,
         'recent_notice':recent_notice,
         'gallery':gallery,
-       
+        'previous': previous,
+        'next': next,
     }
     return render(request, 'news/notice.html', context_notice)
 

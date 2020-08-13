@@ -1,7 +1,5 @@
 /* =====================================
 Template Name: Roopesh Shankar
-Author Name: iThemer
-Author URI: http://ithemer.com/
 Description: Roopesh Shankar is a Education & Courses Template.
 Version:	1.0
 ========================================*/
@@ -40,7 +38,7 @@ Version:	1.0
 				$('.header').removeClass("sticky");
 			}
 		});
-		
+
 		/*====================================
 			Mobile Menu JS
 		======================================*/ 	
@@ -125,6 +123,7 @@ Version:	1.0
 			Testimonial Slider JS
 		======================================*/ 
 		$('.testimonial-slider').owlCarousel({
+		    items:1,
 			autoplay:true,
 			autoplayTimeout:3500,
 			smartSpeed: 600,
@@ -132,7 +131,7 @@ Version:	1.0
 			margin:25,
 			loop:true,
 			merge:true,
-			center:false,
+			center:true,
 			nav:true,
 			dots:false,
 			navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
@@ -142,11 +141,11 @@ Version:	1.0
 					nav:false,
 				},
 				480: {
-					items:2,
+					items:1,
 					nav:false,
 				},
 				768: {
-					items:2,
+					items:1,
 					nav:false,
 				},
 				1170: {
@@ -213,7 +212,7 @@ Version:	1.0
 		======================================*/ 
 		$('.counter').counterUp({
 			delay: 10,
-			time: 4000
+			time: 2500
 			
 		});	
 		
@@ -306,7 +305,7 @@ Version:	1.0
 			Wow JS
 		======================================*/		
 		var window_width = $(window).width();   
-			if(window_width > 767){
+			if(window_width > 1500){
             new WOW().init();
 		}
 	

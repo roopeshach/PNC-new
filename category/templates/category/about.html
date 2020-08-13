@@ -5,10 +5,13 @@ Department |{{dept.name}}
 {% endblock title %}
 {% block content %}
 	<!-- Book Preloader -->
-       
-		<!--/ End Book Preloader -->
-	
-	
+		<div class="book_preload">
+            <div class="book">
+                <div class="book__page"></div>
+                <div class="book__page"></div>
+                <div class="book__page"></div>
+            </div>
+        </div>
 		<!-- Header -->
 		<header class="header">
 			<!-- Topbar -->
@@ -128,7 +131,6 @@ Department |{{dept.name}}
 							<li><a href="/">Home<i class="fa fa-angle-right"></i></a></li>
                             <li><a href="#">
                             {% if dept.faculty %}{{dept.faculty}}{% else %}{{dept.institute}}{% endif %}
-                            
                             <i class="fa fa-angle-right"></i></a></li>
 							<li class="active"><a href="#">{{dept.name}}</a></li>
 						</ul>
@@ -145,12 +147,12 @@ Department |{{dept.name}}
 					<div class="col-lg-8 col-12">
 						<div class="single-event">
 							<div class="single-course">
-										<div class="course-head">		
-											{% if dept.feature_image %}
-											<img style="width:100%"src="{{dept.feature_image.url}}" alt="#">
-											{% endif %}
-										</div>			
-									</div>	
+								<div class="course-head">
+									{% if dept.feature_image %}
+									<img style="width:100%"src="{{dept.feature_image.url}}" alt="#">
+									{% endif %}
+								</div>
+							</div>
 							<div class="event-content">
 								<div class="meta"> 
 									<span><i class="fa fa-calendar"></i>
@@ -199,9 +201,7 @@ Department |{{dept.name}}
 										</tbody>
 									</table>
 								</div>
-                               
 								<div class="book-now">
-									
 									<ul class="social">
 										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -213,8 +213,7 @@ Department |{{dept.name}}
 						</div>
 					</div>
 					<div class="col-lg-4 col-12">
-						<div class="learnedu-sidebar">
-							
+						<div class="sidebar">
 							<div class="single-widget course">
 								<h3>Department <span>Head</span></h3>
 								<!-- Single Course -->
@@ -226,10 +225,8 @@ Department |{{dept.name}}
 									</div>
 								</div>
 								<!-- Single Course -->
-							 
 							</div>
 							<!-- Categories -->
-							
 							<!--/ End Categories -->
 							{% if news %}
 							<div class="single-widget course">

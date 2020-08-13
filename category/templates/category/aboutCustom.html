@@ -1,23 +1,20 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% block title %}
+{{page.name}}
+{% endblock title %}
 {% block content %}
     <body>
 
 		<!-- Book Preloader -->
-        {% comment %}
 		<div class="book_preload">
             <div class="book">
                 <div class="book__page"></div>
                 <div class="book__page"></div>
                 <div class="book__page"></div>
             </div>
-        </div> {% endcomment %}
+        </div>
 		<!--/ End Book Preloader -->
-
-		<!-- Mp Color -->
-
-		<!--/ End Mp Color -->
-
 		<!-- Header -->
 		<header class="header">
 			<!-- Topbar -->
@@ -144,30 +141,42 @@
 		<!--/ End Breadcrumbs -->
 
 		<!-- Courses -->
-		<section class="courses single section">
+		<section class="blog b-archives single section">
 			<div class="container">
 				<div class="row">
-					<div class="col-12">
-						<div class="single-main">
-							<div class="row">
-								<div class="col-lg-12 col-12">
-									<!-- Single Course -->
-									<div class="single-course">
-										<div class="course-head">
-											<img src="{{page.image.url}}" alt="{{page.name}}">
-										</div>
-									</div>
-									<br>
-									<!--/ End Single Course -->
-								</div>
+					<div class="col-lg-8 col-12">
+						<div class="blog-detail">
+							<div class="detail-content">
+								<h2 class="blog-title">{{page.header}}</h2>
+                                <p>{% autoescape on %}
+                                {{page.content |safe}}
+                                {% endautoescape %}</p>
+                            </div>
+							<div class="blog-bottom">
+								<ul class="share">
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								</ul>
 							</div>
-							<div class="row">
-								<div class="col-12">
-									<div class="content">
-										<h2><a href="#">{{page.name}}</a></h2>
-										<p>{{page.content |safe}}</p>
-									</div>
-								</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-12">
+						<div class="sidebar" style="">
+							<!-- page Feature Image -->
+							<div class="single-widget course">
+                            	{% if page.image %}
+									<a data-fancybox="photo" rel="gallery1" href="{{page.image.url}}" data-caption="{{page.header}}">
+									<img alt="" src="{{page.image.url}}" class="mb-2 rounded"/></a>
+								{% endif %}
+								{% if images %}
+									{% for image in images %}
+										<a data-fancybox="photo" rel="gallery1" href="{{image.image.url}}" data-caption="{{page.header}}">
+										<img alt="{{page.name}}" src="{{image.image.url}}" class="mb-2 rounded"/></a>
+									{% endfor %}
+								{% endif %}
 							</div>
 						</div>
 					</div>
