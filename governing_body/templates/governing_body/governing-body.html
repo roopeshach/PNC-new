@@ -161,10 +161,8 @@ Governing Body
 				<div class="row">
 					<div class="col-12">
 						<div class="section-title">
-							<h2><span>Governing Body</span></h2>
-						    <p>The governing body of pn campus has a rich history of service to the department of higher
-                            education in the western region. The campus is led by the campus chief, which is accountable
-                            to the management committee....</p>
+							<h2><span>{{governing_details.title}}</span></h2>
+						    <p>{{governing_details.desc}}</p>
                         </div>
 					</div>
 				</div>
@@ -173,37 +171,65 @@ Governing Body
 						<div class="sidebar left">
 							<!-- Categories -->
 							<div class="single-widget categories">
-                                <h3 class="title">Management Committee</h3>
+                                <center><h3 class="title">{{exec_details.name}}</h3></center>
+								<p>{{exec_details.desc}}</p>
+								
+								{% for exec_mem in exec_members %}
+								<br>
+								<div class="row">
+									<div class="col-md-2">
+										<img src="{{exec_mem.profile_image.url}}" alt="{{exec_mem.name}}" width=100>
 
+									</div>
+									<div class="col-md-6">
+										<h4>{{exec_mem.name}}</h4>
+										<h6>{{exec_mem.member_role}}</h6>
+										<h6>{{exec_mem.email}}</h6>
+									</div>
+								</div>
+
+								{% endfor %}
                             </div>
 							<!--/ End Categories -->
-							<!-- Posts -->
-							<div class="single-widget posts">
-								<h3>Executive Committee</h3>
-								<div class="single-post">
-									<div class="post-img">
-										<img src="images/blog/blog1.jpg" alt="">
-									</div>
-									<div class="post-info">
-										<h4><a href="#">Sed libero justo, tempus sit amet efficitur auctor</a></h4>
-										<span><i class="fa fa-calendar"></i>May 05, 2018</span>
-									</div>
-								</div>
+							<div class="single-widget categories">
+                                <center><h3 class="title">{{management_details.name}}</h3></center>
+								<p>{{management_details.desc}}</p>
+								
+								{% for mc_mem in mc_members %}
+								<br>
+								<div class="row">
+									<div class="col-md-2">
+										<img src="{{mc_mem.profile_image.url}}" alt="{{mc_mem.name}}" width=100>
 
-							</div>
-							<!--/ End Posts -->
-							<div class="single-widget course">
-								<h3><span>Campus Authorities</span></h3>
-								<!-- Campus Authorities -->
-								<div class="single-course">
-									<img src="images/course/course1.jpg" alt="#">
-									<div class="course-content">
-										<h4><a href="#">Prof.Dr. Saroj Koirala</a></h4>
-										<div class="meta">Campus Chief, <span><i class="fa fa-clock-o"></i>chief@prnc.tu.edu.np</span></div>
+									</div>
+									<div class="col-md-6">
+										<h4>{{mc_mem.name}}</h4>
+										<h6>{{mc_mem.member_role}}</h6>
+										<h6>{{mc_mem.email}}</h6>
 									</div>
 								</div>
-								<!-- End Campus Authorities -->
-							</div>
+								{% endfor %}
+                            </div>
+
+							<div class="single-widget categories">
+                                <center><h3 class="title">{{ca_details.name}}</h3></center>
+								<p>{{ca_details.desc}}</p>
+								
+								{% for ca_mem in ca_members %}
+								<br>
+								<div class="row">
+									<div class="col-md-2">
+										<img src="{{ca_mem.profile_image.url}}" alt="{{ca_mem.name}}" width=100>
+
+									</div>
+									<div class="col-md-6">
+										<h4>{{ca_mem.name}}</h4>
+										<h6>{{ca_mem.member_role}}</h6>
+										<h6>{{ca_mem.email}}</h6>
+									</div>
+								</div>
+								{% endfor %}
+                            </div>
 						</div>
 					</div>
 				</div>
@@ -307,7 +333,7 @@ Governing Body
 										<!-- End Social -->
 										<!-- Copyright -->
 										<div class="copyright">
-											<p>© Copyright 2018 <a href="#">Roopesh Shankar</a>. All Rights Reserved</p>
+											<p>© Copyright 2018 <a href="#">CSIT Team</a>. All Rights Reserved</p>
 										</div>
 										<!--/ End Copyright -->
 									</div>

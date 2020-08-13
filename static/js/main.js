@@ -1,6 +1,6 @@
 /* =====================================
-Template Name: Roopesh Shankar
-Description: Roopesh Shankar is a Education & Courses Template.
+Template Name: CSIT Team
+Description: CSIT Team is a Education & Courses Template.
 Version:	1.0
 ========================================*/
 /*=======================================
