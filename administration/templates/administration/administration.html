@@ -1,17 +1,25 @@
 {% extends 'home/base.html' %}
 {% load static %}
+
 {% block title %}
-Department |{{dept.name}}
+Desk Officials
 {% endblock title %}
+
+
 {% block content %}
-	<!-- Book Preloader -->
-		<div class="book_preload">
+    <body>
+
+		<!-- Book Preloader -->
+        <div class="book_preload">
             <div class="book">
                 <div class="book__page"></div>
                 <div class="book__page"></div>
                 <div class="book__page"></div>
             </div>
         </div>
+		<!--/ End Book Preloader -->
+
+
 		<!-- Header -->
 		<header class="header">
 			<!-- Topbar -->
@@ -85,7 +93,7 @@ Department |{{dept.name}}
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
 										<li><a href="/">Home</a></li>
-										<li class="active"><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
+										<li><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											<li><a href="#">Faculties<i class="fa fa-angle-right"></i></a>
 												<ul class="dropdown submenu">
@@ -104,11 +112,23 @@ Department |{{dept.name}}
 										</ul>
 										</li>
 										<li><a href="/courses/">Courses</a></li>
-										<li><a href="/news/">News</a></li>
-										<li><a href="/notice/">Notices</a></li>
-										<li><a href="/events/">Events</a></li>
-										<li><a href="/about-us/">About Us</a></li>
-										<li><a href="/contact-us/">Contact</a></li>
+										<li><a href="#">News<i class="fa fa-angle-down"></i></a>
+											<ul class="dropdown">
+												<li><a href="news/">News</a></li>
+												<li><a href="notice/">Notices</a></li>
+												<li><a href="events/">Events</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Library<i class="fa fa-angle-down"></i></a>
+											<ul class="dropdown">
+												<li><a href="">About Library</a></li>
+												<li><a href="">E-Resources</a></li>
+												<li><a href="">Audio Books</a></li>
+												<li><a href="">Library OPAC</a></li>
+											</ul>
+										</li>
+										<li><a href="about-us/">About Us</a></li>
+										<li><a href="contact">Contact</a></li>
 									</ul>
 									<!-- End Main Menu -->
 								</div>
@@ -120,181 +140,73 @@ Department |{{dept.name}}
 			<!--/ End Header Menu -->
 		</header>
 		<!-- End Header -->
-
-		<!-- Start Breadcrumbs -->
-		<section class="breadcrumbs overlay">
+        <section class="breadcrumbs overlay">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<h2>{{dept.name}}</h2>
+						<h2>Desk Officials </h2>
 						<ul class="bread-list">
 							<li><a href="/">Home<i class="fa fa-angle-right"></i></a></li>
-                            <li><a href="#">
-                            {% if dept.faculty %}{{dept.faculty}}{% else %}{{dept.institute}}{% endif %}
-                            <i class="fa fa-angle-right"></i></a></li>
-							<li class="active"><a href="#">{{dept.name}}</a></li>
+							<li class="active"><a href="/administration/">Desk Officials </a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</section>
 		<!--/ End Breadcrumbs -->
-		
-		<!-- Events -->
-		<section class="events single section">
+
+		<!-- Blogs -->
+		<section class="blog b-archives section">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-8 col-12">
-						<div class="single-event">
-							<div class="single-course">
-								<div class="course-head">
-									{% if dept.feature_image %}
-									<img style="width:100%"src="{{dept.feature_image.url}}" alt="#">
-									{% endif %}
+                    <div class="col-lg-8 col-12">
+						<div class="sidebar" style="border:0px">
+							<!-- Categories -->
+							<div class="single-widget categories">
+                                {% for details in details %}
+                                <h3 class="title">{{details.title}}</h3>
+								<p>{% autoescape on %}
+									{{details.content |safe}}
+									{% endautoescape %}</p>
+                                {% endfor %}
+								{% for staffs in staffs %}
+								<br>
+								<div class="row">
+									<div class="col-md-1 col-11"></div>
+									<div class="col-md-11 col-11">
+										<div class="single-course">
+										<img src="{{staffs.profile.url}}" alt="{{staffs.title}}">
+										<div class="course-content">
+											<h4>{{staffs.title}}</h4>
+											<div class="meta">{{staffs.Post}}</div>
+											<div class="meta">({{staffs.administrative_offices}})</div>
+											{% if staffs.email%}
+												<div class="meta">{{staffs.email}}</div>
+											{%endif%}
+										</div>
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="event-content">
-								<div class="meta"> 
-									<span><i class="fa fa-calendar"></i>
-                                    
-                                    {% if dept.faculty %}{{dept.faculty}}{% else %}{{dept.institute}}{% endif %}
-                                    </span>
-									
-								</div>
-								<h2><a href="">{{dept.header}}</a></h2>
-                                 <p>
-                                {% autoescape on %}
-                                {{dept.content|safe}}
-                                {% endautoescape %}
-                                </p>
-								<div class="table-responsive">
-									<table class="table table-striped">
-										<thead>
-											<th>S.N</th>
-											<th>Name</th>
-											<th>Role</th>
-											<th> Admin Role </th>
-											<th>Contact</th>
-											<th>Mail</th>
-											
-											<th>Bio-data</th>
-										</thead>
-										<tbody>
-										{%with empty=""%}
-											{% for staff in staffs %}
-											<tr>
-											<td>{{forloop.counter}}</td>
-											<td>{{staff.name}}</td>
-											<td>{{staff.role}}</td>
-											<td>{% if staff.admin_role %}{{staff.admin_role}}{%else%} {{empty}}{% endif %}</td>
-											<td>{{staff.phone}}</td>
-											<td>{{staff.email}}</td>
-											
-											<td>{% if staff.biodata %}
-											<a href="{{staff.biodata.url}}" download><i class="fa fa-file"></i></a>
-
-											{% else %}{{empty}}{% endif %}
-											</td>
-											</tr>
-											{% endfor %}
-										{% endwith %}
-										</tbody>
-									</table>
-								</div>
-								<div class="book-now">
-									<ul class="social">
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-google-plus "></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									</ul>
-								</div>
-							</div>
+								{% endfor %}
+                            </div>
+							<!--/ End Categories -->
 						</div>
 					</div>
-					<div class="col-lg-4 col-12">
+					<div class="col-lg-4">
 						<div class="sidebar">
 							<div class="single-widget course">
-								<h3>Department <span>Head</span></h3>
-								<!-- Single Course -->
-								<div class="single-course">
-									<img src="{{dept.dean_image.url}}" alt="{{dept.dean}}">
-									<div class="course-content">
-										<h4><a href="#">{{dept.dean}}</a></h4>
-										<div class="meta">{{dept.name}}</span></div>
-									</div>
-								</div>
-								<!-- Single Course -->
-							</div>
-							<!-- Categories -->
-							<!--/ End Categories -->
-							{% if news %}
-							<div class="single-widget course">
-								<h3>Recent <span>News</span></h3>
-								<!-- Single Course -->
-								{% for n in news %}
-								<div class="single-course">
-									{% if n.feature_image %}
-									<img src="{{n.feature_image.url}}" alt="{{n.title}}">
-									{% else %}
-									<img src="{% static 'images/logo.png' %}" alt="{{n.title}}">
-									{% endif %}
-									<div class="course-content">
-										<h4><a href="/news/{{n.slug}}">{{n.title}}</a></h4>
-										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
-									</div>
-								</div>
+								{% for images in images %}
+								<a data-fancybox="photo" rel="gallery1" href="{{images.image.url}}" data-caption="Desk Officials">
+								<img alt="" src="{{images.image.url}}" class="mb-2 rounded"/></a>
 								{% endfor %}
-								<!-- Single Course -->
-							</div>
-							{% endif %}
-							{% if notices %}
-							<div class="single-widget course">
-								<h3>Recent <span>Notices</span></h3>
-								<!-- Single Course -->
-								{% for no in notices %}
-								<div class="single-course">
-									{% if no.feature_image %}
-									<img src="{{no.feature_image.url}}" alt="{{no.title}}">
-									{% endif %}
-									<div class="course-content">
-										<h4><a href="/notice/{{no.slug}}">{{no.title}}</a></h4>
-										<div class="meta"> <span><i class="fa fa-calendar"></i>{{no.date|date:"d, M"}}</span></div>
-									</div>
-								</div>
-								{% endfor %}
-								<!-- Single Course -->
-							</div>
-							{% endif %}
-							<div class="single-widget categories">
-                                <h3 class="title">Syllabus</h3>
-                                <ul>
-                                   {% for s in syllabus %}
-								    <li><a href="{{s.file.url}}" download><i class="fa fa-angle-right"></i>{{s.subject_name}}</a></li>
-								   {% endfor %}
-                        
-                                </ul>
-                            </div>
-							<div class="single-widget tags">
-								<h3>Our <span>Gallery</span></h3>
-								<div class="gallery-small-thumbs clearfix">
-								{% for image in images %}
-									<div class="thumb-small-gallery">
-									<a data-fancybox="photo" rel="gallery1" href="{{image.image.url}}" data-caption="{{image.title.image_title}}">
-										<img alt="" src="{{image.image.url}}"/>
-									</a>
-                            	</div>
-								{% endfor %}
-                        		</div> <!-- /.galler-small-thumbs -->
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<!--/ End Events -->
-		
-		<!-- Footer -->
+		<!--/ End Blogs -->
+        <!-- Footer -->
 		<footer class="footer overlay section wow fadeIn">
 			<!-- Footer Top -->
 			<div class="footer-top">
@@ -333,12 +245,12 @@ Department |{{dept.name}}
 						<div class="col-lg-2 col-md-6 col-12">
 							<!-- Latest News -->
 							<div class="single-widget useful-links">
-								<h2>Custom Pages</h2>
-								{% for p in pages  %}
+								<h2>Costume Pages</h2>
 								<ul>
+									{% for p in pages  %}
 									<li><a href="/pages/{{p.slug}}"><i class="fa fa-angle-right"></i>{{p.name}}</a></li>
+									{% endfor %}
 								</ul>
-								{% endfor %}
 							</div>
 							<!--/ End Latest News -->
 						</div>
@@ -390,7 +302,7 @@ Department |{{dept.name}}
 										<!-- End Social -->
 										<!-- Copyright -->
 										<div class="copyright">
-											<p>© Copyright 2018 <a href="#">Roopesh Shankar</a>. All Rights Reserved</p>
+											<p>© Copyright 2018 <a href="#">CSIT Team</a>. All Rights Reserved</p>
 										</div>
 										<!--/ End Copyright -->
 									</div>

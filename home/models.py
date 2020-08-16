@@ -25,8 +25,13 @@ class Description(models.Model):
 
 class Message_From_Chief(models.Model):
     chief_name = models.CharField(max_length=254)
-    message = models.TextField()
+    message = HTMLField()
     image = models.ImageField(upload_to="chiefs/", height_field=None, width_field=None, max_length=None)
+
+
+class Campus_Chiefs_to_date(models.Model):
+    chief_name = models.CharField(max_length=254)
+    duration = models.CharField(max_length=254)
 
 
 class FAQ(models.Model):
@@ -36,9 +41,15 @@ class FAQ(models.Model):
 
 class aboutUs(models.Model):
     content = HTMLField()
-    image1 = models.ImageField( upload_to="aboutus/", height_field=None, width_field=None, max_length=None)
-    image2 = models.ImageField( upload_to="aboutus/", height_field=None, width_field=None, max_length=None)
-    image3 = models.ImageField( upload_to="aboutus/", height_field=None, width_field=None, max_length=None)
+    image = models.ImageField( upload_to="aboutus/", height_field=None, width_field=None, max_length=None)
+
+
+class PageImage(models.Model):
+    about = models.ForeignKey(aboutUs, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="aboutus/")
+
+    def __str__(self):
+        return self.about.content
 
 
 class SocialMedia(models.Model):

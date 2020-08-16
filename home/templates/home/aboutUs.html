@@ -148,23 +148,31 @@ About Prithvi Narayan Campus
 		<section class="about-us section">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-6 col-12">
-						<div class="single-image mb-3">
-							<img src="{{about.image1.url}}" alt="#" style="margin-bottom:10px;border-radius:10px">
-                            <img src="{{about.image2.url}}" alt="#" style="margin-bottom:10px;border-radius:10px">
-                            <img src="{{about.image3.url}}" alt="#" style="margin-bottom:10px;border-radius:10px">
+					<div class="col-lg-4 col-12">
+						<div class="sidebar left">
+							{% if about.image %}
+							<div class="single-image mb-3">
+								<a data-fancybox="photo" rel="gallery1" href="{{about.image.url}}" data-caption="About Prithivi Narayan Campus">
+								<img src="{{about.image.url}}" alt="About Prithivi Narayan Campus" class="mb-2 rounded">
+							</div>
+						{% endif %}
+						{% if images %}
+							{% for image in images %}
+								<div class="single-image mb-3">
+									<a data-fancybox="photo" rel="gallery1" href="{{image.image.url}}" data-caption="{{page.header}}">
+									<img alt="{{page.name}}" src="{{image.image.url}}" class="mb-2 rounded"/></a>
+								</div>
+							{% endfor %}
+						{% endif %}
 						</div>
 					</div>
-					<div class="col-lg-6 col-12">
-						<div class="about-text" style="position:sticky;top:80px">
+					<div class="col-lg-8 col-12">
+						<div class="about-text">
 							<p>
                             {% autoescape on %}
                             {{about.content|safe}}
                             {% endautoescape %}
                             </p>
-							<div class="button">
-								<a href="#" class="btn">Our Courses</a>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -268,7 +276,7 @@ About Prithvi Narayan Campus
 										<!-- End Social -->
 										<!-- Copyright -->
 										<div class="copyright">
-											<p>© Copyright 2018 <a href="#">CSIT Team</a>. All Rights Reserved</p>
+											<p>© Copyright 2018 <a href="#">Roopesh Shankar</a>. All Rights Reserved</p>
 										</div>
 										<!--/ End Copyright -->
 									</div>

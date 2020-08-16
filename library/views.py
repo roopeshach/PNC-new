@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import E_Resources
+from .models import E_Resources,library_page,page_image,thesis_title
 from category.models import Department, Program, Custom_Page,Faculty, Institute
 from home.models import SocialMedia,Content
 
@@ -15,11 +15,28 @@ content = Content.objects.all().first()
 
 
 def Library(request):
-    return render(request, 'library/library.html')
+    library = library_page.objects.all()
+    thesis = thesis_title.objects.all()
+
+    images = page_image.objects.all()
+    context_library = {
+        'library': library,
+        'departments': departments,
+        'programs': programs,
+        'pages': pages,
+        'faculties': faculties,
+        'institutes': institutes,
+        'sm':sm,
+        'content':content,
+        'images':images,
+        'thesis':thesis,
+    }
+    return render(request, 'library/library.html',context_library)
 
 
 def Resources(request):
     resources = E_Resources.objects.all()
+    images = page_image.objects.all()
     context_resources = {
         'resources':resources,
         'departments': departments,
@@ -29,5 +46,6 @@ def Resources(request):
         'institutes': institutes,
         'sm':sm,
         'content':content,
+        'images':images,
     }
     return render(request, 'library/e-resources.html',context_resources)

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Content, Slider, Description, Message_From_Chief , FAQ , aboutUs, SocialMedia
+from .models import Content, Slider, Description, Message_From_Chief , FAQ , aboutUs, SocialMedia,Campus_Chiefs_to_date,PageImage
 from category.models import Department, Program, Custom_Page, Faculty, Institute
 from news.models import Notice, News, Event
 from itertools import chain
@@ -74,8 +74,6 @@ def courses(request):
         'pages': pages,
         'faculties': faculties,
         'institutes': institutes,
-        # 's_department': s_department,
-        # 's_program': s_program,
         'courses':courses
     }
     return render(request, 'home/courses.html', context_courses)
@@ -90,23 +88,34 @@ def faqs(request):
         'faculties': faculties,
         'institutes': institutes,
         'faqs':faqs,
-
     }
-
     return render(request, 'home/faq.html', context)
     
 
 def aboutus(request):
     about = aboutUs.objects.all().first()
+    images = PageImage.objects.all()
     context = {
         'content': content,
         'programs': programs,
         'pages': pages,
         'faculties': faculties,
         'institutes': institutes,
-        'about':about
-
-
+        'about':about,
+        'images':images,
     }
-
     return render(request , 'home/aboutUs.html', context)
+
+
+def Message(request):
+    chiefs = Campus_Chiefs_to_date.objects.all()
+    context_message = {
+        'content': content,
+        'programs': programs,
+        'pages': pages,
+        'faculties': faculties,
+        'institutes': institutes,
+        'messages': messages,
+        'chiefs':chiefs,
+    }
+    return render(request, 'home/message.html', context_message)

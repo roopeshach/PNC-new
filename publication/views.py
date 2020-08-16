@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from home.models import aboutUs, SocialMedia
+from home.models import SocialMedia
 from category.models import Department, Program, Custom_Page, Faculty, Institute
 from .models import Publication,PublicationImage
 from next_prev import next_in_order, prev_in_order

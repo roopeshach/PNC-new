@@ -1,7 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block title %}
-
 PN campus
 {% endblock title %}
 {% block content %}
@@ -126,10 +125,10 @@ PN campus
 										</li>
 										<li><a href="#">Library<i class="fa fa-angle-down"></i></a>
 											<ul class="dropdown">
-												<li><a href="">About Library</a></li>
-												<li><a href="">E-Resources</a></li>
-												<li><a href="">Audio Books</a></li>
-												<li><a href="">Library OPAC</a></li>
+												<li><a href="/library">About Library</a></li>
+												<li><a href="/e-resources/">E-Resources</a></li>
+												<li><a href="https://audiolibrary.pncampus.edu.np/" target="_blank">Audio Books</a></li>
+												<li><a href="https://opac.pncampus.edu.np/" target="_blank">Library OPAC</a></li>
 											</ul>
 										</li>
 										<li><a href="about-us/">About Us</a></li>
@@ -282,7 +281,7 @@ PN campus
 							{% for d in departments %}
 							<div class="single-course">
 								<div class="course-head overlay">
-									<img src="{{d.feature_image.url}}" alt="{{d.name}}" style="height:250px;">
+									<img class="rounded" src="{{d.feature_image.url}}" alt="{{d.name}}" style="height:250px;">
 									<a href="/about/{{d.slug}}" class="btn"><i class="fa fa-link"></i></a>
 								</div>
 								<div class="single-content">
@@ -318,10 +317,8 @@ PN campus
 					<div class="col-lg-5 offset-lg-6 col-12">
 						<div class="cta-inner overlay">
 							<div class="text-content">
-								<h2>About Us.</h2>
-								{% autoescape off %}
-								<p>Our vision haru static mai halne ho yesma</p>
-								{% endautoescape %}
+								<h2>About PN Campus</h2>
+								<p>Situated in the beautiful city of Pokhara, PN Campus is the leading teaching and research campus in the western region of Nepal. With over 50 years of its history, the campus is one of the oldest and largest campuses of Tribhuvan University and is dedicated to finding solutions to challenges and preparing students for leadership in a complex world.</p>
 							</div>
 						</div>
 					</div>
@@ -398,19 +395,23 @@ PN campus
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<div class="testimonial-slider">
+						<div class="section-title">
+							<h2>Message From Campus Chief</h2>
+						</div>
+					</div>
+					<div class="col-12">
 							<!-- Single Testimonial -->
 							{% for message in messages %}
 							<div class="single-testimonial">
 								<img src="{{message.image.url}}" alt="#">
 								<div class="main-content">
 									<h4 class="name">{{message.chief_name}}</h4>
-									<p>{{message.message |safe|striptags}}</p>
+									<p>{{message.message |safe|striptags|truncatechars:"500"}}
+										<a href="/message-from-campus-chief" style="color:#2C7A75">Read More</a></p>
 								</div>
 							</div>
 							{% endfor %}
 							<!--/ End Single Testimonial -->
-						</div>
 					</div>
 				</div>
 			</div>
@@ -639,12 +640,13 @@ PN campus
 							<div class="single-widget useful-links">
 								<h2>Resources For</h2>
 								<ul>
+									<li><a href="/blog/"><i class="fa fa-angle-right"></i>Blogs</a></li>
 									<li><a href="/publication"><i class="fa fa-angle-right"></i>Publications</a></li>
 									<li><a href="#"><i class="fa fa-angle-right"></i>Alumni</a></li>
-									<li><a href="/QAA/"><i class="fa fa-angle-right"></i>QAA/Reform</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>International Relation</a></li>
-									<li><a href="/blog/"><i class="fa fa-angle-right"></i>Blogs</a></li>
+									<li><a href="/QAA-Reform_Unit/"><i class="fa fa-angle-right"></i>QAA/Reform</a></li>
 									<li><a href="/governing-body/"><i class="fa fa-angle-right"></i>Governing Body</a></li>
+									<li><a href="/administration/"><i class="fa fa-angle-right"></i>Desk Officials</a></li>
+									<li><a href="/international-relation"><i class="fa fa-angle-right"></i>International Relation</a></li>
 								</ul>
 							</div>
 						</div>
@@ -656,7 +658,6 @@ PN campus
 									<li><a href="#"><i class="fa fa-angle-right"></i>Apply Now</a></li>
 									<li><a href="#"><i class="fa fa-angle-right"></i>Scholarships</a></li>
 									<li><a href="/frequently-asked-questions/"><i class="fa fa-angle-right"></i>FAQs</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>International student enquiries</a></li>
 								</ul>
 							</div>
 						</div>
@@ -693,7 +694,7 @@ PN campus
 										<!-- End Social -->
 										<!-- Copyright -->
 										<div class="copyright">
-											<p>© Copyright 2020 <a href="/developers">CSIT Team</a>. All Rights Reserved</p>
+											<p>© Copyright 2020 <a href="/developers">Roopesh Shankar</a>. All Rights Reserved</p>
 										</div>
 										<!--/ End Copyright -->
 									</div>

@@ -6,6 +6,7 @@ urlpatterns = [
     path('courses/', views.courses, name="courses"),
     path('frequently-asked-questions/',views.faqs,name="frequently asked questions"),
     path('about-us/', views.aboutus, name="aboutus"),
+    path('message-from-campus-chief/',views.Message,name="MessageFromCampusChief")
 ]
 
 

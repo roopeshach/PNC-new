@@ -162,10 +162,6 @@ E-Resources || Prithivi Narayan Campus
 						<div class="sidebar">
 							<!-- page Feature Image -->
 							<div class="single-widget course">
-                            	{% if page.image %}
-									<a data-fancybox="photo" rel="gallery1" href="{{page.image.url}}" data-caption="{{page.header}}">
-									<img alt="" src="{{page.image.url}}" class="mb-2 rounded"/></a>
-								{% endif %}
 								{% if images %}
 									{% for image in images %}
 										<a data-fancybox="photo" rel="gallery1" href="{{image.image.url}}" data-caption="{{page.header}}">
