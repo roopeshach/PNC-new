@@ -1,10 +1,9 @@
 /* =====================================
-Template Name: CSIT Team
-Description: CSIT Team is a Education & Courses Template.
+Template Name: Roopesh Shankar
+Description: Roopesh Shankar is a Education & Courses Template.
 Version:	1.0
 ========================================*/
 /*=======================================
-[Start Activation Code]
 =========================================
 * Sticky Header JS
 * Mobile Menu JS
@@ -44,7 +43,7 @@ Version:	1.0
 		======================================*/ 	
 		$('.menu').slicknav({
 			prependTo:".mobile-menu",
-			duration: 600,
+			duration: 400,
 			closeOnClick:true,
 		});
 		

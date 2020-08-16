@@ -168,72 +168,98 @@ Governing Body
 				</div>
 				<div class="row">
                     <div class="col-lg-8 col-12">
-						<div class="sidebar left">
+						<div class="sidebar" style="border:0px">
 							<!-- Categories -->
 							<div class="single-widget categories">
                                 <center><h3 class="title">{{exec_details.name}}</h3></center>
 								<p>{{exec_details.desc}}</p>
-								
 								{% for exec_mem in exec_members %}
 								<br>
 								<div class="row">
-									<div class="col-md-2">
-										<img src="{{exec_mem.profile_image.url}}" alt="{{exec_mem.name}}" width=100>
-
-									</div>
-									<div class="col-md-6">
-										<h4>{{exec_mem.name}}</h4>
-										<h6>{{exec_mem.member_role}}</h6>
-										<h6>{{exec_mem.email}}</h6>
+									<div class="col-md-1 col-11"></div>
+									<div class="col-md-11 col-11">
+										<div class="single-course">
+										<img src="{{exec_mem.profile_image.url}}" alt="{{exec_mem.name}}">
+										<div class="course-content">
+											<h4>{{exec_mem.name}}</h4>
+											<div class="meta">{{exec_mem.member_role}}</div>
+											<div class="meta">{{exec_mem.email}}</div>
+											{% if exec_mem.department_or_faculty%}
+												<div class="meta">{{exec_mem.department_or_faculty}}</div>
+											{%endif%}
+										</div>
+										</div>
 									</div>
 								</div>
-
 								{% endfor %}
                             </div>
 							<!--/ End Categories -->
-							<div class="single-widget categories">
+							<div class="single-widget course">
                                 <center><h3 class="title">{{management_details.name}}</h3></center>
 								<p>{{management_details.desc}}</p>
-								
 								{% for mc_mem in mc_members %}
 								<br>
 								<div class="row">
-									<div class="col-md-2">
-										<img src="{{mc_mem.profile_image.url}}" alt="{{mc_mem.name}}" width=100>
-
-									</div>
-									<div class="col-md-6">
-										<h4>{{mc_mem.name}}</h4>
-										<h6>{{mc_mem.member_role}}</h6>
-										<h6>{{mc_mem.email}}</h6>
+									<div class="col-md-1 col-11"></div>
+									<div class="col-md-11 col-11">
+										<div class="single-course">
+										<img src="{{mc_mem.profile_image.url}}" alt="{{mc_mem.name}}">
+										<div class="course-content">
+											<h4>{{mc_mem.name}}</h4>
+											<div class="meta">{{mc_mem.member_role}}</div>
+											<div class="meta">{{mc_mem.email}}</div>
+											{% if mc_mem.department_or_faculty%}
+												<div class="meta">{{ca_mem.department_or_faculty}}</div>
+											{%endif%}
+										</div>
+										</div>
 									</div>
 								</div>
 								{% endfor %}
                             </div>
-
 							<div class="single-widget categories">
                                 <center><h3 class="title">{{ca_details.name}}</h3></center>
 								<p>{{ca_details.desc}}</p>
-								
 								{% for ca_mem in ca_members %}
 								<br>
 								<div class="row">
-									<div class="col-md-2">
-										<img src="{{ca_mem.profile_image.url}}" alt="{{ca_mem.name}}" width=100>
-
-									</div>
-									<div class="col-md-6">
-										<h4>{{ca_mem.name}}</h4>
-										<h6>{{ca_mem.member_role}}</h6>
-										<h6>{{ca_mem.email}}</h6>
+									<div class="col-md-1 col-11"></div>
+									<div class="col-md-11 col-11">
+										<div class="single-course">
+										<img src="{{ca_mem.profile_image.url}}" alt="{{ca_mem.name}}">
+										<div class="course-content">
+											<h4>{{ca_mem.name}}</h4>
+											<div class="meta">{{ca_mem.member_role}}</div>
+											<div class="meta">{{ca_mem.email}}</div>
+											{% if ca_mem.department_or_faculty%}
+												<div class="meta">{{ca_mem.department_or_faculty}}</div>
+											{%endif%}
+										</div>
+										</div>
 									</div>
 								</div>
 								{% endfor %}
                             </div>
 						</div>
 					</div>
+					<div class="col-lg-4">
+						<div class="sidebar">
+							<div class="single-widget course">
+								<a data-fancybox="photo" rel="gallery1" href="/media/custom_pages/health_1.JPG" data-caption="Health Centre">
+								<img alt="" src="/media/custom_pages/health_1.JPG" class="mb-2 rounded"/></a>
+								<h3 class="title">The First Management Committee of PN Campus 2017 BS</h3>
+								{% for first in first_committee %}
+								<div class="course-content">
+									<h4><span>{{ forloop.counter }}.&nbsp;</span>{{first.member_role}}</h4>
+									<div class="meta"><span>&nbsp;&nbsp;{{first.name}}</span></div>
+									<div class="meta"><span>&nbsp;&nbsp;({{first.work_as}})</span></div>
+								</div>
+								<br>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
 				</div>
-
 			</div>
 		</section>
 		<!--/ End Blogs -->
