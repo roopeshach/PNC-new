@@ -98,7 +98,7 @@ ENV/
 # mkdocs documentation
 /site
 #Media
-media/
+#media/
 # mypy
 .mypy_cache/
 
