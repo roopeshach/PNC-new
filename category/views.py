@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Department, Program, Custom_Page, Faculty, Institute, Syllabus, PageImage
-from home.models import Content
+from home.models import Content,SocialMedia
 from news.models import News, Notice, Event
 from photos.models import DepartmentGallery, ProgramGallery
 from staffs.models import Staff
@@ -13,6 +13,7 @@ programs = Program.objects.all().filter(is_active="T")
 pages = Custom_Page.objects.all().filter(is_active="T")
 faculties = Faculty.objects.all()
 institutes = Institute.objects.all()
+sm = SocialMedia.objects.all().first()
 
 
 def aboutDepartment(request, slug):
@@ -40,6 +41,7 @@ def aboutDepartment(request, slug):
         'staffs': staffs,
         'images': images,
         'syllabus': syllabus,
+        'sm':sm,
 
     }
     return render(request, 'category/about.html', context)
@@ -67,6 +69,7 @@ def aboutProgram(request, slug):
         'syllabus': syllabus,
         'faculties': faculties,
         'institutes': institutes,
+        'sm': sm,
     }
 
     return render(request, 'category/aboutProgram.html', context_program)
@@ -84,6 +87,7 @@ def aboutCustom(request, slug):
         'faculties': faculties,
         'institutes': institutes,
         'images': images,
+        'sm': sm,
     }
 
     return render(request, 'category/aboutCustom.html', context_custom)
@@ -101,7 +105,7 @@ def aboutFaculty(request, slug):
         'institutes': institutes,
         'fac': fac,
         'departments_of_faculty': departments_of_faculty,
-
+        'sm': sm,
     }
 
     return render(request, 'category/aboutFaculty.html', context)
@@ -119,6 +123,7 @@ def aboutInstitute(request, slug):
         'institutes': institutes,
         'ins': ins,
         'departments_of_faculty': departments_of_faculty,
+        'sm': sm,
     }
 
     return render(request, 'category/aboutIns.html', context)

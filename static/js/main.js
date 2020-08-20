@@ -25,8 +25,8 @@ Version:	1.0
 =========================================*/ 
 (function($) {
     "use strict";
-     $(document).on('ready', function() {	
-	
+     $(document).on('ready', function() {
+
 		/*====================================
 			Sticky Header JS
 		======================================*/ 
@@ -57,7 +57,7 @@ Version:	1.0
 			items:1,
 			smartSpeed: 600,
 			loop:true,
-			merge:true,
+			merge:false,
 			nav:true,
 			dots:false,
 			navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
@@ -338,4 +338,9 @@ Version:	1.0
 				$(this).remove();
 			});
 		});
+		$(document).ready(function() {
+	        $("#recent").fancybox().trigger('click');
+	    });
 })(jQuery);
+
+

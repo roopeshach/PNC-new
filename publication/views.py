@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from home.models import SocialMedia
+from home.models import SocialMedia,Content
 from category.models import Department, Program, Custom_Page, Faculty, Institute
 from .models import Publication,PublicationImage
 from next_prev import next_in_order, prev_in_order
@@ -14,6 +14,7 @@ def viewPublication(request):
     faculties = Faculty.objects.all()
     institutes = Institute.objects.all()
     sm = SocialMedia.objects.all().first()
+    content = Content.objects.all().first()
     context_publication = {
         'departments': departments,
         'programs': programs,
@@ -22,6 +23,7 @@ def viewPublication(request):
         'institutes': institutes,
         'sm':sm,
         'publication':publication,
+        'content':content,
     }
     return render(request, 'publication/publications.html',context_publication)
 
@@ -37,6 +39,7 @@ def detailPublication(request,slug):
     previous = prev_in_order(publication)
     next = next_in_order(publication)
     images = PublicationImage.objects.all().filter(publication=publication.id)
+    content = Content.objects.all().first()
     context_publication = {
         'departments': departments,
         'programs': programs,
@@ -48,5 +51,6 @@ def detailPublication(request,slug):
         'previous': previous,
         'publication':publication,
         'images':images,
+        'content':content,
     }
     return render(request, 'publication/publication-detail.html',context_publication)

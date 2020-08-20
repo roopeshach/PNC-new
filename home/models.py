@@ -58,3 +58,13 @@ class SocialMedia(models.Model):
     google_plus = models.CharField(blank=True, max_length=254)
     linkedin = models.CharField(blank=True, max_length=254)
     youtube = models.CharField(blank=True, max_length=254)
+
+
+class Preloader(models.Model):
+    IS_ACTIVE = (
+        ('T', 'Active'),
+        ('F', 'In-Active'),
+    )
+    title = models.CharField(max_length=254)
+    image = models.ImageField(upload_to="Preloader/", height_field=None, width_field=None, max_length=None)
+    is_active = models.CharField(max_length=1, choices=IS_ACTIVE)

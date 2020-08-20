@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Content, Slider, Description, Message_From_Chief, FAQ, aboutUs , SocialMedia,Campus_Chiefs_to_date,PageImage
+from .models import Content, Slider, Description, Message_From_Chief, FAQ, aboutUs , SocialMedia,Campus_Chiefs_to_date, PageImage, Preloader
 
 
 # Register your models here.
@@ -42,3 +42,4 @@ admin.site.register(FAQ, faq)
 admin.site.register(aboutUs,about)
 admin.site.register(SocialMedia)
 admin.site.register(Campus_Chiefs_to_date)
+admin.site.register(Preloader)

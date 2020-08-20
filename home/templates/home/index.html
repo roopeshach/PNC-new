@@ -1,10 +1,15 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block title %}
-PN campus
+Prithivi Narayan Campus | Pokhara, Nepal
 {% endblock title %}
 {% block content %}
     <body>
+		{% if loader %}
+			{% for loader in loader %}
+				<a href="{{loader.image.url}}" id="recent" hidden data-fancybox data-caption="{{loader.title}}"></a>
+			{% endfor %}
+		{% endif %}
 		<!-- Book Preloader -->
 		<div class="book_preload">
             <div class="book">
@@ -97,6 +102,7 @@ PN campus
 									<!-- Main Menu -->
 									<ul id="nav" class="nav menu navbar-nav">
 										<li class="active"><a href="/">Home</a></li>
+										<li><a href="/about-us/">About Us</a></li>
 										<li><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											<li><a href="#">Faculties<i class="fa fa-angle-right"></i></a>
@@ -118,9 +124,9 @@ PN campus
 										<li><a href="/courses/">Courses</a></li>
 										<li><a href="#">News<i class="fa fa-angle-down"></i></a>
 											<ul class="dropdown">
-												<li><a href="news/">News</a></li>
-												<li><a href="notice/">Notices</a></li>
-												<li><a href="events/">Events</a></li>
+												<li><a href="/news/">News</a></li>
+												<li><a href="/notice/">Notices</a></li>
+												<li><a href="/events/">Events</a></li>
 											</ul>
 										</li>
 										<li><a href="#">Library<i class="fa fa-angle-down"></i></a>
@@ -131,8 +137,7 @@ PN campus
 												<li><a href="https://opac.pncampus.edu.np/" target="_blank">Library OPAC</a></li>
 											</ul>
 										</li>
-										<li><a href="about-us/">About Us</a></li>
-										<li><a href="contact-us">Contact</a></li>
+										<li><a href="/contact-us">Contact</a></li>
 									</ul>
 									<!-- End Main Menu -->
 								</div>
@@ -164,14 +169,13 @@ PN campus
 				</div>
 				{% endfor %}
 				<!--/ End Single Slider -->
-				
 			</div>
 		</section>
 		<!--/ End Slider Area -->
 		
 		<!-- Features -->
 		<section class="our-features section">
-			<div class="container">
+			<div class="container-fluid">
 				<div class="row">
 					<div class="col-12 wow zoomIn">
 						<div class="section-title">
@@ -180,6 +184,8 @@ PN campus
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="container">
 				<div class="row">
 					<div class="col-lg-4 col-md-4 col-12 wow fadeInUp" data-wow-delay="0.1s">
 						<!-- Single Feature -->

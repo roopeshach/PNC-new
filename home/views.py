@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Content, Slider, Description, Message_From_Chief , FAQ , aboutUs, SocialMedia,Campus_Chiefs_to_date,PageImage
+from .models import Content, Slider, Description, Message_From_Chief , FAQ , aboutUs, SocialMedia,Campus_Chiefs_to_date,PageImage,Preloader
 from category.models import Department, Program, Custom_Page, Faculty, Institute
 from news.models import Notice, News, Event
 from itertools import chain
@@ -10,7 +10,7 @@ from staffs.models import Staff
 content = Content.objects.all().first()
 desc = Description.objects.all().first()
 slides = Slider.objects.all()
-
+loader = Preloader.objects.all().filter(is_active="T")[:1]
 departments = Department.objects.all().filter(is_active="T")
 programs = Program.objects.all().filter(is_active="T")
 pages = Custom_Page.objects.all()
@@ -32,6 +32,7 @@ about = aboutUs.objects.all().first()
 sm = SocialMedia.objects.all().first()
 context = {
     'content': content,
+    'loader':loader,
     'departments': departments,
     'programs': programs,
     'pages': pages,
