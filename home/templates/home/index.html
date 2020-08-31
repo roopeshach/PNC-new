@@ -1,5 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% block meta %}<meta name="description" content="{{desc.content |safe|truncatechars:'255'}}">{% endblock meta %}
 {% block title %}
 Prithivi Narayan Campus | Pokhara, Nepal
 {% endblock title %}
@@ -647,7 +648,7 @@ Prithivi Narayan Campus | Pokhara, Nepal
 								<ul>
 									<li><a href="/blog/"><i class="fa fa-angle-right"></i>Blogs</a></li>
 									<li><a href="/publication"><i class="fa fa-angle-right"></i>Publications</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Alumni</a></li>
+									<li><a href="/pnc-alumni/"><i class="fa fa-angle-right"></i>Alumni</a></li>
 									<li><a href="/QAA-Reform_Unit/"><i class="fa fa-angle-right"></i>QAA/Reform</a></li>
 									<li><a href="/governing-body/"><i class="fa fa-angle-right"></i>Governing Body</a></li>
 									<li><a href="/administration/"><i class="fa fa-angle-right"></i>Desk Officials</a></li>

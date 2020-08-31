@@ -1,12 +1,11 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block title %}
-All Courses
+Pnc Alumni
 {% endblock title %}
 {% block content %}
-
-	<body>
-	<!-- Book Preloader -->
+    <body>
+		<!-- Book Preloader -->
         <div class="book_preload">
             <div class="book">
                 <div class="book__page"></div>
@@ -116,7 +115,7 @@ All Courses
 											</li>
 										</ul>
 										</li>
-										<li class="active"><a href="/courses/">Courses</a></li>
+										<li><a href="/courses/">Courses</a></li>
 										<li><a href="#">News<i class="fa fa-angle-down"></i></a>
 											<ul class="dropdown">
 												<li><a href="/news/">News</a></li>
@@ -143,117 +142,54 @@ All Courses
 			</div>
 			<!--/ End Header Menu -->
 		</header>
-		<!-- End Header -->
-		<!-- Start Breadcrumbs -->
-		<section class="breadcrumbs overlay">
+    <!-- End Header -->
+        <section class="breadcrumbs overlay">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<h2>Our Courses</h2>
+						<h2>Pnc Alumni</h2>
 						<ul class="bread-list">
 							<li><a href="/">Home<i class="fa fa-angle-right"></i></a></li>
-							<li class="active"><a href="">Courses</a></li>
+							<li class="active"><a href="/pnc-alumni/">Pnc Alumni</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</section>
 		<!--/ End Breadcrumbs -->
-
-		<!-- Courses -->
-		<section class="courses archives section">
+        <!-- Alumni -->
+		<section class="blog b-archives section">
 			<div class="container">
 				<div class="row">
-					<div class="col-12">
-						<div class="section-title">
-							<h2>Popular <span>Courses</span> We Offer</h2>
-							<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie nec hendrerit hendreri </p>
-						</div>
-					</div>
-				</div>
-                
-				<div class="row">
-                <div class="col-xl-8 col-md-12"></div>
-					<div class="col-xl-4 col-md-12">
-						<div class="sidebar" style="border-left:0px;padding:0px;">
-							<div class="search">
-								<div class="form">
-									<form action="" class="">
-										<input type="search"  name="search_courses" placeholder="Search Courses.." required="required">
-										<button class="button" type="submit">
-											<i class="fa fa-search" aria-hidden="true"></i>
-										</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-                    {% for d in courses %}
-					<div class="col-lg-12 col-md-6 col-12">
-						<!-- Single Course -->
-						<div class="single-course">
-							<div class="course-head overlay">
-								<a href="" class="btn"><i class="fa fa-link"></i></a>
-							</div>
-							<div class="single-content">
-								<h4>
-								<span>
-								{% if d.faculty %}{{d.faculty}}
-								{% elif d.institute %}{{d.institute}}
-								{%else%}{{d.department}}
-								{% endif %}
-								</span>
-								{% if d.flag %}
-								<a href="/about_program/{{d.slug}}">{{d.name}}</a>
-								{% else %}
-								<a href="/about/{{d.slug}}">{{d.name}}</a>
-								{% endif %}
-								</h4>
-                                <p>
-                                {% autoescape on %}
-                                {{d.content |safe|striptags|truncatechars:"350"}}
-                                {% endautoescape %}
-                                </p>
+                    <div class="col-lg-8 col-12">
+						<div class="sidebar" style="border:0px">
+							<!-- Categories -->
+							<div class="single-widget categories">
+                                {% for details in pagecontent %}
+                                <h3 class="title">{{details.title}}</h3>
+								<p>{% autoescape on %}
+									{{details.content |safe}}
+									{% endautoescape %}</p>
+                                {% endfor %}
                             </div>
+							<!--/ End Categories -->
 						</div>
-						<!--/ End Single Course -->
 					</div>
-                    {% endfor %}
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<!-- start pagination-->
-						{% if courses.has_other_pages %}
-						<div class="pagination-main">
-							<ul class="pagination">
-								{% if courses.has_previous %}
-								<li class="prev"><a href="?page={{ courses.previous_page_number }}" tabindex="-1"><i class="fa fa-angle-double-left"></i></a></li>
-								{% else %}
-								<li class="prev"><a ><i class="fa fa-angle-double-left"></i></a></li>
-								{% endif %}
-								{% for i in courses.paginator.page_range %}
-                                  {% if courses.number == i %}
-                                    <li class="active"><a>{{ i }}</a></li>
-                                  {% else %}
-                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
-                                  {% endif %}
+					<div class="col-lg-4">
+						<div class="sidebar">
+							<div class="single-widget course">
+								{% for images in images %}
+								<a data-fancybox="photo" rel="gallery1" href="{{images.image.url}}" data-caption="Desk Officials">
+								<img alt="" src="{{images.image.url}}" class="mb-2 rounded"/></a>
 								{% endfor %}
-								{% if courses.has_next %}
-								<li class="next"><a href="?page={{ courses.next_page_number }}"><span><i class="fa fa-angle-double-right"></i></span></a></li>
-                                {% else %}
-								<li class="next"><a><span><i class="fa fa-angle-double-right"></i></span></a></li>
-                                {% endif %}
-							</ul>
+							</div>
 						</div>
-						{% endif %}
-						<!--/ End Pagination -->
 					</div>
 				</div>
 			</div>
 		</section>
-		<!--/ End Courses -->
-
-		<!-- Footer -->
+		<!--/ End Alumni -->
+    <!-- Footer -->
 		<footer class="footer overlay section wow fadeIn">
 			<!-- Footer Top -->
 			<div class="footer-top">
@@ -372,4 +308,4 @@ All Courses
 			<!--/ End Footer Bottom -->
 		</footer>
 		<!--/ End Footer -->
-{% endblock content %}
+		{% endblock content %}

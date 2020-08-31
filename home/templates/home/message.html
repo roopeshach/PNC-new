@@ -216,32 +216,32 @@ Message From Campus Chief
 							</div>
 							<!--/ End About -->
 						</div>
-						<div class="col-md-1"></div>
+
 						<div class="col-lg-2 col-md-6 col-12">
 							<!-- Useful Links -->
 							<div class="single-widget useful-links">
 								<h2>Useful Links</h2>
 								<ul>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Home</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>About Us</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Courses</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>News</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Events</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Notice</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Contact</a></li>
+									<li><a href="/"><i class="fa fa-angle-right"></i>Home</a></li>
+									<li><a href="/about-us/"><i class="fa fa-angle-right"></i>About Us</a></li>
+									<li><a href="/courses/"><i class="fa fa-angle-right"></i>Courses</a></li>
+									<li><a href="/news/"><i class="fa fa-angle-right"></i>News</a></li>
+									<li><a href="/events/"><i class="fa fa-angle-right"></i>Events</a></li>
+									<li><a href="/notice/"><i class="fa fa-angle-right"></i>Notice</a></li>
+									<li><a href="/contact-us/"><i class="fa fa-angle-right"></i>Contact</a></li>
 								</ul>
 							</div>
 							<!--/ End Useful Links -->
 						</div>
-						<div class="col-lg-2 col-md-6 col-12">
+						<div class="col-lg-3 col-md-6 col-12">
 							<!-- Latest News -->
 							<div class="single-widget useful-links">
-								<h2>Costume Pages</h2>
+								<h2>Campus Life</h2>
+								{% for p in pages  %}
 								<ul>
-									{% for p in pages  %}
 									<li><a href="/pages/{{p.slug}}"><i class="fa fa-angle-right"></i>{{p.name}}</a></li>
-									{% endfor %}
 								</ul>
+								{% endfor %}
 							</div>
 							<!--/ End Latest News -->
 						</div>
@@ -249,12 +249,13 @@ Message From Campus Chief
 							<div class="single-widget useful-links">
 								<h2>Resources For</h2>
 								<ul>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Future Students</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Current Students</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Faculty/Staff</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>International</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Postdocs</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Alumni</a></li>
+									<li><a href="/blog/"><i class="fa fa-angle-right"></i>Blogs</a></li>
+									<li><a href="/publication"><i class="fa fa-angle-right"></i>Publications</a></li>
+									<li><a href="/pnc-alumni/"><i class="fa fa-angle-right"></i>Alumni</a></li>
+									<li><a href="/QAA-Reform_Unit/"><i class="fa fa-angle-right"></i>QAA/Reform</a></li>
+									<li><a href="/governing-body/"><i class="fa fa-angle-right"></i>Governing Body</a></li>
+									<li><a href="/administration/"><i class="fa fa-angle-right"></i>Desk Officials</a></li>
+									<li><a href="/international-relation"><i class="fa fa-angle-right"></i>International Relation</a></li>
 								</ul>
 							</div>
 						</div>
@@ -262,11 +263,10 @@ Message From Campus Chief
 							<div class="single-widget useful-links">
 								<h2>Study</h2>
 								<ul>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Courses</a></li>
+									<li><a href="/courses/"><i class="fa fa-angle-right"></i>Courses</a></li>
 									<li><a href="#"><i class="fa fa-angle-right"></i>Apply Now</a></li>
 									<li><a href="#"><i class="fa fa-angle-right"></i>Scholarships</a></li>
-									<li><a href=""><i class="fa fa-angle-right"></i>FAQs</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>International student enquiries</a></li>
+									<li><a href="/frequently-asked-questions/"><i class="fa fa-angle-right"></i>FAQs</a></li>
 								</ul>
 							</div>
 						</div>
@@ -284,16 +284,26 @@ Message From Campus Chief
 									<div class="col-12">
 										<!-- Social -->
 										<ul class="social">
-											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-											<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-											<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+											{% if sm.twitter %}
+											<li><a href="{{sm.twitter}}"><i class="fa fa-twitter"></i></a></li>
+											{% endif %}
+											{% if sm.facebook %}
+											<li><a href="{{sm.facebook}}"><i class="fa fa-facebook"></i></a></li>
+											{% endif %}
+											{% if sm.google_plus %}
+											<li><a href="{{sm.google_plus}}"><i class="fa fa-google-plus "></i></a></li>
+											{% endif %}
+											{% if sm.linkedin %}
+											<li><a href="{{sm.linkedin}}"><i class="fa fa-linkedin"></i></a></li>
+											{% endif %}
+											{% if sm.youtube %}
+											<li><a href="{{sm.youtube}}"><i class="fa fa-youtube"></i></a></li>
+											{% endif %}
 										</ul>
 										<!-- End Social -->
 										<!-- Copyright -->
 										<div class="copyright">
-											<p>© Copyright 2018 <a href="#">Roopesh Shankar</a>. All Rights Reserved</p>
+											<p>© Copyright 2020 <a href="/developers">Roopesh Shankar</a>. All Rights Reserved</p>
 										</div>
 										<!--/ End Copyright -->
 									</div>

@@ -222,10 +222,10 @@
 								<div class="book-now">
 
 									<ul class="social">
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-google-plus "></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+										<li><a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="https://twitter.com/intent/tweet?text={{request.build_absolute_uri}}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="mailto:?subject={{program.name}}&body={{request.build_absolute_uri}}" target="_blank"><i class="fa fa-envelope-square"></i></a></li>
+										<li><a href="http://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}&title={{program.name}}&summary=&source={{request.build_absolute_uri}}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
 									</ul>
 								</div>
 							</div>
@@ -369,7 +369,7 @@
 								<ul>
 									<li><a href="/blog/"><i class="fa fa-angle-right"></i>Blogs</a></li>
 									<li><a href="/publication"><i class="fa fa-angle-right"></i>Publications</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i>Alumni</a></li>
+									<li><a href="/pnc-alumni/"><i class="fa fa-angle-right"></i>Alumni</a></li>
 									<li><a href="/QAA-Reform_Unit/"><i class="fa fa-angle-right"></i>QAA/Reform</a></li>
 									<li><a href="/governing-body/"><i class="fa fa-angle-right"></i>Governing Body</a></li>
 									<li><a href="/administration/"><i class="fa fa-angle-right"></i>Desk Officials</a></li>

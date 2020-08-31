@@ -51,3 +51,6 @@ class QAA(models.Model):
     EMIS_Report = models.FileField(upload_to="QAA/Report/", max_length=100)
     Strategic_Plan = models.FileField(upload_to="QAA/Report/", max_length=100)
     contact = HTMLField()
+
+    def __str__(self):
+        return self.title
