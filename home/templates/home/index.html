@@ -1,9 +1,7 @@
 {% extends 'home/base.html' %}
 {% load static %}
-{% block meta %}<meta name="description" content="{{desc.content |safe|truncatechars:'255'}}">{% endblock meta %}
-{% block title %}
-Prithivi Narayan Campus | Pokhara, Nepal
-{% endblock title %}
+{% block meta %}<meta name="description" content="{{desc.content |safe|striptags|truncatechars:'255'}}">{% endblock meta %}
+{% block title %}Prithivi Narayan Campus | Pokhara, Nepal{% endblock title %}
 {% block content %}
     <body>
 		{% if loader %}
@@ -453,7 +451,7 @@ Prithivi Narayan Campus | Pokhara, Nepal
 						<div class="blog-slider">
 							<!-- Single Blog -->
 							{% for e in events  %}
-							<div class="single-blog">
+							<div class="single-blog" style="">
 								<div class="blog-head overlay">
 									<div class="date">
 										<h4>{{e.date| date:"d"}}<span>{{e.date| date:"M"}}</span></h4>

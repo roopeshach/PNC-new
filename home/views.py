@@ -88,7 +88,8 @@ def faqs(request):
         'pages': pages,
         'faculties': faculties,
         'institutes': institutes,
-        'faqs':faqs,
+        'faqs': faqs,
+        'sm':sm,
     }
     return render(request, 'home/faq.html', context)
     
@@ -117,6 +118,7 @@ def Message(request):
         'faculties': faculties,
         'institutes': institutes,
         'messages': messages,
-        'chiefs':chiefs,
+        'chiefs': chiefs,
+        'sm':sm,
     }
     return render(request, 'home/message.html', context_message)
