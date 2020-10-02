@@ -340,7 +340,33 @@ Version:	1.0
 		});
 		$(document).ready(function() {
 	        $("#recent").fancybox().trigger('click');
-	    });
+		});
+		$(document).ready(function(){
+			$('.course-slider').each(function(){  
+			  var highestBox = 0;
+			  $('.single-course', this).each(function(){
+				if($(this).height() > highestBox) {
+					highestBox = $(this).height(); 
+					//console.log("height :",highestBox)
+				}
+			  });  
+			  $('.single-course',this).height(highestBox);
+			}); 
+			$('.blog-slider').each(function(){  
+				var highestBox = 0;
+				$('.single-blog', this).each(function(){
+				  if($(this).height() > highestBox) {
+					  highestBox = $(this).height(); 
+					  //console.log("height :",highestBox)
+				  }
+				});  
+				$('.single-blog',this).height(highestBox);
+							  
+			  }); 
+		
+		});
+		
 })(jQuery);
+
 
 
