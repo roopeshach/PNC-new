@@ -7,5 +7,4 @@ class Contact(models.Model):
     title = models.CharField( max_length=250)
     comment = models.TextField()
 
-    date = models.DateTimeField( auto_now_add=True)
-    
+    date = models.DateTimeField(auto_now_add=True)
