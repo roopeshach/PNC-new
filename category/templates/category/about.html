@@ -1,8 +1,7 @@
 {% extends 'home/base.html' %}
 {% load static %}
-{% block title %}
-Department |{{dept.name}}
-{% endblock title %}
+ {% load humanize %}
+{% block title %}Department | {{dept.name}}{% endblock title %}
 {% block content %}
     <body>
 		<!-- Book Preloader -->
@@ -97,7 +96,7 @@ Department |{{dept.name}}
 									<ul id="nav" class="nav menu navbar-nav">
 										<li><a href="/">Home</a></li>
 										<li><a href="/about-us/">About Us</a></li>
-										<li><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
+										<li class="active"><a href="#">Faculty&nbsp;/&nbsp;Institute<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											<li><a href="#">Faculties<i class="fa fa-angle-right"></i></a>
 												<ul class="dropdown submenu">
@@ -179,12 +178,10 @@ Department |{{dept.name}}
 							<div class="event-content">
 								<div class="meta"> 
 									<span><i class="fa fa-calendar"></i>
-                                    
                                     {% if dept.faculty %}{{dept.faculty}}{% else %}{{dept.institute}}{% endif %}
                                     </span>
-									
 								</div>
-								<h2><a href="">{{dept.header}}</a></h2>
+								<h2><a href="javascript:void(0)">{{dept.header}}</a></h2>
                                  <p>
                                 {% autoescape on %}
                                 {{dept.content|safe}}
@@ -226,10 +223,10 @@ Department |{{dept.name}}
 								</div>
 								<div class="book-now">
 									<ul class="social">
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-google-plus "></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+										<li><a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="https://twitter.com/intent/tweet?text={{request.build_absolute_uri}}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="mailto:?subject={{event.title}}&body={{request.build_absolute_uri}}" target="_blank"><i class="fa fa-envelope-square"></i></a></li>
+										<li><a href="http://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}&title={{event.title}}&summary=&source={{request.build_absolute_uri}}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
 									</ul>
 								</div>
 							</div>
@@ -264,7 +261,7 @@ Department |{{dept.name}}
 									{% endif %}
 									<div class="course-content">
 										<h4><a href="/news/{{n.slug}}">{{n.title}}</a></h4>
-										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
+										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|naturaltime }}</span></div>
 									</div>
 								</div>
 								{% endfor %}
@@ -282,7 +279,7 @@ Department |{{dept.name}}
 									{% endif %}
 									<div class="course-content">
 										<h4><a href="/notice/{{no.slug}}">{{no.title}}</a></h4>
-										<div class="meta"> <span><i class="fa fa-calendar"></i>{{no.date|date:"d, M"}}</span></div>
+										<div class="meta"> <span><i class="fa fa-calendar"></i>{{no.date|naturaltime }}</span></div>
 									</div>
 								</div>
 								{% endfor %}

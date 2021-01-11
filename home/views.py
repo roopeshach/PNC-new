@@ -10,7 +10,7 @@ from staffs.models import Staff
 content = Content.objects.all().first()
 desc = Description.objects.all().first()
 slides = Slider.objects.all()
-loader = Preloader.objects.all().filter(is_active="T")[:1]
+loader = Preloader.objects.filter(is_active="T")[:1]
 departments = Department.objects.all().filter(is_active="T")
 programs = Program.objects.all().filter(is_active="T")
 pages = Custom_Page.objects.all()
@@ -52,6 +52,7 @@ context = {
 
 
 def index(request):
+    print('loader:',loader)
     return render(request, 'home/index.html', context)
 
 

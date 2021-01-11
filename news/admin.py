@@ -37,7 +37,7 @@ class NoticeImageTabularInline(admin.TabularInline):
 
 class NoticeAdmin(admin.ModelAdmin):
     inlines = [NoticeImageTabularInline]
-    list_display = ['title', 'date', 'department', 'date']
+    list_display = ['title', 'date', 'department','program', 'date']
     list_filter = ['department', 'program']
 
 

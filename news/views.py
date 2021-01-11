@@ -2,7 +2,7 @@ from django.shortcuts import render
 from news.models import News, Notice, Event, NewsImage , NoticeImage , EventImage
 from photos.models import DepartmentGallery 
 from category.models import Department, Program, Custom_Page,Faculty, Institute
-from home.models import Content
+from home.models import Content, SocialMedia
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import os
 from next_prev import next_in_order, prev_in_order
@@ -18,7 +18,7 @@ institutes = Institute.objects.all()
 recent_news = News.objects.all()[:4]
 recent_notice = Notice.objects.all()[:4]
 gallery = DepartmentGallery.objects.all()[:12]
-
+sm = SocialMedia.objects.all().first()
 
 def viewEvent(request, slug):
     event = Event.objects.get(slug=slug)
@@ -39,6 +39,7 @@ def viewEvent(request, slug):
         'gallery':gallery,
         'previous': previous,
         'next': next,
+        'sm':sm,
     }
     return render(request, 'news/events.html', context_event)
 
@@ -66,7 +67,8 @@ def allEvent(request):
         'event': event,
         'images' :images,
         'faculties': faculties,
-        'institutes': institutes
+        'institutes': institutes,
+        'sm':sm,
     }
     return render(request, 'news/allevents.html', context_event)
 
@@ -90,6 +92,7 @@ def viewNews(request, slug):
         'recent_news':recent_news,
         'recent_notice':recent_notice,
         'gallery':gallery,
+        'sm':sm,
     }
     return render(request, 'news/news.html', context_news)
 
@@ -113,6 +116,7 @@ def viewNotice(request, slug):
         'gallery':gallery,
         'previous': previous,
         'next': next,
+        'sm':sm,
     }
     return render(request, 'news/notice.html', context_notice)
 
@@ -137,9 +141,10 @@ def allNews(request):
         'pages': pages,
         'news': news,
         'faculties': faculties,
-        'institutes': institutes
+        'institutes': institutes,
+        'sm':sm,
     }
-    print(news)
+    # print(news)
     return render(request, 'news/allnews.html', context)
 
 
@@ -163,8 +168,9 @@ def allNotice(request):
         'pages': pages,
         'notice': notice,
         'faculties': faculties,
-        'institutes': institutes
+        'institutes': institutes,
+        'sm':sm,
         
     }
-    print(notice)
+    # print(notice)
     return render(request, 'news/allnotice.html', context)

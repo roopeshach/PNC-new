@@ -1,11 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static %}
-
-{% block title %}
-About Prithvi Narayan Campus
-{% endblock title %}
-
-
+{% block title %}About Prithvi Narayan Campus{% endblock title %}
 {% block content %}
     <body>
 
@@ -18,8 +13,6 @@ About Prithvi Narayan Campus
             </div>
         </div>
 		<!--/ End Book Preloader -->
-
-
 		<!-- Header -->
 		<header class="header">
 			<!-- Topbar -->
@@ -174,7 +167,7 @@ About Prithvi Narayan Campus
 							{% if about.image %}
 							<div class="single-image mb-3">
 								<a data-fancybox="photo" rel="gallery1" href="{{about.image.url}}" data-caption="About Prithivi Narayan Campus">
-								<img src="{{about.image.url}}" alt="About Prithivi Narayan Campus" class="mb-2 rounded">
+									<img src="{{about.image.url}}" alt="About Prithivi Narayan Campus" class="mb-2 rounded"></a>
 							</div>
 						{% endif %}
 						{% if images %}

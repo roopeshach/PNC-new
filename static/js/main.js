@@ -1,8 +1,3 @@
-/* =====================================
-Template Name: Roopesh Shankar
-Description: Roopesh Shankar is a Education & Courses Template.
-Version:	1.0
-========================================*/
 /*=======================================
 =========================================
 * Sticky Header JS
@@ -87,12 +82,12 @@ Version:	1.0
 			Course Slider JS
 		======================================*/ 
 		$('.course-slider').owlCarousel({
-			items:4,
+			items:3,
 			autoplay:true,
 			autoplayTimeout:3500,
 			smartSpeed: 600,
 			autoplayHoverPause:true,
-			margin:25,
+			margin:5,
 			loop:true,
 			merge:true,
 			dots:false,
@@ -112,7 +107,7 @@ Version:	1.0
 					nav:false,
 				},
 				1170: {
-					items:4,
+					items:3,
 					
 				},
 			}
@@ -220,7 +215,7 @@ Version:	1.0
 		======================================*/ 
 		$('.blog-slider').owlCarousel({
 			items:2,
-			autoplay:false,
+			autoplay:true,
 			autoplayTimeout:3500,
 			smartSpeed: 600,
 			autoplayHoverPause:true,
@@ -339,19 +334,26 @@ Version:	1.0
 			});
 		});
 		$(document).ready(function() {
-	        $("#recent").fancybox().trigger('click');
+		    setTimeout(function(){
+	            $("#recent").fancybox().trigger('click');
+	        }, 3500);
 		});
-		$(document).ready(function(){
-			$('.course-slider').each(function(){  
-			  var highestBox = 0;
-			  $('.single-course', this).each(function(){
-				if($(this).height() > highestBox) {
-					highestBox = $(this).height(); 
-					//console.log("height :",highestBox)
-				}
-			  });  
-			  $('.single-course',this).height(highestBox);
-			}); 
+
+        /* Same height for course slider */
+        $(document).ready(function(){
+            $('.course-slider').each(function(){
+              var highestBox = 0;
+              $('.single-course', this).each(function(){
+                if($(this).height() > highestBox) {
+                    highestBox = $(this).height();
+                    // console.log("height :",highestBox)
+                }
+              });
+              $('.single-course',this).height(highestBox);
+            });
+
+
+			/* Same height for blog slider */
 			$('.blog-slider').each(function(){  
 				var highestBox = 0;
 				$('.single-blog', this).each(function(){
@@ -362,11 +364,20 @@ Version:	1.0
 				});  
 				$('.single-blog',this).height(highestBox);
 							  
-			  }); 
+			  });
+			  /* Same height for blog slider */
+			$('.all-events').each(function(){
+				var highestBox = 0;
+				$('.single-event', this).each(function(){
+				  if($(this).height() > highestBox) {
+					  highestBox = $(this).height();
+					  console.log("height :",highestBox)
+				  }
+				});
+				$('.single-event',this).height(highestBox);
+
+			  });
 		
 		});
 		
 })(jQuery);
-
-
-

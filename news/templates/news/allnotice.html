@@ -1,11 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static %}
-
-{% block title %}
-All Notices
-{% endblock title %}
-
-
+{% block title %}Notices-Prithivi Narayan Campus{% endblock title %}
 {% block content %}
     <body>
 
@@ -152,7 +147,7 @@ All Notices
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<h2>All Notice Pages</h2>
+						<h2>All Notices</h2>
 						<ul class="bread-list">
 							<li><a href="/">Home<i class="fa fa-angle-right"></i></a></li>
 							<li class="active"><a href="/notice/">All Notices</a></li>
@@ -168,7 +163,7 @@ All Notices
 			<div class="container">
 				<div class="row masonry">
                     {% for n in notice %}
-					<div class="col-lg-4 col-12 grid-item">
+					<div class="col-lg-4 col-md-6 col-sm-12 grid-item ">
 						<!-- Single Blog -->
 						<div class="single-blog">
 							<div class="blog-head overlay">
@@ -186,7 +181,7 @@ All Notices
 								</div>
 								<p>
 									{% autoescape on %}
-									{{n.content |safe|striptags|truncatechars:"200"}}
+									{{n.content |safe|striptags|truncatechars:"250"}}
 									{% endautoescape %}
 									</p>
                                 <div class="button">

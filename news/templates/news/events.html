@@ -1,9 +1,12 @@
 {% extends 'home/base.html' %}
 {% load static %}
-
-{% block title %}
-    {{event.title}}
-{% endblock title %}
+{% load humanize %}
+{% block meta %}<meta name="description" content="{{event.content |safe|striptags|truncatechars:'255'}}">
+		<meta property="og:title" content="{{event.title}}" />
+		<meta property="og:description" content="{{event.content |safe|striptags|truncatechars:'255'}}" />
+		<meta property="og:image" content="https://{{request.get_host}}{{event.feature_image.url}}" />
+{% endblock meta %}
+{% block title %}{{event.title}}{% endblock title %}
 
 
 {% block content %}
@@ -181,6 +184,9 @@
 									<span><i class="fa fa-clock-o"></i>12.00-5.00PM</span>
 								</div>
 								<h2>{{event.title}}</h2>
+								{% if event.feature_image %}
+								<img style="width:100%" src="{{event.feature_image.url}}" alt="{{news.name}}">
+								{% endif %}
                                 <p>
                                     {% autoescape on %}
 									{{event.content |safe}}
@@ -195,8 +201,8 @@
 										<li><a href="https://twitter.com/intent/tweet?text={{request.build_absolute_uri}}" target="_blank"><i class="fa fa-twitter"></i></a></li>
 										<li><a href="mailto:?subject={{event.title}}&body={{request.build_absolute_uri}}" target="_blank"><i class="fa fa-envelope-square"></i></a></li>
 										<li><a href="http://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}&title={{event.title}}&summary=&source={{request.build_absolute_uri}}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-										<li class="prev"><a {% if previous %}href="/event/{{previous.slug}}"{% endif %}><i class="fa fa-angle-double-left"></i></a></li>
-										<li class="next"><a {% if next %}href="/event/{{next.slug}}"{% endif %}><i class="fa fa-angle-double-right"></i></a></li>
+										<li class="prev"><a {% if previous %}href="/events/{{previous.slug}}"{% endif %}><i class="fa fa-angle-double-left"></i></a></li>
+										<li class="next"><a {% if next %}href="/events/{{next.slug}}"{% endif %}><i class="fa fa-angle-double-right"></i></a></li>
 									</ul>
 								</div>
 							</div>
@@ -212,7 +218,7 @@
 									<img src="{{n.feature_image.url}}" alt="{{n.title}}">
 									<div class="course-content">
 										<h4><a href="/news/{{n.slug}}">{{n.title}}</a></h4>
-										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
+										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|naturaltime }}</span></div>
 									</div>
 								</div>
 								{% endfor %}
@@ -225,7 +231,7 @@
 									<img src="{{n.feature_image.url}}" alt="{{n.title}}">
 									<div class="course-content">
 										<h4><a href="/notice/{{n.slug}}">{{n.title}}</a></h4>
-										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
+										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|naturaltime }}</span></div>
 									</div>
 								</div>
 								{% endfor %}

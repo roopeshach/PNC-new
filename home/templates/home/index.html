@@ -4,11 +4,7 @@
 {% block title %}Prithivi Narayan Campus | Pokhara, Nepal{% endblock title %}
 {% block content %}
     <body>
-		{% if loader %}
-			{% for loader in loader %}
-				<a href="{{loader.image.url}}" id="recent" hidden data-fancybox data-caption="{{loader.title}}"></a>
-			{% endfor %}
-		{% endif %}
+
 		<!-- Book Preloader -->
 		<div class="book_preload">
             <div class="book">
@@ -18,7 +14,11 @@
             </div>
         </div>
 		<!--/ End Book Preloader -->
-	
+		{% for loader in loader %}
+		<div class="hidden">
+			<a href="{{loader.image.url}}" id="recent" data-fancybox data-caption="{{loader.title}}"></a>
+		</div>
+		{% endfor %}
 		<!-- Header -->
 		<header class="header">
 			<!-- Topbar -->
@@ -138,6 +138,11 @@
 										</li>
 										<li><a href="/contact-us">Contact</a></li>
 									</ul>
+									{% if request.user.is_authenticated %}
+									<div class="button">
+										<a href="/pnc-administration" class="btn"><i class="fa fa-pencil"></i>Admin Dashboard</a>
+									</div>
+									{% endif %}
 									<!-- End Main Menu -->
 								</div>
 							</nav>
@@ -288,6 +293,11 @@
 									<h4><a href="/about/{{d.slug}}"><span>{{d.name}}</span></a></h4>
 									<p>{{d.content |safe|striptags|truncatechars:"200"}}</p>
 								</div>
+								<div class="course-meta">
+									<div class="meta-left">
+										<a href="/about/{{d.slug}}"><span class="price">View More</span></a>
+									</div>
+								</div>
 							</div>
 							{% endfor %}
 							{% for p in programs %}
@@ -299,6 +309,11 @@
 								<div class="single-content">
 									<h4><a href="about_program/{{p.slug}}"><span>{{p.name}}</span></a></h4>
 									<p>{{p.content |safe|striptags|truncatechars:"200"}}</p>
+								</div>
+								<div class="course-meta">
+									<div class="meta-left">
+										<a href="/about_program/{{p.slug}}"><span class="price">View More</span></a>
+									</div>
 								</div>
 							</div>
 							{% endfor %}
@@ -335,7 +350,6 @@
 						<div class="section-title">
 							<h2>Latest <span>notices</span></h2>
 							<p>Here are the recent notices we published right now</p>
-
 						</div>
 					</div>
 				</div>
@@ -372,7 +386,6 @@
 										<a href="#"><i class="fa fa-user"></i>By:
 										{% if n.department %}{{n.department}}{% else %}{{n.program}}{% endif %}
 										</a>
-										
 									</div>
 									<p>
 									{% autoescape on %}

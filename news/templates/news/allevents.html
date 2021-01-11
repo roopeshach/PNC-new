@@ -1,11 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static %}
-
-{% block title %}
-All Events
-{% endblock title %}
-
-
+{% block title %}Events-Prithivi Narayan Campus{% endblock title %}
 {% block content %}
     <body>
 
@@ -174,7 +169,7 @@ All Events
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row all-events">
 					{% for event in event %}
 					<div class="col-lg-4 col-md-6 col-12">
 						<!-- Single Event -->
@@ -186,7 +181,7 @@ All Events
 							<div class="event-content">
 								<div class="meta">
 									<span><i class="fa fa-calendar"></i>{{event.date| date:"d M Y"}}</span>
-									<span><i class="fa fa-clock-o"></i>{{event.date| date:"H:i"}}</span>
+									<span><i class="fa fa-clock-o"></i>{{event.date| date:"h:i a"}}</span>
 								</div>
 								<div class="title">
 									<h4><a href="/events/{{event.slug}}">{{event.title}}</a></h4>

@@ -1,14 +1,16 @@
 {% extends 'home/base.html' %}
 {% load static %}
-{% block meta %}<meta name="description" content="{{news.content |safe|striptags|truncatechars:'255'}}">{% endblock meta %}
-{% block title %}
-	{{news.title}}
-{% endblock title %}
+ {% load humanize %}
+{% block meta %}<meta name="description" content="{{news.content |safe|striptags|truncatechars:'255'}}">
+		<meta property="og:title" content="{{news.title}}" />
+		<meta property="og:description" content="{{news.content |safe|striptags|truncatechars:'255'}}" />
+		<meta property="og:image" content="https://{{request.get_host}}{{news.feature_image.url}}" />
+{% endblock meta %}
+{% block title %}{{news.title}}{% endblock title %}
 
 {% block content %}
     <body>
-
-		<!-- Book Preloader -->
+		<!-- start Book Preloader -->
 		<div class="book_preload">
             <div class="book">
                 <div class="book__page"></div>
@@ -182,7 +184,7 @@
 								<div class="blog-info">
 									<a href="#"><i class="fa fa-user"></i>By:
                                     {% if news.department %}{{news.department}}{% else %}{{news.program}}{% endif %}</a>
-									<a href="#"><i class="fa fa-calendar"></i>{{news.date| date:"d M Y"}}</a>
+									<a href="#"><i class="fa fa-calendar"></i>{{news.date|naturaltime  }}</a>
 								</div>
 								<h2 class="blog-title">{{news.title}}</h2>
 								{% if news.feature_image %}
@@ -218,7 +220,6 @@
 					</div>
 					<div class="col-lg-4 col-12">
 						<div class="sidebar">
-							<!-- Categories -->
 							<div class="single-widget course">
 								<h3>Recent <span>News</span></h3>
 								<!-- Single news -->
@@ -233,8 +234,6 @@
 								{% endfor %}
 								<!-- Single news -->
 							</div>
-							<!--/ End recent News -->
-							<!-- Posts -->
 							<div class="single-widget posts">
 								<h3>Recent <span>Notice</span></h3>
 								{% for n in recent_notice %}
@@ -247,8 +246,6 @@
 								</div>
 								{% endfor %}
 							</div>
-							<!--/ End Posts -->
-
 							<div class="single-widget tags">
 								<h3>Our <span>Gallery</span></h3>
 								<div class="gallery-small-thumbs clearfix">

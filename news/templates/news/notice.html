@@ -1,8 +1,11 @@
 {% extends 'home/base.html' %}
 {% load static %}
-{% block title %}
-    {{notice.title}}
-{% endblock title %}
+{% load humanize %}
+{% block meta %}<meta name="description" content="{{notice.content |safe|striptags|truncatechars:'255'}}">
+		<meta property="og:title" content="{{notice.title}}" />
+		<meta property="og:description" content="{{notice.content |safe|striptags|truncatechars:'255'}}" />
+		<meta property="og:image" content="https://{{request.get_host}}{{notice.feature_image.url}}" />
+{% endblock meta %}{% block title %}{{notice.title}}{% endblock title %}
 {% block content %}
     <body>
 
@@ -154,7 +157,7 @@
 						<h2>{{notice.title}}</h2>
 						<ul class="bread-list">
 							<li><a href="/">Home<i class="fa fa-angle-right"></i></a></li>
-							<li class="active"><a href="">View Notice</a></li>
+							<li class="active"><a href="/notice/{{notice.slug}}">View Notice</a></li>
 						</ul>
 					</div>
 				</div>
@@ -180,7 +183,7 @@
 								<div class="blog-info">
 									<a href="#"><i class="fa fa-user"></i>By:
                                     {% if notice.department %}{{notice.department}}{% else %}{{notice.program}}{% endif %}</a>
-									<a href="#"><i class="fa fa-calendar"></i>{{notice.date| date:"d M Y"}}</a>
+									<a href="#"><i class="fa fa-calendar"></i>{{notice.date|naturaltime }}</a>
 									<a href="#"><i class="fa fa-bolt"></i>Learning</a>
 								</div>
 								<h2 class="blog-title">{{notice.title}}</h2>
@@ -217,7 +220,7 @@
 									<img src="{{n.feature_image.url}}" alt="{{n.title}}">
 									<div class="course-content">
 										<h4><a href="/news/{{n.slug}}">{{n.title}}</a></h4>
-										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
+										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|naturaltime }}</span></div>
 									</div>
 								</div>
 								{% endfor %}
@@ -229,8 +232,8 @@
 								<div class="single-course">
 									<img src="{{n.feature_image.url}}" alt="{{n.title}}">
 									<div class="course-content">
-										<h4><a href="#">{{n.title}}</a></h4>
-										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|date:"d, M"}}</span></div>
+										<h4><a href="/notice/{{n.slug}}">{{n.title}}</a></h4>
+										<div class="meta"> <span><i class="fa fa-calendar"></i>{{n.date|naturaltime }}</span></div>
 									</div>
 								</div>
 								{% endfor %}

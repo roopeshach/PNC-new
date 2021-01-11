@@ -8,7 +8,7 @@ class content(admin.ModelAdmin):
 
 
 class sliderContent(admin.ModelAdmin):
-    list_display = ['head', 'photo']
+    list_display = ['head', 'SliderImage','content']
 
 
 class descView(admin.ModelAdmin):
@@ -16,7 +16,7 @@ class descView(admin.ModelAdmin):
 
 
 class message(admin.ModelAdmin):
-    list_display = ['chief_name']
+    list_display = ['Image', 'chief_name']
 
 
 class faq(admin.ModelAdmin):
@@ -30,8 +30,21 @@ class PageImageTabularInline(admin.TabularInline):
         model = aboutUs
 
 
+class uptoDate(admin.ModelAdmin):
+    list_display = ['chief_name','duration']
+
+
 class about(admin.ModelAdmin):
     inlines = [PageImageTabularInline]
+
+
+class abtPreloader(admin.ModelAdmin):
+    list_display = ['title','Image','is_active']
+    list_filter = ['is_active']
+
+
+class socialMedia(admin.ModelAdmin):
+    list_display = ['facebook','twitter','google_plus','linkedin','youtube']
 
 
 admin.site.register(Content, content)
@@ -41,5 +54,5 @@ admin.site.register(Message_From_Chief, message)
 admin.site.register(FAQ, faq)
 admin.site.register(aboutUs,about)
 admin.site.register(SocialMedia)
-admin.site.register(Campus_Chiefs_to_date)
-admin.site.register(Preloader)
+admin.site.register(Campus_Chiefs_to_date, uptoDate)
+admin.site.register(Preloader, abtPreloader)

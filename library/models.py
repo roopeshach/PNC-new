@@ -7,6 +7,9 @@ class E_Resources(models.Model):
     title = models.CharField(max_length=254)
     link = models.CharField(max_length=254)
 
+    def __str__(self):
+        return self.title
+
 
 class library_page(models.Model):
     title = models.CharField( max_length=250)
@@ -20,6 +23,9 @@ class library_page(models.Model):
 class thesis_title(models.Model):
     name = models.CharField( max_length=250)
     file = models.FileField( upload_to="thesis/", max_length=254)
+
+    def __str__(self):
+        return self.name
 
 
 class page_image(models.Model):
